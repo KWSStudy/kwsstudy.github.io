@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>컴파운드 패턴-MVC on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4-mvc/</link>
+    <description>Recent content in 컴파운드 패턴-MVC on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 11:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4-mvc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>컴파운드 패턴-MVC</title>
+      <link>http://kwsstudy.github.io/post/MVC/</link>
+      <pubDate>Sun, 03 Apr 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/MVC/</guid>
+      <description>
+
+&lt;h3 id=&#34;mp3에대한-mvc:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;MP3에대한 MVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/DesignPartterns/0678b828cb148776111851ab30fcaa4f100eb075/images/model-view-controller-p567.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;디자인-패턴의-관계에서-바라본-mvc:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;디자인 패턴의 관계에서 바라본 MVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/mvc.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;사용자는 뷰하고만 접촉할 수 있다.&lt;/li&gt;
+&lt;li&gt;컨트롤러에서 모델한테 상태를 변경하라는 요청을 한다.&lt;/li&gt;
+&lt;li&gt;컨트롤러에서 뷰를 변경해 달라고 요청할 수도 있다.&lt;/li&gt;
+&lt;li&gt;상태가 변경되면 모델에서 뷰한테 그 사실을 알린다.&lt;/li&gt;
+&lt;li&gt;뷰에서 모델한테 상태를 요청한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;패턴-안경을-끼고-mvc를-살펴보자:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;패턴 안경을 끼고 MVC를 살펴보자&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/mvc2.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스트래티지 패턴의 적용 원칙&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;스트래티지 패턴(뷰와 컨트롤러) - 뷰 객체를 여러 전략을 써서 제공한다. 전략은 컨트롤러가 제공한다. 뷰에서는 애플리케이션의 겉모습에만 신경을 쓰고, 인터페이스의 행동에 대한 결정은 모두 컨트롤러한테 맡긴다. 스트래티지 패턴을 사용하는 것은 뷰를 모델로부터 분리시키는데 도움이 된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;컴포지트 패턴(뷰) - 디스플레이는 여러 단계로 겹쳐져 있을 수 있는 일련의 윈도우, 패널 버튼, 텍스트 레이블 등으로 구성된다. 각 디스플레이 항목은 복합객체 또는 잎이 될 수 있다. 컨트롤러에서 뷰한테 화면을 갱신해 달라고 요청하면 최상위 뷰 구성요소한테만 화면을 갱신하라고 애기하면 된다. 나머지는 컴포지트 패턴에 의해 자동으로 처리된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버패턴(모델) - 모델에서는 옵저버 패턴을 써서 상태가 변경되었을 때 그 모델하고 연관된 객체들한테 연락을 한다. 옵저버 패턴을 사용하면 모델을 뷰 및 컨트롤러로부터 완전히 독립시킬 수 있다. 한 모델에서 서로 다른 뷰를 사용할 수도 있고, 심지어 여러 개의 뷰를 동시에 사용하는 것도 가능하다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/observer.png?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/strategy.png?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/composite.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,824 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>템플릿 메소드 패턴</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="DesignPartterns - 템플릿 메소드 패턴">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="템플릿 메소드 패턴"/>
+<meta name="twitter:description" content="DesignPartterns - 템플릿 메소드 패턴"/>
+
+
+
+        <meta property="og:title" content="템플릿 메소드 패턴" />
+<meta property="og:description" content="DesignPartterns - 템플릿 메소드 패턴" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/" />
+
+
+<meta property="og:updated_time" content="2016-03-20T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="템플릿 메소드 패턴">
+<meta itemprop="description" content="DesignPartterns - 템플릿 메소드 패턴">
+
+
+<meta itemprop="dateModified" content="2016-03-20T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="405">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,DesignPartterns,나머지 패턴,데코레이터 패턴,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/"><p>컴파운드 패턴</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/">템플릿 메소드 패턴</a></h1>
+            
+        
+        
+            <p>DesignPartterns - 템플릿 메소드 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-03-20'>
+            March 20, 2016</time>
+        <span class="author"></span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%85%9c%ed%94%8c%eb%a6%bf%20%eb%a9%94%ec%86%8c%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%2585%259C%25ED%2594%258C%25EB%25A6%25BF-%25EB%25A9%2594%25EC%2586%258C%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h3 id="정의:dd6d153b16071c4efa671b38bed5c0f9">정의</h3>
+
+<ul>
+<li>서로 다른 클래스들의 알고리즘이 공통될 때(상세 기능이 아닌 일반적인 관점에서)  공통된 알고리즘을 슈퍼클래스에서 정의하고 일부 다른부분은 추상 메소드로 정의하여 서브클래스에서 구현하는 패턴</li>
+</ul>
+
+<h3 id="템플릿-메소드-패턴의-특징:dd6d153b16071c4efa671b38bed5c0f9">템플릿 메소드 패턴의 특징</h3>
+
+<ul>
+<li>코드의 재사용에 크게 도움된다.</li>
+<li>클래스간의 의존성을 낮춰준다.</li>
+<li>프레임워크를 만들때 자주 사용되는 패턴이다.</li>
+<li>변경이 일어나지 않는 부분은 슈퍼 클래스에서 final로 지정하여 오버라이드하지 못하게 막는다</li>
+</ul>
+
+<h3 id="템플릿-메소드-디자인-원칙-책에서는-헐리우드-원칙이라-나옴:dd6d153b16071c4efa671b38bed5c0f9">템플릿 메소드 디자인 원칙(책에서는 헐리우드 원칙이라 나옴)</h3>
+
+<ul>
+<li>저수준 구성요소가 고수준의 구성요소를 직접 호출할 수 없다.(고수준의 구성요소에서 호출하기전에 저수준 구성요소는 대기한다.)</li>
+<li>클래스의 주요 기능은 고수준 구성요소에서 장악하고 구현이 필요한 기능만 저수준 클래스를 호출한다.</li>
+<li>클래스의 구성요소들의 사용은 고수준 구성요소(템플릿을 가진 슈퍼클래스를 말하는듯)에서 결정한다.</li>
+<li>저수준 구성요소(템플릿에서 추상메소드로 정의한 메소드를 상세구현한 자식 클래스)는 고수준 구성 요소를 직접 호출할수 없다.</li>
+<li>이 원칙이 위반되면 클래스간의 의존도가 매우 높아진다.</li>
+</ul>
+
+<hr />
+
+<h3 id="서로-다른-종류의-db-조회-적용-예제:dd6d153b16071c4efa671b38bed5c0f9">서로 다른 종류의 DB 조회 적용 예제</h3>
+
+<ul>
+<li>오라클/mysql/mssql&hellip;.등등 하나의 어플리케이션에서 여러대의 DB에 select쿼리를 사용 한다고 가정.</li>
+<li>템플릿 메소드 패턴을 사용하지 않고 가져올 경우 아래의 코드를 각 클래스마다 사용해야함</li>
+</ul>
+
+<pre><code class="language-java">public class OracleSelect {
+    public void getSelect(){
+        try{
+            System.out.println(&quot;Oracle Driver Loading&quot;);
+        }catch(Exception e){
+            System.out.println(&quot;Oracle Driver Loading Exception&quot;);
+        }
+        
+        try{
+            System.out.println(&quot;Oracle getConnection&quot;);
+            System.out.println(&quot;Oracle createStatement&quot;);
+            System.out.println(&quot;Oracle executeQuery&quot;);
+        }catch(Exception e){
+            System.out.println(&quot;Oracle Exception&quot;);
+        }finally{
+            System.out.println(&quot;Oracle Resource Close&quot;);
+        }
+    }
+}
+</code></pre>
+
+<h3 id="템플릿-메소드의-적용:dd6d153b16071c4efa671b38bed5c0f9">템플릿 메소드의 적용</h3>
+
+<ul>
+<li>각 DB연결후 쿼리를 가져오는 부분에서 사용되는 기능들을 일반적인 관점으로 공통화 시킨다.
+
+<ol>
+<li>오라클 드라이버를 로딩한다./My-sql 드라이버를 로딩한다.(x) -&gt; DB드라이버를 로딩한다.</li>
+<li>오라클 커넥션을 가져온다./My-sql 커넥션을 가져온다.(x) -&gt; 커넥션을 가져온다.</li>
+<li>오라클 statement을 생성한다./My-sql statement을 생성한다.(x) -&gt; statement을 생성한다.</li>
+<li>오라클에 select 쿼리를 날린다./My-sql에 select 쿼리를 날린다.(x) -&gt; select 쿼리를 날린다.</li>
+<li>오라클에 사용된 리소스를 close한다./My-sql에 사용된 리소스를 close한다.(x) -&gt; 리소스를 close한다.</li>
+</ol></li>
+<li>공통화 시킨 기능을 토대로 템플릿으로 사용될 기능에서 변경이 안되는 부분, 변경될 부분을 분리하여 변경이 안되는 부분은 final로 변경되는 부분은 추상메소드로 기능을 정의한다.</li>
+<li>적용 예</li>
+</ul>
+
+<pre><code class="language-java">//템플릿으로 사용될 부분
+public abstract class DBSelectTemplate {
+final void getSelect(String dbName,String query){
+    try{
+        driverLoading(dbName);
+    }catch(Exception e){
+        System.out.println(dbName + &quot; Driver Loading Exception&quot;);
+    }
+    
+    try{
+        getConnection(dbName);
+        createStatement(dbName);
+        executeQuery(query);
+    }catch(Exception e){
+        System.out.println(dbName + &quot; Exception&quot;);
+    }finally{
+        resourceClose(dbName);
+    }
+}
+
+//1.DB드라이버를 로딩한다.
+final void driverLoading(String dbName){
+    System.out.println(dbName + &quot; Driver Loading&quot;);
+}
+
+//2.커넥션을 가져온다.
+final void getConnection(String dbName){
+    System.out.println(dbName + &quot; getConnection&quot;);
+}
+//3.statement을 생성한다.
+final void createStatement(String dbName){
+    System.out.println(dbName + &quot; createStatement&quot;);
+}
+//4.select 쿼리를 날린다.
+abstract void executeQuery(String query);
+
+//5.리소스를 close한다.
+final void resourceClose(String dbName){
+    System.out.println(dbName + &quot; Resource Close&quot;);
+}
+}
+</code></pre>
+
+<pre><code class="language-java">public class MysqlSelectUseTemplate extends DBSelectTemplate{
+
+    @Override
+    void executeQuery(String query) {
+        // TODO Auto-generated method stub
+        System.out.println(&quot;Mysql ==&gt; &quot; + query);
+    }
+
+}
+</code></pre>
+
+<hr />
+
+<h3 id="결과:dd6d153b16071c4efa671b38bed5c0f9">결과</h3>
+
+<ul>
+<li>공통된 부분을 분리하여 적용함으로써 코드의 재사용율이 높아졌다.</li>
+</ul>
+
+<hr />
+
+<h3 id="템플릿-메소드가-사용된곳을-생각해보자:dd6d153b16071c4efa671b38bed5c0f9">템플릿 메소드가 사용된곳을 생각해보자</h3>
+
+<ul>
+<li><a href="https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/template">샘플소스확인</a></li>
+<li>실전 패턴 적용이 교재에 나온 내용과 완전히 일치할 수 없다. 주어진 상황과 제약 조건에 맞추어 적용할 수 있어야한다. ex)Arrays.sort()</li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/"
+                class="button big previous">어댑터 패턴과 퍼사드 패턴</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8-%ED%8C%A8%ED%84%B4/"
+                class="button big next">이터레이터와 컴포지트 패턴</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4\/';
+    var disqus_title = '템플릿 메소드 패턴';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 스터디 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

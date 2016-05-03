@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>싱글턴 패턴 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/</link>
+    <description>Recent content in 싱글턴 패턴 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Mar 2016 13:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>싱글턴 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 06 Mar 2016 13:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어플리케이션에서 유일하게 존재하는 객체&lt;/li&gt;
+&lt;li&gt;싱글톤을 이용한 클래스는 new를 이용한 객체를 생성하지 못하고 클래스안의 getInstance() 메소드를 이용하여 객체를 가져온다.(명명규칙)&lt;/li&gt;
+&lt;li&gt;java의 calendar = getInstance해도 새로운 객체를 만들어준다 고로 싱글톤이라할 수 없다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static Calendar getInstance()
+{
+    Calendar cal = createCalendar(TimeZone.getDefaultRef(), Locale.getDefault(Locale.Category.FORMAT));
+    cal.sharedZone = true;
+    return cal;
+}
+private static Calendar createCalendar(TimeZone zone, Locale aLocale)
+{
+   Calendar cal = null;
+   String caltype = aLocale.getUnicodeLocaleType(&amp;quot;ca&amp;quot;);
+    if (caltype == null) {
+        // Calendar type is not specified.
+        // If the specified locale is a Thai locale,
+        // returns a BuddhistCalendar instance.
+        if (&amp;quot;th&amp;quot;.equals(aLocale.getLanguage())
+                &amp;amp;&amp;amp; (&amp;quot;TH&amp;quot;.equals(aLocale.getCountry()))) {
+            cal = new BuddhistCalendar(zone, aLocale);
+        } else {
+            cal = new GregorianCalendar(zone, aLocale);
+        }
+    } else if (caltype.equals(&amp;quot;japanese&amp;quot;)) {
+        cal = new JapaneseImperialCalendar(zone, aLocale);
+    } else if (caltype.equals(&amp;quot;buddhist&amp;quot;)) {
+        cal = new BuddhistCalendar(zone, aLocale);
+    } else {
+        // Unsupported calendar type.
+        // Use Gregorian calendar as a fallback.
+        cal = new GregorianCalendar(zone, aLocale);
+    }
+ return cal;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;적용되는-곳:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;적용되는 곳&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스레드 풀&lt;/li&gt;
+&lt;li&gt;캐시&lt;/li&gt;
+&lt;li&gt;사용자 설정&lt;/li&gt;
+&lt;li&gt;등등등&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;싱글톤의-생성-방법:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;싱글톤의 생성 방법&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* private생성자와 정적 변수를 이용하여 싱글톤을 만드는 방법*/
+public class Singleton{
+  private static Singleton uniqueInstance;
+  private Singleton(){}
+  public static Singleton getInstance(){
+    if(uniqueInstance == null) uniqueInstance = new Singleton();
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;발생하는-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;발생하는 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;멀티 스레딩에서 최초에 객체가 하나이상 생성될 위험이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-1:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 1&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;동기화(synchronized)를 이용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private static Singleton uniqueInstance;
+  private Singleton(){}
+  public static synchronized Singleton getInstance(){
+    if(uniqueInstance == null) uniqueInstance = new Singleton();
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;싱글톤을-위한-동기화의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;싱글톤을 위한 동기화의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;동기화는 최초 객체 생성시 한번만 필요한데 그 이후 필요치 않은 동기화로 인해 속도 저하가 발생할 수 있다.&lt;/li&gt;
+&lt;li&gt;속도에 영향이 없다면 그냥 사용해도 무방하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-2:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 2&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체를 지연생성하지 않고 처음부터 만들어버린다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private static Singleton uniqueInstance = new Singleton();
+  private Singleton(){}
+  public static Singleton getInstance(){
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;객체를-처음부터-만들때의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;객체를 처음부터 만들때의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;언제 사용할지 모르는 객체를 미리 만들어 둠으로서 자원을 소모&lt;/li&gt;
+&lt;li&gt;자원 소모가 크지 않다면 이렇게 해도 무방하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-3:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 3&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DCL(Double-Checking Locking)을 사용한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private volatile static Singleton uniqueInstance;
+  private Singleton(){}
+  public static Singleton getInstance(){
+    if(uniqueInstance == null) {
+      synchronized(Singleton.class){
+        if(uniqueInstance == null) {
+          uniqueInstance = new Singleton();
+        }
+      }
+    }
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dcl의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;DCL의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자바 1.4 이하의 버전에서는 사용할 수 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;책에-나온-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;책에 나온 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=%EC%9E%90%EB%B0%94%20%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94&#34;&gt;클래스 로더&lt;/a&gt;가 두개 이상일경우도 문제가 생길수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/singleton&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=java%20volatile&#34;&gt;volatile&lt;/a&gt; 이란??&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

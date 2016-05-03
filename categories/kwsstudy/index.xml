@@ -1,0 +1,3066 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KWSStudy on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/categories/kwsstudy/</link>
+    <description>Recent content in KWSStudy on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/categories/kwsstudy/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>나머지 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 03 Apr 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;디자인-패턴의-정의:a67287062295544a289631d93d16c84e&#34;&gt;디자인 패턴의 정의?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;패턴이란 특정 &lt;strong&gt;컨텍스트&lt;/strong&gt; 내에서 주어진 &lt;strong&gt;문제&lt;/strong&gt;에 대한 &lt;strong&gt;해결책&lt;/strong&gt;이다!.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;컨텍스트(context)란?
+패턴이 적용되는 상황을 뜻합니다. 반복적으로 일어날 수 있는 상황이어야만 합니다.
+예 : 객체들의 컬렉션이 주어져 있습니다.
+   (열쇠를 차에 두고 문을 잠그고 나와 버렸다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;문제(problem)란?
+그 컨텍스트 내에서 이루고자 하는 목적을 뜻합니다. 하지만 컨텍스트 내에서 생길 수 있는 제약조건도 문제에 포함됩니다.
+예 : 컬렉션의 구현을 드러내지 않으면서 그 안에 있는 각 객체들에 대해서 순환작업을 할 수 있어야 합니다.
+   (어떻게 회사에 제 시간에 도착할 것인가?)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;해결책(solution)?
+누구든지 적용해서 일련의 제약조건 내에서 목적을 달성할 수 있는 일반적인 디자인을 뜻합니다.
+예 : 반복 작업을 별도의 클래스로 캡슐화 시킵니다.
+   (유리를 깬다. 차에 들어간다. 시동을 걸고 차를 몰고 출근한다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;()안에 있는 예는 디자인 패턴의 정의에 의하면 올바른 패턴이라고 할 수 있을까?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;없다. 이유는 1. 해결책으로 차유리를 깨는 방법은 반복적으로 적용할 수 있는 해결책이라고 할수 없으며
+         2. 이런 해결책을 다른 사람한테 알려주고 그 사람이 처한 문제에 대한 해결책으로 적용하기 힘든점
+         3. 패턴에 이름이 붙이지 않았기에 다른 개발자들하고 그 패턴에 대해서 토론하는 것이 불가능하다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;디자인 패턴의 정의?
+&amp;ldquo; 어떤 컨텍스트 내에서 일련의 제약조건에 의해 영향을 받을 수 있는 문제에 봉착했다면, 그 제약조건 내에서 목적을 달성하기 위한 해결책을 찾아낼
+수 있는 디자인을 적용하면 된다. 단순히 표현하면 &lt;strong&gt;반복적으로&lt;/strong&gt; 등장하는 디자인 문제에 대한 해결책 &amp;ldquo;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;디자인 패턴을 정형적으로 기술해 놓아야 카탈로그?를 만들수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;패턴 카탈로그란?
+가장 훌륭한 패턴 카탈로그는 Design Patterns: Elements of Reusable Object-Oriented Software -&amp;gt; GoF의 디자인패턴(한글번역         판) 이 카탈로그에는 23개의 기본 패턴이 수록&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;패턴 카탈로그의 기술 형식!&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;패턴 이름
+패턴 설명에서 가장 먼저 등장, 패턴의 이름 없이는 패턴에 대한 정보를 다른 개발자들과 공유하기가 아주 힘들어 진다.&lt;/li&gt;
+&lt;li&gt;용도(Intent)
+패턴의 역할이 간단히 기술된다.&lt;/li&gt;
+&lt;li&gt;동기(Motivation)
+문제를 기술하고 주어진 해결책이 어떤 식으로 그 문제를 해결 할 수 있는지를 보여줄 수 있는 구체적인 시나리오가 주어진다.&lt;/li&gt;
+&lt;li&gt;적용대상(Applicability)
+패턴을 적용할 수 있는 상황이 기술된다.&lt;/li&gt;
+&lt;li&gt;구조(Structure)
+패턴에서 사용되는 클래스 다이어그램이 수록된다.&lt;/li&gt;
+&lt;li&gt;구성요소(Participant)
+디자인패턴에 포함되어 있는 클래스와 객체들에 대한 설명&lt;/li&gt;
+&lt;li&gt;협동(Collaboration)
+각 구성요소들이 패턴 내에서 어떤 식으로 도움을 주는지 설명.&lt;/li&gt;
+&lt;li&gt;결과(Consequence)
+패턴을 사용했을 때의 효과(장점 및 단점)가 수록됨&lt;/li&gt;
+&lt;li&gt;구현(Implementation)
+패턴을 구현할 때 필요한 기술 및 주의사항에 대해 설명&lt;/li&gt;
+&lt;li&gt;샘플코드(Sample Code)
+구현시 도움 될 만한 코드 제공&lt;/li&gt;
+&lt;li&gt;사용예(Known Uses)
+실제 시스템에서 이 패턴을 사용하는 예에 대한 설명&lt;/li&gt;
+&lt;li&gt;관련패턴 (Related Patterns)
+본 패턴과 유사하거나 밀접하게 관련된 다른 패턴에 대해서 기술&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디자인패턴은-만병-통치약이-아니다:a67287062295544a289631d93d16c84e&#34;&gt;디자인패턴은 만병 통치약이 아니다!&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;패턴은 반복적으로 발생하는 문제에 대한 일반적인 해결책이다.&lt;/li&gt;
+&lt;li&gt;다만 패턴이 필요하다고 결론을 내리고 나면 다른 개발자들도 비슷한 문제를 겪었고, 비슷한 기법을 적용해서 그 문제를 해결 했다고 생각 할 수 있다.&lt;/li&gt;
+&lt;li&gt;패턴을 사용한다고 기적 같이 문제가 해결되진 않는다. 그 패턴을 사용했을 때 여러분이 설계한 디자인의 다른 부분에 미칠 수 있는 영향과
+결과에 대해 주의깊게 생각해 보아야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디자인-패턴이-필요한-경우:a67287062295544a289631d93d16c84e&#34;&gt;디자인 패턴이 필요한 경우?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;디자인상의 문제에 적합하다는 확신이 들 경우에 패턴을 도입해야한다.&lt;/li&gt;
+&lt;li&gt;언제 패턴을 적용할지를 올바르게 결정하려면 상당한 경험과 지식이 축척되어야 합니다.&lt;/li&gt;
+&lt;li&gt;만약 더 간단한 해결책이 있다면 패턴을 적용하기 전에 그 해결책을 사용하는 것을 고려해야 한다.&lt;/li&gt;
+&lt;li&gt;패턴을 도입하는 것은 디자인 단계에서만 고려해야 하는 일이 아니라, 리팩토링 할 때도 패턴을 고려해보는 것이 좋다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;리팩터링과-패턴:a67287062295544a289631d93d16c84e&#34;&gt;리팩터링과 패턴&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리팩터링이란 코드 구조를 개선하기 위해서 코드를 변경하는 과정을 뜻한다.&lt;/li&gt;
+&lt;li&gt;예를들면 조건문이 아주 많이 있는 코드가 있으면 스테이트 패턴을 적용하는 것을 고려해볼만 하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;패턴을-대하는-마음가짐:a67287062295544a289631d93d16c84e&#34;&gt;패턴을 대하는 마음가짐&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;초급자
+언제나 패턴을 사용하는 경향이 있습니다. Hello World 프로그램에도 패턴을 써봐야지
+이러한 과정에서 패턴을 쓰는 연습을 하면서 다양한 경험을 쌓을 수 있다.&lt;/li&gt;
+&lt;li&gt;중급자
+경험이 늘어감에 따라 중급자 수준에 오르게 되면 어떤 상황에서 패턴이 필요하고 어떤 상황에서 패턴이 필요하지 않은지를
+파악할 수 있다.&lt;/li&gt;
+&lt;li&gt;달인
+달인의 경지에 오르게 되면 패턴을 자연스럽게 구사할 수 있습니다.
+더 이상 패턴을 사용하는 것에 얽매이지 않고, 문제를 가장 효과적으로 해결할 수 있는 해결책을 찾는데 주안점을 둘뿐!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;사악한-안티-패턴-섬멸하기:a67287062295544a289631d93d16c84e&#34;&gt;사악한 안티 패턴? 섬멸하기~!&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;안티 패턴은 어떤 문제에 대한 나쁜 해결책에 이르는 길을 알려줍니다.&lt;/li&gt;
+&lt;li&gt;안티 패턴에서는 어떤 이유로 나쁜 해결책에 유혹될 수 있는지를 알려줍니다.&lt;/li&gt;
+&lt;li&gt;안티 패턴은 장기적인 관점에서 그 해결책이 나븐 이유를 알려줍니다.&lt;/li&gt;
+&lt;li&gt;안티 패턴에서는 좋은 해결책을 만들어 내기 위해 적용할 수 있는 다른 패턴을 제안해 줍니다.&lt;/li&gt;
+&lt;li&gt;page 645에 안티패턴의 예시가 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;브리지-패턴:a67287062295544a289631d93d16c84e&#34;&gt;브리지 패턴&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;브리지 패턴&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;구현 뿐만 아니라 추상화된 부분까지 변경시켜야 하는 경우에는 브리지 패턴을 사용&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;인터페이스와 실행을 분리하여 독립적으로 변할 수 있게 함&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;왜 브리지 패턴을 사용하는가?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;추상화된 부분과 추상 클래스/인터페이스를 구현한 클래스를 서로 다른 클래스 계층구조에 집어 넣음으로써 그 둘을 모두 변경시킬 수 있습니다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;브리지의 장점&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;구현을 인터페이스에 완전히 결합시키지 않았기 때문에 구현과 추상화된 부분을 분리시킬 수 있습니다. (기능부와 구현부를 분리)&lt;/li&gt;
+&lt;li&gt;추상화된 부분과 실제 구현 부분을 독립적으로 확장할 수 있습니다. (기능을 추가로 넣거나 구현을 바꿀때 독립적으로 할 수 있다.)&lt;/li&gt;
+&lt;li&gt;추상화된 부분을 구현한 구상클래스를 바꿔도 클라이언트 쪽에는 영향을 끼치지 않습니다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;브리지 활용법 및 단점&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;여러 플랫폼에서 사용해야 할 그래픽스 및 윈도우 처리 시스템에서 유용하게 쓰입니다.&lt;/li&gt;
+&lt;li&gt;인터페이스와 실제 구현부를 서로 다른 방식으로 변경해야 하는 경우에 유용하게 쓰입니다&lt;/li&gt;
+&lt;li&gt;디자인이 복잡해진다는 단점이있습니다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;빌더-패턴:a67287062295544a289631d93d16c84e&#34;&gt;빌더 패턴&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Builder Pattern은 생성자 패턴 중 하나이다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>컴파운드 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 03 Apr 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;컴파운드-패턴이란:5b8821fbb3ad363c31fa474ea630b1c5&#34;&gt;컴파운드 패턴이란?&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;반복적으로 생길 수 있는 &lt;strong&gt;일반적인 문제를 해결하기 위한 용도&lt;/strong&gt;로 두 개 이상의 패턴을 결합해서 사용하는 것.
+ 패턴을 같이 쓴다고 무조건 컴파운드 패턴은 아니다. 문제를 해결하기 위한 용도로 사용해야 된다.
+ 대표적인 컴파운드 패턴은 MVC이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;
+//Quckable인터페이스를 구현한 클래스들
+
+public interface Quackable {
+    public void quack();
+}
+
+public class DuckCall implements Quackable{
+    @Override
+    public void quack() {
+        System.out.println(&amp;quot;Kwak&amp;quot;);
+    }
+}
+
+public class MallardDuck implements Quackable {
+    @Override
+    public void quack() {
+        System.out.println(&amp;quot;Quack&amp;quot;);
+    }
+}
+
+public class RedheadDuck implements Quackable {
+    @Override
+    public void quack() {
+        System.out.println(&amp;quot;quack&amp;quot;);
+    }
+}
+
+public class RubberDuck implements Quackable{
+    @Override
+    public void quack() {
+        System.out.println(&amp;quot;Squeak&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;실행&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DuckSimulator {
+
+
+public static void main(String [] args) {
+    DuckSimulator simulator = new DuckSimulator();
+    simulator.simulator();
+}
+
+
+void simulator() {
+    Quackable mallardDuck = new MallardDuck();
+    Quackable redheadDuck = new RedheadDuck();
+    Quackable duckCall = new DuckCall();
+    Quackable rubberDuck = new RubberDuck();
+
+
+    System.out.println(&amp;quot;\nDuck Simulator&amp;quot;);
+
+
+    simulator(mallardDuck);
+    simulator(redheadDuck);
+    simulator(duckCall);
+    simulator(rubberDuck);
+}
+
+
+void simulator(Quackable duck) {
+    duck.quack();
+}
+}
+---------------------------------
+Duck Simulator
+Quack
+quack
+Kwak
+Squeak
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;거위가 추가되었다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Goose {
+public void honk() {
+    System.out.println(&amp;quot;Honk&amp;quot;);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Duck를 집어 넣을 수 있는 곳이라면 어디든지 Goose도 집어 넣을 수 있어야 한다고 가정한다. 하지만 클래스가 다른데 거위를 시뮬레이터에 집어 넣어야 한다. 어떻게 해야 거위를 오리와 어울리게 할 수 있을까??&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;거위용 어댑터를 만들면 된다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class GooseAdapter implements Quackable {
+
+    Goose goose;
+    
+    public GooseAdapter(Goose goose) {
+        this.goose = goose;
+    }
+    
+    @Override
+    public void quack() {
+        goose.honk();
+    }
+}
+
+//DuckSimulator
+Quackable gooseDuck = new GooseAdapter(new Goose());
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;어댑터-패턴-adapter-pattern-의-정의:5b8821fbb3ad363c31fa474ea630b1c5&#34;&gt;어댑터 패턴(Adapter Pattern)의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;한 클래스(어떤)의 인터페이스를 클라이언트에서 사용하고자 하는 다른 인터페이스로 변환한다. 어탭터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있습니다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;어댑터는 클라이언트로부터 요청을 받아서 새로운 업체에서 제공하는 클래스에서 받아들일 수 있는 형태의 요청으로 변환시켜주는 중개인 역할을 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;꽥소리를 낸 횟수를 세주는 기능을 추가해야 한다.&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;어떻게 해야할까??&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;소리의 횟수를 세는 기능을 가진 데코레이터 객체를 만들어서 오리 객체들을 감싸면 된다. 그러면 Duck객체들을 건드리지 않아도 된다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//데코레이터 객체
+public class QuackCounter implements Quackable{
+    Quackable duck;
+    static int numberOfQuacks;
+    
+    public QuackCounter(Quackable duck) {
+        this.duck = duck;
+    }
+    
+    @Override
+    public void quack() {
+        duck.quack();
+        numberOfQuacks++;
+    }
+
+    public static int getQuacks() {
+        return numberOfQuacks;
+    }
+}
+
+//실행
+public class DuckSimulator {
+    
+    public static void main(String [] args) {
+        DuckSimulator simulator = new DuckSimulator();
+        simulator.simulator();
+    }
+    
+    
+    void simulator() {
+        Quackable mallardDuck = new QuackCounter(new MallardDuck());
+        Quackable redheadDuck = new QuackCounter(new RedheadDuck());
+        Quackable duckCall = new QuackCounter(new DuckCall());
+        Quackable rubberDuck = new QuackCounter(new RubberDuck());
+        Quackable gooseDuck = new GooseAdapter(new Goose());
+        
+        System.out.println(&amp;quot;\nDuck Simulator&amp;quot;);
+        
+        simulator(mallardDuck);
+        simulator(redheadDuck);
+        simulator(duckCall);
+        simulator(rubberDuck);
+        simulator(gooseDuck);
+        
+        System.out.println(&amp;quot;The Ducks quacked &amp;quot; + QuackCounter.getQuacks() + &amp;quot; times&amp;quot;);
+    }
+    
+    void simulator(Quackable duck) {
+        duck.quack();
+    }
+}
+
+-----------------------------
+Duck Simulator
+Quack
+quack
+Kwak
+Squeak
+Honk
+The Ducks quacked 4 times
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;decorator-pattern의-정의:5b8821fbb3ad363c31fa474ea630b1c5&#34;&gt;Decorator Pattern의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는
+      객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있다.)&lt;/li&gt;
+&lt;li&gt;데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.&lt;/li&gt;
+&lt;li&gt;한마디로 기존 구현되어있는 클래스에 기능을 추가하기위한 패턴이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;새로운 문제점&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;데코레이터를 쓸 때는 객체들을 제대로 포장하지 않으면 원하는 행동을 추가할 수 없다.&lt;/li&gt;
+&lt;li&gt;그렇다면 오리 객체를 생성하는 작업을 한 군데에 몰아서 하는건 어떨까? 오리를 생성하고 데코레이터로 감싸는 부분을 따로 빼내서 캡슐화를 하자.&lt;/li&gt;
+&lt;li&gt;모든 오리들이 데코레이터로 감싸지도록 할 수 있는 방법이 필요하다. 그렇게 하는 데는 팩토리를 만드는게 제격이다. 이 팩토리에서는 여러 종류의 오리들을 생산해야 할 테니깐 추상 팩토리 패턴을 사용하자&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class AbstractDuckFactory {
+    
+    public abstract Quackable createMallardDuck();
+    public abstract Quackable createRedheadDuck();
+    public abstract Quackable createDuckCall();
+    public abstract Quackable createRubberDuck();
+}
+
+public class CountingDuckFactory extends AbstractDuckFactory{
+
+    @Override
+    public Quackable createMallardDuck() {
+        return new QuackCounter(new MallardDuck());
+    }
+
+    @Override
+    public Quackable createRedheadDuck() {
+        return new QuackCounter(new RedheadDuck());
+    }
+
+    @Override
+    public Quackable createDuckCall() {
+        return new QuackCounter(new DuckCall());
+    }
+
+    @Override
+    public Quackable createRubberDuck() {
+        return new QuackCounter(new RubberDuck());
+    }
+}
+
+public class DuckSimulator {
+    
+    public static void main(String [] args) {
+        DuckSimulator simulator = new DuckSimulator();
+        AbstractDuckFactory duckFactory = new CountingDuckFactory();
+        simulator.simulator(duckFactory);
+    }
+    
+    
+    void simulator(AbstractDuckFactory duckFactory) {
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
+        Quackable gooseDuck = new GooseAdapter(new Goose());
+        
+        System.out.println(&amp;quot;\nDuck Simulator&amp;quot;);
+        
+        simulator(mallardDuck);
+        simulator(redheadDuck);
+        simulator(duckCall);
+        simulator(rubberDuck);
+        simulator(gooseDuck);
+        
+        System.out.println(&amp;quot;The Ducks quacked &amp;quot; + QuackCounter.getQuacks() + &amp;quot; times&amp;quot;);
+    }
+    
+    void simulator(Quackable duck) {
+        duck.quack();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##추상 팩토리 (Abstract Factory)&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;구체적인 클래스를 지정하지 않고 관련성을 갖는 객체들의 집합을 생성하거나 서로 독립적인 객체들의 집합을 생성할 수 있는 인터페이스를 제공한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;위와-같이-문제를-해결하기-위해서-여러-패턴을-사용하는-것이-컴파운드-패턴이다:5b8821fbb3ad363c31fa474ea630b1c5&#34;&gt;위와 같이 문제를 해결하기 위해서 여러 패턴을 사용하는 것이 컴파운드 패턴이다.&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>컴파운드 패턴-MVC</title>
+      <link>http://kwsstudy.github.io/post/MVC/</link>
+      <pubDate>Sun, 03 Apr 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/MVC/</guid>
+      <description>
+
+&lt;h3 id=&#34;mp3에대한-mvc:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;MP3에대한 MVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/DesignPartterns/0678b828cb148776111851ab30fcaa4f100eb075/images/model-view-controller-p567.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;디자인-패턴의-관계에서-바라본-mvc:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;디자인 패턴의 관계에서 바라본 MVC&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/mvc.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;사용자는 뷰하고만 접촉할 수 있다.&lt;/li&gt;
+&lt;li&gt;컨트롤러에서 모델한테 상태를 변경하라는 요청을 한다.&lt;/li&gt;
+&lt;li&gt;컨트롤러에서 뷰를 변경해 달라고 요청할 수도 있다.&lt;/li&gt;
+&lt;li&gt;상태가 변경되면 모델에서 뷰한테 그 사실을 알린다.&lt;/li&gt;
+&lt;li&gt;뷰에서 모델한테 상태를 요청한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;패턴-안경을-끼고-mvc를-살펴보자:bb96ab302b765ef4c09d5a4a084243bd&#34;&gt;패턴 안경을 끼고 MVC를 살펴보자&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/mvc2.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스트래티지 패턴의 적용 원칙&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;스트래티지 패턴(뷰와 컨트롤러) - 뷰 객체를 여러 전략을 써서 제공한다. 전략은 컨트롤러가 제공한다. 뷰에서는 애플리케이션의 겉모습에만 신경을 쓰고, 인터페이스의 행동에 대한 결정은 모두 컨트롤러한테 맡긴다. 스트래티지 패턴을 사용하는 것은 뷰를 모델로부터 분리시키는데 도움이 된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;컴포지트 패턴(뷰) - 디스플레이는 여러 단계로 겹쳐져 있을 수 있는 일련의 윈도우, 패널 버튼, 텍스트 레이블 등으로 구성된다. 각 디스플레이 항목은 복합객체 또는 잎이 될 수 있다. 컨트롤러에서 뷰한테 화면을 갱신해 달라고 요청하면 최상위 뷰 구성요소한테만 화면을 갱신하라고 애기하면 된다. 나머지는 컴포지트 패턴에 의해 자동으로 처리된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버패턴(모델) - 모델에서는 옵저버 패턴을 써서 상태가 변경되었을 때 그 모델하고 연관된 객체들한테 연락을 한다. 옵저버 패턴을 사용하면 모델을 뷰 및 컨트롤러로부터 완전히 독립시킬 수 있다. 한 모델에서 서로 다른 뷰를 사용할 수도 있고, 심지어 여러 개의 뷰를 동시에 사용하는 것도 가능하다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/observer.png?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/strategy.png?raw=true&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://github.com/KWSStudy/DesignPartterns/blob/master/images/composite.png?raw=true&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>프록시 패턴</title>
+      <link>http://kwsstudy.github.io/post/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 27 Mar 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어떤 객체에 대한 접근을 제어하기 위한 용도로 대리인이나 대변인에 해당하는 객체를 제공하는 패턴&lt;/li&gt;
+&lt;li&gt;클라이언트에서 메소드 호출시 호출을 중간에 가로채어 메소드 호출/ 접근제한등을 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프록시-종류:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;프록시 종류&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;원격(Remote Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;가상(Virtual Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;동적(Dynamic Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;보호(Protection Proxy) 프록시&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;원격-remote-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;원격(Remote Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;다른 jvm에 들어있는 객체의 대변인에 해당하는 로컬 객체.&lt;/li&gt;
+&lt;li&gt;프록시의 메소드를 호출하면, 그호출이 네트워크를 통해 전달되어 원격객체의 메소드가 호출, 결과는 프록시를 통해 클라이언트에게 전달됨.
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/remote.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;가상-virtual-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;가상(Virtual Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;생성비용이 많이드는 객체를 대신하는 역할.&lt;/li&gt;
+&lt;li&gt;진짜 객체가 필요하기 전까지 객체의 생성을 미루거나, 생성 전/중 진짜 객체를 대신한다.&lt;/li&gt;
+&lt;li&gt;객체 생성 후 요청을 진짜 객체에게 직접 전달.
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/virtual.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;동적-dynamic-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;동적(Dynamic Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자바에 내장된 reflect 패키지를 이용하여, 즉석에서 한개이상의 인터페이스를 구현하여 메소드 호출을 지정한 클래스에 전달하는 프록시 클래스를 만드는 패턴&lt;/li&gt;
+&lt;li&gt;실제 프록시 클래스는 실행중에 생성됨.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;보호-protection-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;보호(Protection Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;접근 권한을 바탕으로 객체에 대한 접근을 제어하는 프록시
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/protection.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프록시패턴의-종류와-사용되는곳을-찾아보자:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;프록시패턴의 종류와 사용되는곳을 찾아보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/proxy&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=java%20reflection&#34;&gt;reflection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=spring+aop+proxy+pattern&#34;&gt;spring aop proxy pattern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;프록시 패턴의 종류 책 526P.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>스테이트 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%8A%A4%ED%85%8C%EC%9D%B4%ED%8A%B8-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 27 Mar 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%8A%A4%ED%85%8C%EC%9D%B4%ED%8A%B8-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h1 id=&#34;스테이트-state-패턴:2c82a25a48e7f5639b430349a57c69f5&#34;&gt;스테이트(State) 패턴&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;스테이트 패턴&lt;/strong&gt;을 이용하면 객체의 내부 상태가 바뀜에 따라서 객체의 행동을
+바꿀 수 있습니다.&lt;br /&gt;
+마치 객체의 클래스가 바뀌는 것과 같은 결과를 얻을 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWdVoxdHp1SWpsVzQ&#34; alt=&#34;스테이트패턴&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;뽑기-기계의-상태-변화:2c82a25a48e7f5639b430349a57c69f5&#34;&gt;뽑기 기계의 상태 변화&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWRG16OGdTTlhNdVE&#34; alt=&#34;상태변화&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;객체의 상태에 따라서 실행되는 행위가 달라져야 할 때&lt;/em&gt;&lt;br /&gt;
+→ 객체 내부에서 &lt;code&gt;if&lt;/code&gt; 절 또는 &lt;code&gt;switch - case&lt;/code&gt; 절 의 전개&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 동전을 투입하는 행위
+public void insertQuarter() {
+  if (state == HAS_QUARTER) {
+    System.out.println(&amp;quot;동전은 한 개만 넣어주세요.&amp;quot;);
+  } else if (state == NO_QUARTER) {
+    state = HAS_QUARTER;
+    System.out.println(&amp;quot;동전을 넣었습니다.&amp;quot;);
+  } else if (state == SOLD_OUT) {
+    System.out.println(&amp;quot;매진되었습니다. 다음 기회에 이용해주세요.&amp;quot;);
+  } else if (state == SOLD) {
+    System.out.println(&amp;quot;잠깐만 기다려 주세요. 알맹이가 나가고 있습니다.&amp;quot;);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;모든 행위들 마다 위와 같은 코드가 반복되어야 함&lt;/em&gt;&lt;br /&gt;
+→ 상태 자체를 객체로 만들면 어떨까?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWNmtybTZGTkVoNnc&#34; alt=&#34;뽑기기계 스테이트패턴&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 상태를 나타내는 객체들이 구현할 인터페이스
+public interface State {
+  
+  void insertQuarter();
+
+  void ejectQuarter();
+
+  void turnCrank();
+
+  void dispense();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;각 상태들을 구현한다면&lt;/em&gt;&lt;br /&gt;
+→ 해당 상태의 코드만 적용하면 됨&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SoldState implements State {
+  GumballMachine gumballMachine;
+
+  public SoldState(GumballMachine gumballMachine) {
+    this.gumballMachine = gumballMachine;
+  }
+
+  @Override
+  public void insertQuarter() {
+    System.out.println(&amp;quot;잠깐만 기다려 주세요. 알맹이가 나가고 있습니다.&amp;quot;);
+  }
+
+  @Override
+  public void ejectQuarter() {
+    System.out.println(&amp;quot;이미 알맹이를 뽑으셨습니다.&amp;quot;);
+  }
+
+  @Override
+  public void turnCrank() {
+    System.out.println(&amp;quot;손잡이는 한 번만 돌려주세요.&amp;quot;);
+  }
+
+  @Override
+  public void dispense() {
+    gumballMachine.releaseBall();
+    if (gumballMachine.getCount() &amp;gt; 0) {
+      gumballMachine.setState(gumballMachine.getNoQuarterState());
+    } else {
+      System.out.println(&amp;quot;매진입니다.&amp;quot;);
+      gumballMachine.setState(gumballMachine.getSoldOutState());
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;아래 코드로 &lt;code&gt;GumballMachine&lt;/code&gt; 객체 내부의 상태 객체를 변화 시킴&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;gumballMachine.setState(gumballMachine.getNoQuarterState());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;→ &lt;code&gt;GumballMachine&lt;/code&gt;을 사용하는 클라이언트 입장에서는 &lt;em&gt;객체의 클래스가 바뀌는 것 처럼 느낄 수 있음&lt;/em&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;gameballmachine-의-메서드를-state-인터페이스가-왜-대부분-가져가는가:2c82a25a48e7f5639b430349a57c69f5&#34;&gt;&lt;code&gt;GameballMachine&lt;/code&gt;의 메서드를 &lt;code&gt;State&lt;/code&gt;인터페이스가 왜 대부분 가져가는가?&lt;/h5&gt;
+
+&lt;p&gt;스테이트 패턴은 _내부 상태에 따라서 변화되는 행위를 추상화하는 것_이므로,&lt;br /&gt;
+상태에 따라 변화되는 행위들을 모두 담아야 한다.&lt;/p&gt;
+
+&lt;h5 id=&#34;다이어그램은-스트래티지패턴과-동일한-것-같은데:2c82a25a48e7f5639b430349a57c69f5&#34;&gt;다이어그램은 스트래티지패턴과 동일한 것 같은데?&lt;/h5&gt;
+
+&lt;p&gt;스트래티지는 구성을 이용하여 상속을 대체하는 것이라면,&lt;br /&gt;
+스테이트는 수많은 조건문의 대체하는 것이라고 보면 됨&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>이터레이터와 컴포지트 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 20 Mar 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%9D%B4%ED%84%B0%EB%A0%88%EC%9D%B4%ED%84%B0%EC%99%80-%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;이터레이터-패턴의-정의:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;이터레이터 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;이터레이터 패턴은 컬렉션 구현 방법을 노출시키지 않으면서도 그 집합체 안에 들어있는 모든 항목에 접근할 수 있게 해주는 방법을 제공한다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이 패턴을 이용하면 집합체 내에서 어떤 식으로 일이 처리되는지에 대해서 전혀 모르는 상태에서 그 안에 들어있는 모든 항목들에 대해서 반복작업을 수행할 수 있다. 컬렉션 객체 안에 들어있는 모든 항목에 접근하는 방식이 통일되어 있으면 어떤 종류의 집합체에 대해서도 사용할 수 있는 다형적인 코드를 만들 수 있기 때문이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;쉽게 설명하면 컬렉션들을 공통된 인터페이스를 구현하게 함으로써 공통된 방법으로 모든 항목에 접근할 수 있는 방법이다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;이터레이터를-사용하지-않을-경우-문제-예:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;이터레이터를 사용하지 않을 경우 문제 예&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;MenuItem이라는 클래스로 하나의 메뉴를 구현한다.&lt;/li&gt;
+&lt;li&gt;PancakeHouseMenu는 List로 Diner는 배열을 이용해서 구현하였다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.iterate;
+
+public class MenuItem {
+    String name;
+    String description;
+    boolean vegetarian;
+    double price;
+    
+    public MenuItem(String name, String description, boolean vegetarian, double price) {
+        this.name = name;
+        this.description = description;
+        this.vegetarian = vegetarian;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+    
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.iterate;
+
+import java.util.ArrayList;
+
+public class PancakeHouseMenu {
+    ArrayList&amp;lt;MenuItem&amp;gt; menuItems;
+
+    public PancakeHouseMenu() {
+        menuItems = new ArrayList();
+        
+        addItem(&amp;quot;K&amp;amp;B 팬케이크 세트&amp;quot;,
+                &amp;quot;스크램블드 에그와 토스트가 곁들여진 팬케이크&amp;quot;,
+                true,
+                2.99);
+        
+        addItem(&amp;quot;레귤러 팬케이크 세트&amp;quot;,
+                &amp;quot;달걀 후라이와 소시지가 곁들여진 팬케이크&amp;quot;,
+                true,
+                2.99);
+        
+        addItem(&amp;quot;블루베리 팬케이크&amp;quot;,
+                &amp;quot;신선한 블루베리와 블루베리 시럽으로 만든 팬케이크&amp;quot;,
+                true,
+                3.49);
+        
+        addItem(&amp;quot;블루베리 팬케이크&amp;quot;,
+                &amp;quot;와플, 취향에 따라 블루베리나 딸기를 얹을 수 있습니다.&amp;quot;,
+                true,
+                3.59);
+    }
+
+    public void addItem(String name, String description, boolean vegetarian, double price) {
+        MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
+        menuItems.add(menuItem);
+    }
+    
+    public ArrayList&amp;lt;MenuItem&amp;gt; getMenuItems() {
+        return menuItems;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.iterate;
+
+public class DinerMenu {
+    static final int MAX_ITEMS = 6;
+    int numberOfItems = 0;
+    MenuItem[] menuItems;
+    
+    public DinerMenu() {
+        menuItems = new MenuItem[MAX_ITEMS];
+        
+        
+    }
+    
+    public void addItem(String name, String description, boolean vegetarian, double price) {
+        MenuItem menuItem = new MenuItem(name, description, vegetarian, price);
+        if (numberOfItems &amp;gt;= MAX_ITEMS) {
+            System.out.println(&amp;quot;죄송합니다, 메뉴가 꽉 찼습니다. 더 이상 추가할 수 없습니다.&amp;quot;);
+        }
+        else {
+            menuItems[numberOfItems] = menuItem;
+            numberOfItems++;
+        }
+    }
+
+    public MenuItem[] getMenuItems() {
+        return menuItems;
+    }
+    
+    
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;위의 두개의 메뉴를 사용하는 클라이언트가 있을 경우 어떤 문제점이 생길 수 있을까??&lt;/li&gt;
+&lt;li&gt;클라이언트의 사용하게 될 메서드.
+```java
+printMenu()&lt;/li&gt;
+&lt;li&gt;메뉴에 있는 모든 항목 출력
+printBreakfastMenu();&lt;/li&gt;
+&lt;li&gt;아침 항목 출력
+printLunchMenu()&lt;/li&gt;
+&lt;li&gt;점심 항목 출력
+printVegetarianMenu();&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;채식주의자용 항목 출력
+isItemVegetarian(name)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;채식주의자인지 판단
+```&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;만약 PrintMenu를 구현해야 한다면 PancakeHouseMenu와 DinerMenu의 getMenuItem() 메소드를 호출해서 메뉴 항목을 가져와야 하는데
+리턴형식이 하나는 배열이고 하나는 리스트이기 때문에 각각의 순환문으로 돌려서 데이터를 추출해야 한다. 현재 두개의 클래스만 가져와야 하는 상태이기 때문에 두개만 각각 구현하면 되지만 위와 같은 클래스들이 많이 생기게 되고 컬렉션 타입이 다를경우 모두 각각 구현해주어야 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이것을 해결 하기 위해서는 각 메뉴에 대한 똑같은 인터페이스를 구현할 수 있게 해주면 된다. 이것을 적용하게 되면 이터레이터 패턴이 된다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;이터레이터-패턴의-적용:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;이터레이터 패턴의 적용&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Iterator {
+    boolean hasNext();
+    Object next();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class DinerMenuIterator implements Iterator {
+    MenuItem[] items;
+    int position = 0;
+    
+    public DinerMenuIterator(MenuItem[] items) {
+        this.items = items;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (position &amp;gt;= items.length || items[position] == null ) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    @Override
+    public Object next() {
+        MenuItem menuItem = items[position];
+        position++;
+        return menuItem;
+    }
+}
+
+//DinerMenu클래스
+public Iterator createIterator() {
+        return new DinerMenuIterator(menuItems);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Waitress {
+    PancakeHouseMenu pancakeHouseMenu;
+    DinerMenu dinerMenu;
+    
+    public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu) {
+        this.pancakeHouseMenu = pancakeHouseMenu;
+        this.dinerMenu = dinerMenu;
+    }
+    
+    public void printMenu() {
+        Iterator pancakeIterator = pancakeHouseMenu.createIterator();
+        Iterator dinerIterator = dinerMenu.createIterator();
+        System.out.println(&amp;quot;아침메뉴 \n====&amp;quot;);
+        printMenu(pancakeIterator);
+        
+        System.out.println(&amp;quot;\n점심메뉴 \n====&amp;quot;);
+        printMenu(dinerIterator);
+    }
+    
+    private void printMenu(Iterator iterator) {
+        while(iterator.hasNext()) {
+            MenuItem menuItem = (MenuItem) iterator.next();
+            System.out.print(menuItem.getName() + &amp;quot;, &amp;quot;);
+            System.out.print(menuItem.getPrice() + &amp;quot;-- &amp;quot;);
+            System.out.println(menuItem.getDescription());
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MenuTest {
+    public static void main(String [] args) {
+        PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
+        DinerMenu dinerMenu = new DinerMenu();
+        
+        Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+        waitress.printMenu();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;웨이트리스와 메뉴 분리시키기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//Menu생성
+public interface Menu {
+    public Iterator createIterator();
+}
+
+public class Waitress {
+    Menu pancakeHouseMenu;
+    Menu dinerMenu;
+    
+    public Waitress(Menu pancakeHouseMenu, Menu dinerMenu) {
+        this.pancakeHouseMenu = pancakeHouseMenu;
+        this.dinerMenu = dinerMenu;
+    }
+    
+    public void printMenu() {
+        Iterator pancakeIterator = pancakeHouseMenu.createIterator();
+        Iterator dinerIterator = dinerMenu.createIterator();
+        System.out.println(&amp;quot;아침메뉴 \n====&amp;quot;);
+        printMenu(pancakeIterator);
+        
+        System.out.println(&amp;quot;\n점심메뉴 \n====&amp;quot;);
+        printMenu(dinerIterator);
+    }
+    
+    private void printMenu(Iterator iterator) {
+        while(iterator.hasNext()) {
+            MenuItem menuItem = (MenuItem) iterator.next();
+            System.out.print(menuItem.getName() + &amp;quot;, &amp;quot;);
+            System.out.print(menuItem.getPrice() + &amp;quot;-- &amp;quot;);
+            System.out.println(menuItem.getDescription());
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;단일-역할-원칙:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;단일 역할 원칙&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;집합체에서 내부 컬렉션과 관련된 기능과 반복자용 메소드 관련 기능을 전부 구현하도록 했다면 어떨까??&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이 방법은 좋은 방법이 아닌데 클래스의 역할 외에 다른 역할을 처리하도록 하면, 두 가지 이유로 인해 그 클래스가 바뀔 수 있다. 이유는 내부컬렉션과 반복자용 메서드 관련 기능이 바뀌면 클래스가 바뀌어야 한다. 이런 이유로 &amp;ldquo;변경&amp;rdquo;이라는 주제와 관련된 디자인 원칙이 있다&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;ldquo;클래스를 바꾸는 이유는 한 가지 뿐이어야 한다.&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;위코드의-단점:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;위코드의 단점&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Iterator pancakeIterator = pancakeHouseMenu.createIterator();
+Iterator dinerIterator = dinerMenu.createIterator();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;createIterator을 반복호출을 해야한다.&lt;/li&gt;
+&lt;li&gt;그러므로 여러 메뉴를 한꺼번에 관리할 수 있는 방법이 필요하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;처리방법:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;처리방법&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Waitress {
+    
+    ArrayList&amp;lt;Menu&amp;gt; menus;
+    
+    public Waitress(ArrayList&amp;lt;Menu&amp;gt; menus) {
+        this.menus = menus;
+    }
+    
+    
+    public void printMenu() {
+        
+        Iterator&amp;lt;Menu&amp;gt; menuIterator = menus.iterator();
+        while (menuIterator.hasNext()) {
+            Menu menu = menuIterator.next();
+            printMenu(menu.createIterator());
+            
+        }
+    }
+    
+    private void printMenu(Iterator&amp;lt;MenuItem&amp;gt; iterator) {
+        while(iterator.hasNext()) {
+            MenuItem menuItem = (MenuItem) iterator.next();
+            System.out.print(menuItem.getName() + &amp;quot;, &amp;quot;);
+            System.out.print(menuItem.getPrice() + &amp;quot;-- &amp;quot;);
+            System.out.println(menuItem.getDescription());
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;위처리시-문제점:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;위처리시 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;메뉴가 여러개인것은 해결했지만 MenuItem이라는 특정한 형식이 있기 때문에 메뉴에 서브 메뉴를 추가할 수가 없다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이것을 해결 하기 위해서는 새로운 디자인이 필요하다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;메뉴, 서브메뉴, 메뉴 항목 등을 모두 집어 넣을 수 있는 트리 형태의 구조가 필요하다&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;각 메뉴에 있는 모든 항목에 대해서 돌아가면서 어떤 작업을 할 수 있는 방법을 제공해야 하며, 그 방법은 적어도 지금 사용중인 반복자 정도로 편리해야만 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;더 유연한 방법으로 아이템에 대해서 반복작업을 수행할 수 있어야 한다. 예를 들어, 식당 메뉴에 껴있는 디저트 메뉴에 대해서만 반복 작업을 한다거나 디저트 서브메뉴를 포함한, 메뉴 전체에 대해서 반복작업을 하는 것도 가능해야 한다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;컴포지트-패턴의-정의:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;컴포지트 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;컴포지트 패턴을 이용하면 객체들을 트리 구조로 구성하여 부분과 전체를 나타내는 계층구조로 만들 수 있다. 이 패턴을 이용하면 클라이언트에서 개별 객체와 다른 객체들로 구성된 복합 객체(composite)를 똑같은 방법으로 다룰 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;컴포지트-패턴을-적용한-코드:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;컴포지트 패턴을 적용한 코드&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MenuComponent {
+    public void add(MenuComponent menuComponent) {
+        throw new UnsupportedOperationException();
+    }
+    public void remove(MenuComponent menuComponent) {
+        throw new UnsupportedOperationException();
+    }
+    public MenuComponent getChild(int i) {
+        throw new UnsupportedOperationException();
+    }
+    
+    public String getName() {
+        throw new UnsupportedOperationException();
+    }
+    public String getDescription() {
+        throw new UnsupportedOperationException();
+    }
+    public double getPrice(){
+        throw new UnsupportedOperationException();
+    }
+    public boolean isVegetarian() {
+        throw new UnsupportedOperationException();
+    }
+    public void print(){
+        throw new UnsupportedOperationException();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Menu extends MenuComponent {
+    ArrayList&amp;lt;MenuComponent&amp;gt; menuComponents = new ArrayList&amp;lt;&amp;gt;();
+    String name;
+    String description;
+    
+    public Menu(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    @Override
+    public void add(MenuComponent menuComponent) {
+        menuComponents.add(menuComponent);
+    }
+
+    @Override
+    public void remove(MenuComponent menuComponent) {
+        menuComponent.remove(menuComponent);
+    }
+
+    @Override
+    public MenuComponent getChild(int i) {
+        return menuComponents.get(i);
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+    
+    public void print() {
+        System.out.print(&amp;quot;\n&amp;quot; + getName());
+        System.out.println(&amp;quot;, &amp;quot; + getDescription());
+        System.out.println(&amp;quot;------------------------&amp;quot;);
+        
+        Iterator&amp;lt;MenuComponent&amp;gt; iterator = menuComponents.iterator();
+        while (iterator.hasNext()) {
+            MenuComponent menuComponent = iterator.next();
+            menuComponent.print();
+        }
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MenuItem extends MenuComponent {
+    String name;
+    String description;
+    boolean vegetarian;
+    double price;
+    
+    public MenuItem(String name, String description, boolean vegetarian, double price){
+        this.name = name;
+        this.description = description;
+        this.vegetarian = vegetarian;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+    
+    
+    public void print() {
+        System.out.print(&amp;quot;  &amp;quot; + getName());
+        if(isVegetarian()) {
+            System.out.print(&amp;quot;(v)&amp;quot;);
+        }
+        System.out.println(&amp;quot;, &amp;quot; + getPrice());
+        System.out.println(&amp;quot;    -- &amp;quot; + getDescription());
+    }
+    
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Waitress {
+    MenuComponent allMenus;
+    
+    public Waitress(MenuComponent allMenus) {
+        this.allMenus = allMenus;
+    }
+    
+    public void printMenu() {
+        allMenus.print();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MenuTest {
+    public static void main(String [] args) {
+        MenuComponent pancakeHouseMenu = new Menu(&amp;quot;팬케이크 하우스 메뉴&amp;quot;, &amp;quot;아침 메뉴&amp;quot;);
+        MenuComponent dinerMenu = new Menu(&amp;quot;객체마을 식당 메뉴&amp;quot;, &amp;quot;점심 메뉴&amp;quot;);
+        MenuComponent cafeMenu = new Menu(&amp;quot;카페메뉴&amp;quot;, &amp;quot;저녁메뉴&amp;quot;);
+        MenuComponent dessertMenu = new Menu(&amp;quot;디저트 메뉴&amp;quot;, &amp;quot;디저트를 즐겨 보세요!&amp;quot;);
+        
+        MenuComponent allMenus = new Menu(&amp;quot;전체메뉴&amp;quot;, &amp;quot;전체메뉴&amp;quot;);
+        
+        allMenus.add(pancakeHouseMenu);
+        allMenus.add(dinerMenu);
+        allMenus.add(cafeMenu);
+        
+        
+        dinerMenu.add(new MenuItem(&amp;quot;파스타&amp;quot;, &amp;quot;마리나라 소스 스파게티. 효모빵도 드립니다.&amp;quot;,
+                true, 3.89));
+        dinerMenu.add(new MenuItem(&amp;quot;파스타&amp;quot;, &amp;quot;마리나라 소스 스파게티. 효모빵도 드립니다.&amp;quot;,
+                true, 3.89));
+        dinerMenu.add(new MenuItem(&amp;quot;파스타&amp;quot;, &amp;quot;마리나라 소스 스파게티. 효모빵도 드립니다.&amp;quot;,
+                true, 3.89));
+        
+        dinerMenu.add(dessertMenu);
+        
+        dessertMenu.add(new MenuItem(&amp;quot;애플파이&amp;quot;, &amp;quot;바삭바삭한 크러스트에 바닐라 아이스크림이 얹혀 있는 애플파이&amp;quot;, true, 1.59));
+        dessertMenu.add(new MenuItem(&amp;quot;애플파이&amp;quot;, &amp;quot;바삭바삭한 크러스트에 바닐라 아이스크림이 얹혀 있는 애플파이&amp;quot;, true, 1.59));
+        dessertMenu.add(new MenuItem(&amp;quot;애플파이&amp;quot;, &amp;quot;바삭바삭한 크러스트에 바닐라 아이스크림이 얹혀 있는 애플파이&amp;quot;, true, 1.59));
+        dessertMenu.add(new MenuItem(&amp;quot;애플파이&amp;quot;, &amp;quot;바삭바삭한 크러스트에 바닐라 아이스크림이 얹혀 있는 애플파이&amp;quot;, true, 1.59));
+        dessertMenu.add(new MenuItem(&amp;quot;애플파이&amp;quot;, &amp;quot;바삭바삭한 크러스트에 바닐라 아이스크림이 얹혀 있는 애플파이&amp;quot;, true, 1.59));
+        
+        Waitress waitress = new Waitress(allMenus);
+        waitress.printMenu();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;위에서는 한 클래스는 한 역할만 해야 한다고 했는데 잘못된 방법이 아닌가?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;컴포지트 패턴에서는 단일 역할 원칙을 깨면서 대신에 투명성을 확보하기 위한 패턴이라고 할 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Component 인터페이스에 자식들을 관리하기 위한 기능과 잎으로써의 기능을 전부 집어넣음으로써 클라이언트에서 복합 객체와 잎 노드를 똑같은 방식으로 처리할 수 있도록 할 수 있다. 어떤 원소가 복합 객체인지 잎 노드인지가 클라이언트 입장에서는 투명하게 느껴지는 것이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;상황에 따라 원칙을 적절하게 사용해야 한다는 것을 보여주는 대표적인 사례라고 할 수 있다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;이터레이터와-복합-반복자-추가:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;이터레이터와 복합 반복자 추가&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Menu extends MenuComponent {
+        //그대로
+    public Iterator&amp;lt;MenuComponent&amp;gt; createIterator() {
+        return new CompositeIterator(menuComponents.iterator());
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MenuItem extends MenuComponent {
+        //나머지코드 그대로
+        public Iterator&amp;lt;MenuComponent&amp;gt; createIterator(){
+        return new NullIterator();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//핵심 복합 반복자
+public class CompositeIterator implements Iterator&amp;lt;MenuComponent&amp;gt;{
+    Stack&amp;lt;Iterator&amp;lt;MenuComponent&amp;gt;&amp;gt; stack = new Stack&amp;lt;&amp;gt;();
+    
+    public CompositeIterator(Iterator&amp;lt;MenuComponent&amp;gt; iterator){
+        stack.push(iterator);
+    }
+
+    @Override
+    public boolean hasNext() {
+        if(stack.empty()){
+            return false;
+        }
+        else {
+            Iterator&amp;lt;MenuComponent&amp;gt; iterator = stack.peek();
+            if(!iterator.hasNext()) {
+                stack.pop();
+                return hasNext();
+            }
+            else {
+                return true;
+            }
+        }
+    }
+
+    @Override
+    public MenuComponent next() {
+        if(hasNext()) {
+            Iterator&amp;lt;MenuComponent&amp;gt; iterator = stack.peek();
+            MenuComponent component = iterator.next();
+            if (component instanceof Menu) {
+                stack.push(((Menu) component).createIterator());
+            }
+            return component;
+        }
+        return null;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;널 반복자를 만든이유&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;그냥 null을 리턴할 경우 클라이언트는 null을 체크해야 하지만 아무것도 하지 않은 널 반복자를 만들경우는 동일한 로직으로 처리를 할 수 있기 때문이다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;복합객체란&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;마지막 노드가 아닌 자식노드가 여러개 존재할 수 있는 객체이다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;컴포지트-패턴-정리:9f1be646a2bb6ba10baba8565b3f7b0d&#34;&gt;컴포지트 패턴 정리&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;부분-전체 관계를 가지는 컬렉션이 있고, 그 객체들을 모두 똑같은 방식으로 다루고 싶을 때 쓰이는 패턴이다.&lt;/li&gt;
+&lt;li&gt;구성요소들은 개별객체와 복합객체이다.&lt;/li&gt;
+&lt;li&gt;컴포지트 패턴을 적용할 때는 여러가지 장단점을 고려해야 한다. 상황에 따라 투명성과 안정성 사이에서 적절한 평형점을 찾아야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>템플릿 메소드 패턴</title>
+      <link>http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 20 Mar 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;서로 다른 클래스들의 알고리즘이 공통될 때(상세 기능이 아닌 일반적인 관점에서)  공통된 알고리즘을 슈퍼클래스에서 정의하고 일부 다른부분은 추상 메소드로 정의하여 서브클래스에서 구현하는 패턴&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;템플릿-메소드-패턴의-특징:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;템플릿 메소드 패턴의 특징&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;코드의 재사용에 크게 도움된다.&lt;/li&gt;
+&lt;li&gt;클래스간의 의존성을 낮춰준다.&lt;/li&gt;
+&lt;li&gt;프레임워크를 만들때 자주 사용되는 패턴이다.&lt;/li&gt;
+&lt;li&gt;변경이 일어나지 않는 부분은 슈퍼 클래스에서 final로 지정하여 오버라이드하지 못하게 막는다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;템플릿-메소드-디자인-원칙-책에서는-헐리우드-원칙이라-나옴:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;템플릿 메소드 디자인 원칙(책에서는 헐리우드 원칙이라 나옴)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;저수준 구성요소가 고수준의 구성요소를 직접 호출할 수 없다.(고수준의 구성요소에서 호출하기전에 저수준 구성요소는 대기한다.)&lt;/li&gt;
+&lt;li&gt;클래스의 주요 기능은 고수준 구성요소에서 장악하고 구현이 필요한 기능만 저수준 클래스를 호출한다.&lt;/li&gt;
+&lt;li&gt;클래스의 구성요소들의 사용은 고수준 구성요소(템플릿을 가진 슈퍼클래스를 말하는듯)에서 결정한다.&lt;/li&gt;
+&lt;li&gt;저수준 구성요소(템플릿에서 추상메소드로 정의한 메소드를 상세구현한 자식 클래스)는 고수준 구성 요소를 직접 호출할수 없다.&lt;/li&gt;
+&lt;li&gt;이 원칙이 위반되면 클래스간의 의존도가 매우 높아진다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;서로-다른-종류의-db-조회-적용-예제:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;서로 다른 종류의 DB 조회 적용 예제&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;오라클/mysql/mssql&amp;hellip;.등등 하나의 어플리케이션에서 여러대의 DB에 select쿼리를 사용 한다고 가정.&lt;/li&gt;
+&lt;li&gt;템플릿 메소드 패턴을 사용하지 않고 가져올 경우 아래의 코드를 각 클래스마다 사용해야함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class OracleSelect {
+    public void getSelect(){
+        try{
+            System.out.println(&amp;quot;Oracle Driver Loading&amp;quot;);
+        }catch(Exception e){
+            System.out.println(&amp;quot;Oracle Driver Loading Exception&amp;quot;);
+        }
+        
+        try{
+            System.out.println(&amp;quot;Oracle getConnection&amp;quot;);
+            System.out.println(&amp;quot;Oracle createStatement&amp;quot;);
+            System.out.println(&amp;quot;Oracle executeQuery&amp;quot;);
+        }catch(Exception e){
+            System.out.println(&amp;quot;Oracle Exception&amp;quot;);
+        }finally{
+            System.out.println(&amp;quot;Oracle Resource Close&amp;quot;);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;템플릿-메소드의-적용:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;템플릿 메소드의 적용&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;각 DB연결후 쿼리를 가져오는 부분에서 사용되는 기능들을 일반적인 관점으로 공통화 시킨다.
+
+&lt;ol&gt;
+&lt;li&gt;오라클 드라이버를 로딩한다./My-sql 드라이버를 로딩한다.(x) -&amp;gt; DB드라이버를 로딩한다.&lt;/li&gt;
+&lt;li&gt;오라클 커넥션을 가져온다./My-sql 커넥션을 가져온다.(x) -&amp;gt; 커넥션을 가져온다.&lt;/li&gt;
+&lt;li&gt;오라클 statement을 생성한다./My-sql statement을 생성한다.(x) -&amp;gt; statement을 생성한다.&lt;/li&gt;
+&lt;li&gt;오라클에 select 쿼리를 날린다./My-sql에 select 쿼리를 날린다.(x) -&amp;gt; select 쿼리를 날린다.&lt;/li&gt;
+&lt;li&gt;오라클에 사용된 리소스를 close한다./My-sql에 사용된 리소스를 close한다.(x) -&amp;gt; 리소스를 close한다.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;공통화 시킨 기능을 토대로 템플릿으로 사용될 기능에서 변경이 안되는 부분, 변경될 부분을 분리하여 변경이 안되는 부분은 final로 변경되는 부분은 추상메소드로 기능을 정의한다.&lt;/li&gt;
+&lt;li&gt;적용 예&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//템플릿으로 사용될 부분
+public abstract class DBSelectTemplate {
+final void getSelect(String dbName,String query){
+    try{
+        driverLoading(dbName);
+    }catch(Exception e){
+        System.out.println(dbName + &amp;quot; Driver Loading Exception&amp;quot;);
+    }
+    
+    try{
+        getConnection(dbName);
+        createStatement(dbName);
+        executeQuery(query);
+    }catch(Exception e){
+        System.out.println(dbName + &amp;quot; Exception&amp;quot;);
+    }finally{
+        resourceClose(dbName);
+    }
+}
+
+//1.DB드라이버를 로딩한다.
+final void driverLoading(String dbName){
+    System.out.println(dbName + &amp;quot; Driver Loading&amp;quot;);
+}
+
+//2.커넥션을 가져온다.
+final void getConnection(String dbName){
+    System.out.println(dbName + &amp;quot; getConnection&amp;quot;);
+}
+//3.statement을 생성한다.
+final void createStatement(String dbName){
+    System.out.println(dbName + &amp;quot; createStatement&amp;quot;);
+}
+//4.select 쿼리를 날린다.
+abstract void executeQuery(String query);
+
+//5.리소스를 close한다.
+final void resourceClose(String dbName){
+    System.out.println(dbName + &amp;quot; Resource Close&amp;quot;);
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class MysqlSelectUseTemplate extends DBSelectTemplate{
+
+    @Override
+    void executeQuery(String query) {
+        // TODO Auto-generated method stub
+        System.out.println(&amp;quot;Mysql ==&amp;gt; &amp;quot; + query);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;결과:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;결과&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;공통된 부분을 분리하여 적용함으로써 코드의 재사용율이 높아졌다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;템플릿-메소드가-사용된곳을-생각해보자:dd6d153b16071c4efa671b38bed5c0f9&#34;&gt;템플릿 메소드가 사용된곳을 생각해보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/template&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;실전 패턴 적용이 교재에 나온 내용과 완전히 일치할 수 없다. 주어진 상황과 제약 조건에 맞추어 적용할 수 있어야한다. ex)Arrays.sort()&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>어댑터 패턴과 퍼사드 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 13 Mar 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;어댑터:9f571712f0267fca69705d7ef0b317d4&#34;&gt;어댑터?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;국산 플러그와 유럽식 소켓사이에서 국산 전원 플러그를 유럽식 소켓에 꽂을 수 있게 해주는 역할을 해주는 것.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;어댑터-패턴-adapter-pattern-의-정의:9f571712f0267fca69705d7ef0b317d4&#34;&gt;어댑터 패턴(Adapter Pattern)의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;한 클래스(어떤)의 인터페이스를 클라이언트에서 사용하고자 하는 다른 인터페이스로 변환합니다. 어탭터를 이용하면 &lt;strong&gt;인터페이스 호환성 문제&lt;/strong&gt; 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있습니다.&lt;/li&gt;
+&lt;li&gt;어댑터는 클라이언트로부터 요청을 받아서 새로운 업체에서 제공하는 클래스에서 받아들일 수 있는 형태의 요청으로 변환시켜주는 중개인 역할을 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://drive.google.com/open?id=0B5s13shPbjz7WlNvdTd3WnNUcm8&#34; alt=&#34;어댑터패턴 예제&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어댑티? -&amp;gt; 어댑터를 가운데 두고, 클라이언트와 정반대 위치에 있는것을 어댑티라고 부름.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;어탭터의-종류:9f571712f0267fca69705d7ef0b317d4&#34;&gt;어탭터의 종류&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체 어댑터&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://drive.google.com/open?id=0B5s13shPbjz7cG5uRXRvYnJ5LVE&#34; alt=&#34;객체 어댑터&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;구성을 사용.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Adaptee 뿐만 아니라 그 서브 클래스에 대해서도 어댑터 역할을 할 수 있다는 장점이 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;클래스 어댑터&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;특정 어댑티 클래스에만 제공&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;어댑티 전체를 다시 구현하지 않아도 된다는 장점이있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;서브클래스기 때문에 어댑티의 행동을 오버라이드할 수 있는 장점이있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;다중 상속을 이용하여야 하기 때문에 자바에서는 사용할 수가 없다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;퍼사드-패턴:9f571712f0267fca69705d7ef0b317d4&#34;&gt;퍼사드 패턴?&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;집에있는 홈시어터 로 영화를 보기위해서는 팝콘기계를 켠다 -&amp;gt; 팝콘튀기기 시작 -&amp;gt; 전등을 어둡게 조절 -&amp;gt; 스크린을 내린다 -&amp;gt;
+프로제거를 켠다 &amp;hellip;&amp;hellip;..&lt;/li&gt;
+&lt;li&gt;이복잡한 과정을 하나의 인터페이스에 필요한 기능만 묶어 HomeTheaterFacade Interface(통합 인터페이스)의 watchMovice() 메서드로 영화볼      때의 기능만을 묶을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;퍼사드-패턴의-정의:9f571712f0267fca69705d7ef0b317d4&#34;&gt;퍼사드 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어떤 서브시스템의 일련의 인터페이스에 대한 통합된 인터페이스를 제공합니다. 퍼사드에 고수준 인터페이스를 정의하기 때문에 서브시스템을 더 쉽게 사용
+할 수 있습니다.&lt;/li&gt;
+&lt;li&gt;단순화된 인터페이스를 제공하면서도, 클라이언트에서 필요로 한다면 시스템의 모든 기능을 사용 할수 있도록 해준다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;어댑터-파사드-패턴의-차이점:9f571712f0267fca69705d7ef0b317d4&#34;&gt;어댑터/파사드 패턴의 차이점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어댑터패턴은 인터페이스를 변경해서 클라이언트에서 필요로 하는 인터페이스로 적응시키기위한 용도로 사용되며, 퍼사드 패턴은 어떤
+서브시스템에 대한 간단한 인터페이스를 제공하기 위한용도로 쓰인다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디자인-원칙:9f571712f0267fca69705d7ef0b317d4&#34;&gt;디자인 원칙&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;최소 지식 원칙 - 정말 친한 친구하고만 얘기하라.&lt;/li&gt;
+&lt;li&gt;시스템을 디자인할 때, 어떤 객체든 그객체와 상호작용을 하는 클래스의 개수에 주의해야하며, 그런 객체들과 어떤 식으로 상호작용을 하는지에도
+주의를 기울이라는 뜻&lt;/li&gt;
+&lt;li&gt;이 원칙을 잘 따르면 여러 클래스들이 복잡하게 얽혀서 시스템의 한부분을 변경했을 때 다른 부분까지 줄질이 고쳐야 되는 상활을 미리 방지할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;위-원칙을-지키기위한-가이드라인:9f571712f0267fca69705d7ef0b317d4&#34;&gt;위 원칙을 지키기위한 가이드라인&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체 자체&lt;/li&gt;
+&lt;li&gt;메소드에 매개변수로 전달된 객체&lt;/li&gt;
+&lt;li&gt;그 메소드에서 생성하거나 인스턴스를 만든객체&lt;/li&gt;
+&lt;li&gt;그 객체에 속하는 구성요소&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;원칙을-따르지-않는경우:9f571712f0267fca69705d7ef0b317d4&#34;&gt;원칙을 따르지 않는경우&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public float getTemp(){
+    Thermometer thermometer = station.getThermometer();
+    return thermometer.getTemperature();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;station으로부터 thermometer라는 객체를 받은 다음, 그 객체의 getTemperature 메소드를 직접호출하고있다.&lt;/p&gt;
+
+&lt;h2 id=&#34;원칙을-따르는-경우:9f571712f0267fca69705d7ef0b317d4&#34;&gt;원칙을 따르는 경우&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public float getTemp(){
+return station.getTemperature();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;최소 지식 원칙을 적용하여 Station 클래스에 thermometer에 요청을 해주는 메소드를 추가하여 의존해야 하는 클래스의 개수를 줄였다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>커맨드 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 13 Mar 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;커맨드-패턴의-정의:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-목적:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 목적&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;한 차원 높은 단계의 캡슐화. 즉 메소드 호출을 캡슐화하는 것. 메소드 호출을 캡슐화하면 계산 과정의 각 부분들을 결정화시킬 수 있기 때문에, 계산하는 코드를 호출한 객체에서는 어떤 식으로 일을 처리해야 하는지에 대해 전혀 신경쓰지 않아도 된다. 그냥 결정화된 메소드를 호출해서 필요한 일만 잘 할 수 있으면 된다. 그 외에도 캡슐화된 메소드 호출을 로그 기록용으로 저장을 한다거나 취소(undo)기능을 구현하기 위해 재사용하는 것과 같은 작업도 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;요구사항:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;요구사항&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리모컨 API를 만들어야 한다.&lt;/li&gt;
+&lt;li&gt;업체에서 공급 받은 자바 클래스들이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;클래스들을-살펴보자:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;클래스들을 살펴보자&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;TV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;on()&lt;br/&gt;off()&lt;br/&gt;setInputChannel()&lt;br/&gt;setVolume()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Light&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;on()&lt;br/&gt;off()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;FaucetControl&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;openValue()&lt;br/&gt;closeValue()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;클래스-분석:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;클래스 분석&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;공통적인 인터페이스가 있지는 않은거 같음.&lt;/li&gt;
+&lt;li&gt;가장 큰 문제는 앞으로도 이런 클래스들이 더 추가될 수가 있다는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디자인-설계에-앞서:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;디자인 설계에 앞서&amp;hellip;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;모든 클래스에 on()하고 off()메소드만 있을 줄 알았는데 다른 메소들이 잔뜩 있다.&lt;/li&gt;
+&lt;li&gt;다른 제품이 추가 될 경우 다른 이름을 가진 메소드들이 추가될 수 있다.&lt;/li&gt;
+&lt;li&gt;리모컨 버튼을 클릭하면 자동으로 일을 처리하도록 만들어야 된다.&lt;/li&gt;
+&lt;li&gt;리모컨 자체에서는 티비의 볼륨을 높인다던지 하는 기능에 대한 자세한 내용은 모르도록 해야한다.&lt;/li&gt;
+&lt;li&gt;리모컨 제품 제작 업체가 제공한 클래스에 대해 자세하게 알 필요가 없도록 만들어야 된다.&lt;/li&gt;
+&lt;li&gt;커맨드 패턴이라는 걸 쓰면 어떤 작업을 요청하는 쪽하고 그 작업을 처리한 쪽을 분리시킬 수 있다고 한다.&lt;/li&gt;
+&lt;li&gt;리모컨에서 작업을 요청하고 업체에서 공급한 클래스에서 그 작업을 처리한다고 보면 커맨드 패턴을 적용할 수 있을 거 같다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-소개에-앞서:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 소개에 앞서&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;식당의 운영 방식 소개&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;고객이 웨이트리스한테 주문&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리스는 주문을 받아 카운터에 가져다 줌&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장이 주문대로 음식을 준비&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이것을 객체와 메소드를 이용하여 적어보자&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;createOrder() 고객이 주문한 내용생성&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;takeOrder() 그 내용을 웨이트리스한테 전달&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;orderUp() 주문을 처리하기 위해 준비단계&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;makeBurger(), makeShake() 객체가 주방장에서 요리 생성 메소드를 호출하여 지시를 내림&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;객체와 메소드간의 역할을 알아보자&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주문서는 주문한 메뉴를 캡슐화한다. (웨이트리스는 주문서에 주문화 된 내용이 캡슐화 되어있기에 내용을 몰라도 된다. 그저 적당한 곳에 주문서를 전달만 하면 된다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리리스는 주문서를 받아서 거기에 있는 orderUp()메소드를 호출하는 일을 한다. (여러 고객들은 takeOrder() 메소드에서 여러 고객이 여러 주문서를 매개변수로 전달합니다. 하지만 주문이 상당히 많아도 별로 어려운 것은 없다. 모든 주문서는 orderUp()이 있고 이 메소드만 호출하면 식사가 준비가 된다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장은 식사를 준비하는데 필요한 정보를 가지고 있다. (중요한 점은 실제로 식사를 준비하는 방법은 주방장만 알고 있다는 것이다. 웨이트리스는 각 주문서에 있는 메소드를 호출 할 뿐이고, 주방장은 주문서로부터 할 일을 전달 받는다. 즉 웨이트리스하고 직접 얘기를 할 필요가 전혀 없다는 것이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;정리&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;식당은 어떤 것을 요구하는 객체와 그 요구를 받아들이고 처리하는 객체를 분리시키는 객체지향 디자인 패턴의 한 모델이다. 이것을 위의 리모컨 API와 비교해 보면 리모컨 버튼을 눌렸을 때 호출되는 코드와 특정 업체에서 제공한, 실제로 일을 처리하는 코드를 분리시키는 것이 가능하다.
+버튼을 눌렸을 때 그 객체의 &amp;ldquo;orderUp()&amp;ldquo;같은 메소드가 호출되면서, 리모컨에서는 어떤 객체가 무슨일을 하는지 모르지만 불이 켜진다는 식으로 일이 처리가 가능할 것이다.&lt;/p&gt;
+
+&lt;h3 id=&#34;식당과-커맨드패턴의-비교:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;식당과 커맨드패턴의 비교&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;식당과 커맨드 패턴을 비교해보자&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;클라이언트 -&amp;gt; createCommandObject() -&amp;gt; 커맨드(execute()) -&amp;gt; 인보커(setCommand()) -&amp;gt; execute() -&amp;gt; 리시버(action1, action2)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;클라이언트는 커맨드 객체를 생성해야 한다. 커맨드 객체는 리시버에 전달할 일련의 행동으로 구성된다.&lt;/li&gt;
+&lt;li&gt;커맨드 객체에는 행동과 리시버에 대한 정보가 같이 들어있다.&lt;/li&gt;
+&lt;li&gt;커맨드 객체에서 제공하는 메소드는 execute() 하나 뿐이다. 이 메소드는 행동을 캡슐화하고 리시버에 있는 특정 행동을 처리한다.&lt;/li&gt;
+&lt;li&gt;클라이언트에서는 인보커 객체의 setCommand() 메소드를 호출하는데, 이때 커맨드 객체를 넘겨준다. 그 커맨드 객체는 나중에 쓰이기 전까지 인보커 객체에 보관된다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;인보커에서 커맨드 객체의 execute()를 호출하면 리시버에 있는 특정 행동을 하는 메소드가 호출 됩니다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;식당과 커맨드 패턴의 비교&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리스 - 커맨드객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장 - execute()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;orderUp - 클라이언트 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주문서 - 인보커 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;손님 - 리시버 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;takeOrder() - setCommand()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;첫-번째-커맨드-객체:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;첫 번째 커맨드 객체&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Command 인터페이스 만들기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Command {
+    public void execute();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;전등을 켜기 위한 인터페이스 구현&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class LightOnCommand implements Command {
+Light light;
+
+
+public LightOnCommand(Light light) {
+    this.light = light;
+}
+
+
+@Override
+public void execute() {
+    light.on();
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Light{
+    public void on() {
+        System.out.println(&amp;quot;light is on&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 객체 사용하기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SimpleRemoteControl {
+    Command slot;
+    
+    public void setCommand(Command command) {
+        slot = command;
+    }
+    
+    public void buttonWasPressed() {
+        slot.execute();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리모컨을 사용하기 위한 간단한 테스트 클래스&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;차고문을-열기위한-garagedooropencommand클래스를-만들어보자:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;차고문을 열기위한 GarageDoorOpenCommand클래스를 만들어보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GarageDoor 클래스
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;TV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;up()&lt;br/&gt;down()&lt;br/&gt;stop()&lt;br/&gt;lightOn()&lt;br/&gt;lightOff()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class GarageDoor {
+
+    public void up() {
+        System.out.println(&amp;quot;Garage Door is open&amp;quot;);
+    }
+    
+    public void down() {
+        System.out.println(&amp;quot;Garage Door is close&amp;quot;);
+    }
+    
+    public void stop() {
+        System.out.println(&amp;quot;Garage Door is stop&amp;quot;);
+    }
+    
+    public void lightOn() {
+        System.out.println(&amp;quot;Garage Door is light on&amp;quot;);
+    }
+    
+    public void lightOff() {
+        System.out.println(&amp;quot;Garage Door is light off&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class GarageDoorOpenCommand implements Command {
+
+    GarageDoor garageDoor;
+
+    
+    public GarageDoorOpenCommand(GarageDoor garageDoor) {
+        this.garageDoor = garageDoor;
+    }
+
+
+    @Override
+    public void execute() {
+        garageDoor.up();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        GarageDoor garageDoor = new GarageDoor();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+        remote.setCommand(garageOpen);
+        remote.buttonWasPressed();
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-정의-1:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;커맨드 객체는 일련의 행동을 특정 리시버하고 연결시킴으로써 요구사항을 캡슐화한 것이다. 이렇게 하기 위해 행동과 리시버를 한 객체에 집어 넣고, execute()라는 메소드만 외부에 공개하는 방법을 사용한다.
+*외부에서 볼 때는 어떤 객체가 리시버 역할을 하는지, 리시버가 실제 어떤 일을 하는지 알 수 없다.
+*명령을 통해서 객체를 매개변수화하는 예도 볼수 있었다. 예를 들어 전등켜기를 했다가 차고 문 열기 명령을 로딩하기도 했다.
+*그리고 커맨드 패턴을 조금만 확장하면 메타 커맨드 패턴이라는 것도 사용이 가능한데 메타, 커맨드 패턴은 명령들로 이루어진 매크로를 만들어서 여러 개의 명령을 한 번에 실행할 수 있다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;리모컨-코드:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;리모컨 코드&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.command.remote;
+
+import com.kws.command.Command;
+import com.kws.command.NoCommand;
+
+public class RemoteControl {
+    Command[] onCommands;
+    Command[] offCommands;
+    
+    public RemoteControl() {
+        onCommands = new Command[7];
+        offCommands = new Command[7];
+        
+        Command noCommand = new NoCommand();
+        for(int i = 0; i &amp;lt; 7; i++) {
+            onCommands[i] = noCommand;
+            offCommands[i] = noCommand;
+        }
+    }
+    
+    public void setCommand(int slot, Command onCommand, Command offCommand) {
+        onCommands[slot] = onCommand;
+        offCommands[slot] = offCommand;
+    }
+    
+    public void onButtonWasPushed(int slot) {
+        onCommands[slot].execute();
+    }
+    
+    public void offButtonWasPushed(int slot) {
+        offCommands[slot].execute();
+    }
+    
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&amp;quot;\n----- Remote Control ------ \n&amp;quot;);
+        
+        for (int i = 0; i &amp;lt; onCommands.length; i++) {
+            stringBuffer.append(&amp;quot;[slot &amp;quot; + i + &amp;quot;]&amp;quot; + onCommands[i].getClass().getName() + &amp;quot;   &amp;quot; + offCommands.getClass().getName() + &amp;quot;\n&amp;quot;);
+        }
+        
+        return stringBuffer.toString();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.command;
+
+import com.kws.command.command.GarageDoor;
+import com.kws.command.command.GarageDoorCloseCommand;
+import com.kws.command.command.GarageDoorOpenCommand;
+import com.kws.command.command.Light;
+import com.kws.command.command.LightOffCommand;
+import com.kws.command.command.LightOnCommand;
+import com.kws.command.command.Stereo;
+import com.kws.command.command.StereoOffWithCDCommand;
+import com.kws.command.command.StereoOnWithCDCommand;
+import com.kws.command.remote.RemoteControl;
+
+public class RemoteControlTest {
+
+    public static void main(String[] args) {
+    
+        //기본테스트 
+//      SimpleRemoteControl remote = new SimpleRemoteControl();
+//      Light light = new Light();
+//      GarageDoor garageDoor = new GarageDoor();
+//      LightOnCommand lightOn = new LightOnCommand(light);
+//      GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+//      
+//      remote.setCommand(lightOn);
+//      remote.buttonWasPressed();
+//      remote.setCommand(garageOpen);
+//      remote.buttonWasPressed();
+        
+        
+        RemoteControl remoteControl = new RemoteControl();
+        
+        Light livingRoomLight = new Light(&amp;quot;Living Room&amp;quot;);
+        Light kitchenLight = new Light(&amp;quot;kitchen Room&amp;quot;);
+        GarageDoor garageDoor = new GarageDoor(&amp;quot;&amp;quot;);
+        Stereo stereo = new Stereo(&amp;quot;Living Room&amp;quot;);
+        
+        LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+        LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+        LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
+        LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
+        
+        GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garageDoor);
+        GarageDoorCloseCommand garageDoorClose = new GarageDoorCloseCommand(garageDoor);
+        
+        StereoOnWithCDCommand stereoOnWithCD = new StereoOnWithCDCommand(stereo);
+        StereoOffWithCDCommand stereoOffWithCD = new StereoOffWithCDCommand(stereo);
+        
+        
+        
+        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
+        remoteControl.setCommand(2, garageDoorOpen, garageDoorClose);
+        remoteControl.setCommand(3, stereoOnWithCD, stereoOffWithCD);
+        
+        System.out.println(remoteControl);
+        
+        remoteControl.onButtonWasPushed(0);
+        remoteControl.offButtonWasPushed(0);
+        remoteControl.onButtonWasPushed(1);
+        remoteControl.offButtonWasPushed(1);
+        remoteControl.onButtonWasPushed(2);
+        remoteControl.offButtonWasPushed(2);
+        remoteControl.onButtonWasPushed(3);
+        remoteControl.offButtonWasPushed(3);
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;nocommand:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;NoCommand???&lt;/h3&gt;
+
+&lt;p&gt;*NoCommand 객체는 일종의 널 객체이다. 딱히 리턴할 객체는 없지만 클라이언트 쪽에서 null을 처리하지 않아도 되도록 하고 싶을 때 널 객체를 활용하면 좋다. 리모컨에서는 execute()메소드가 호출됐을 때 아무 일도 하지 않지만 빈 자리를 채우기 위한 용도로 NoCommand라는 객체를 집어 넣어 두었다. 널 객체는 여러 디자인 패턴에서 유용하게 쓰인다. 널 객체를 일종의 디자인 패턴으로 분류하기도 한다.&lt;/p&gt;
+
+&lt;p&gt;###커맨드 패턴 활용
+* 요청을 큐에 저장하기
+* 요청을 로그에 기록하기&lt;/p&gt;
+
+&lt;h3 id=&#34;핵심정리:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;핵심정리&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 패턴을 이용하면 요청을 하는 객체와 그 요청을 수행하는 객체를 분리시킬 수 있다.&lt;/li&gt;
+&lt;li&gt;이렇게 분리시키는 과정의 중심에는 커맨드 객체가 있으며, 이 객체가 행동이 들어있는 리시버를 캡슐화 한다.&lt;/li&gt;
+&lt;li&gt;인보커에서는 요청을 할 때는 커맨드 객체의 execute 메소드를 호출하면 된다.&lt;/li&gt;
+&lt;li&gt;인보커는 커맨드를 통해서 매개변수화 될 수 있다. 실행중에 동적으로 설정할 수도 있다.&lt;/li&gt;
+&lt;li&gt;execute()메소드가 마지막으로 호출되기 전의 기존 상태로 되돌리기 위한 작업취소 메소드를 구현하면 커맨드 패턴을 통해서 작업취소 기능을 지원 할 수도 있다.&lt;/li&gt;
+&lt;li&gt;프로그래밍을 하다 보면 요청 자체를 리시버한테 넘기지 않고 자기가 처리하는 커맨드 객체를 사용하는 경우도 종종 있다.&lt;/li&gt;
+&lt;li&gt;커맨드 패턴을 활용하여 로그 및 트랜잭션 시스템을 구현하는 것도 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-단점:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 단점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체 구성 부분이 추가 되면 추상부분부터 수정해서 추가해 줘야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>싱글턴 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 06 Mar 2016 13:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어플리케이션에서 유일하게 존재하는 객체&lt;/li&gt;
+&lt;li&gt;싱글톤을 이용한 클래스는 new를 이용한 객체를 생성하지 못하고 클래스안의 getInstance() 메소드를 이용하여 객체를 가져온다.(명명규칙)&lt;/li&gt;
+&lt;li&gt;java의 calendar = getInstance해도 새로운 객체를 만들어준다 고로 싱글톤이라할 수 없다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static Calendar getInstance()
+{
+    Calendar cal = createCalendar(TimeZone.getDefaultRef(), Locale.getDefault(Locale.Category.FORMAT));
+    cal.sharedZone = true;
+    return cal;
+}
+private static Calendar createCalendar(TimeZone zone, Locale aLocale)
+{
+   Calendar cal = null;
+   String caltype = aLocale.getUnicodeLocaleType(&amp;quot;ca&amp;quot;);
+    if (caltype == null) {
+        // Calendar type is not specified.
+        // If the specified locale is a Thai locale,
+        // returns a BuddhistCalendar instance.
+        if (&amp;quot;th&amp;quot;.equals(aLocale.getLanguage())
+                &amp;amp;&amp;amp; (&amp;quot;TH&amp;quot;.equals(aLocale.getCountry()))) {
+            cal = new BuddhistCalendar(zone, aLocale);
+        } else {
+            cal = new GregorianCalendar(zone, aLocale);
+        }
+    } else if (caltype.equals(&amp;quot;japanese&amp;quot;)) {
+        cal = new JapaneseImperialCalendar(zone, aLocale);
+    } else if (caltype.equals(&amp;quot;buddhist&amp;quot;)) {
+        cal = new BuddhistCalendar(zone, aLocale);
+    } else {
+        // Unsupported calendar type.
+        // Use Gregorian calendar as a fallback.
+        cal = new GregorianCalendar(zone, aLocale);
+    }
+ return cal;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;적용되는-곳:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;적용되는 곳&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스레드 풀&lt;/li&gt;
+&lt;li&gt;캐시&lt;/li&gt;
+&lt;li&gt;사용자 설정&lt;/li&gt;
+&lt;li&gt;등등등&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;싱글톤의-생성-방법:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;싱글톤의 생성 방법&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* private생성자와 정적 변수를 이용하여 싱글톤을 만드는 방법*/
+public class Singleton{
+  private static Singleton uniqueInstance;
+  private Singleton(){}
+  public static Singleton getInstance(){
+    if(uniqueInstance == null) uniqueInstance = new Singleton();
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;발생하는-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;발생하는 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;멀티 스레딩에서 최초에 객체가 하나이상 생성될 위험이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-1:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 1&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;동기화(synchronized)를 이용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private static Singleton uniqueInstance;
+  private Singleton(){}
+  public static synchronized Singleton getInstance(){
+    if(uniqueInstance == null) uniqueInstance = new Singleton();
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;싱글톤을-위한-동기화의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;싱글톤을 위한 동기화의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;동기화는 최초 객체 생성시 한번만 필요한데 그 이후 필요치 않은 동기화로 인해 속도 저하가 발생할 수 있다.&lt;/li&gt;
+&lt;li&gt;속도에 영향이 없다면 그냥 사용해도 무방하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-2:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 2&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체를 지연생성하지 않고 처음부터 만들어버린다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private static Singleton uniqueInstance = new Singleton();
+  private Singleton(){}
+  public static Singleton getInstance(){
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;객체를-처음부터-만들때의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;객체를 처음부터 만들때의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;언제 사용할지 모르는 객체를 미리 만들어 둠으로서 자원을 소모&lt;/li&gt;
+&lt;li&gt;자원 소모가 크지 않다면 이렇게 해도 무방하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결-방안-3:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;해결 방안 3&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DCL(Double-Checking Locking)을 사용한다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Singleton{
+  private volatile static Singleton uniqueInstance;
+  private Singleton(){}
+  public static Singleton getInstance(){
+    if(uniqueInstance == null) {
+      synchronized(Singleton.class){
+        if(uniqueInstance == null) {
+          uniqueInstance = new Singleton();
+        }
+      }
+    }
+    return uniqueInstance;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dcl의-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;DCL의 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자바 1.4 이하의 버전에서는 사용할 수 없다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;책에-나온-문제점:7ecd6292a0a2f360d9d740e390e5b850&#34;&gt;책에 나온 문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=%EC%9E%90%EB%B0%94%20%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94&#34;&gt;클래스 로더&lt;/a&gt;가 두개 이상일경우도 문제가 생길수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/singleton&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=java%20volatile&#34;&gt;volatile&lt;/a&gt; 이란??&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>스트래티지 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%8B%B0%EC%A7%80-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 06 Mar 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%8B%B0%EC%A7%80-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;알고리즘군(기능)을 정의하고 각각을 캡슐화하여 교환해서 사용할 수 있도록 한다.&lt;/li&gt;
+&lt;li&gt;스트래티지 패턴을 사용하면 알고리즘을 사용하는 클라이언트와 독립적으로 알고리즘을 변경할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;스트래티지-패턴의-적용-원칙:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;스트래티지 패턴의 적용 원칙&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다.&lt;/li&gt;
+&lt;li&gt;상속 보다는 구성(멤버 변수?)을 활용한다.&lt;/li&gt;
+&lt;li&gt;구현이 아닌 인터페이스에 맞추어 프로그래밍 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;원칙을-무시한-코드:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;원칙을 무시한 코드&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* 모든 게시판이 만들어질때 상속 받을 슈퍼 클래스 */
+public class Article{
+ public boolean insertArticle(){ 입력을 구현 }
+ public List selectArticle(){ 선택을 구현 }
+ public boolean updateArticle(){ 수정을 구현 }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle1 */
+public class SimpleArticle1 extend Article{
+ public List selectArticle(){선택을 구현}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle2 */
+public class SimpleArticle2 extend Article{
+ public List selectArticle(){선택을 구현}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;게시판에 삭제기능도 필요 하다는 요구조건이 추가되어 최상위 클래스인 Article에 삭제기능을 추가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* 모든 게시판이 만들어질때 상속 받을 슈퍼 클래스 */
+public class Article{
+ public boolean insertArticle(){ 입력을 구현 }
+ public List selectArticle(){ 선택을 구현 }
+ public boolean updateArticle(){ 수정을 구현 }
+ public boolean deleteArticle(){ 삭제를 구현 }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;이후 새로운 SimpleArticle3게시판을 추가했는데 해당 게시판은 글 삭제가 불가능한 게시판&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle3 */
+public class SimpleArticle3 extend Article{
+ public List selectArticle(){선택을 구현}
+ public boolean deleteArticle(){ 아무것도 하지 않도록 구현 }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;새로운 SimpleArticle4게시판을 추가했는데 해당 게시판은 글 쓰기,수정,삭제가 불가능한 게시판&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle4 */
+public class SimpleArticle4 extend Article{
+ public boolean insertArticle(){ 아무것도 하지 않도록 구현 }
+ public List selectArticle(){ 선택을 구현 }
+ public boolean updateArticle(){ 아무것도 하지 않도록 구현 }
+ public boolean deleteArticle(){ 아무것도 하지 않도록 구현 }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;문제점:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;문제점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;선택 이외의 기능들은 자주 변경이 일어남.&lt;/li&gt;
+&lt;li&gt;Article에 구현되어 있는 기능을 상속을 받기 때문에 새로운 Article이 추가 될 때 마다 기능들을 새로 오버라이드 해야함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;해결방법:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;해결방법&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;변경이 자주 일어나는 기능들을 때로 분리하여 캡슐화 한다.&lt;/li&gt;
+&lt;li&gt;변경되는 기능을 Article에 구현이 아닌 구성을 사용한다.&lt;/li&gt;
+&lt;li&gt;기능을 인터페이스화 하여 필요한 구현체를 게시판에서 선택하여 사용할 수 있게 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;원칙을-적용한-코드:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;원칙을 적용한 코드&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article에서 사용할 기능을 정의한 인터페이스 */
+public interface ArticleDML{
+ public boolean insertArticle();
+ public boolean updateArticle();
+ public boolean deleteArticle();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* 삭제기능을 하지 못하는 Article에서 사용할 클래스 */
+public class DoNotUseDeleteDML implements ArticleDML {
+ public boolean insertArticle(){입력을 구현};
+ public boolean updateArticle(){수정을 구현};
+ public boolean deleteArticle(){아무것도 하지않음};
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* 입력,수정,삭제기능을 하지 못하는 Article에서 사용할 클래스 */
+public class DoNotUseAllDML implements ArticleDML {
+ public boolean insertArticle(){아무것도 하지않음};
+ public boolean updateArticle(){아무것도 하지않음};
+ public boolean deleteArticle(){아무것도 하지않음};
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* 모든 게시판이 만들어질때 상속 받을 슈퍼 클래스 */
+public class Article{
+ public ArticleDML articleDML; //Article에서 사용할 기능을 정의한 인터페이스
+ public List selectArticle(){ 선택을 구현 } //모든 Article에서 변하지 않는 공통 기능
+ public boolean insertArticle(){ articleDML.insertArticle() }
+ public boolean updateArticle(){ articleDML.updateArticle() }
+ public boolean deleteArticle(){ articleDML.deleteArticle() }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;삭제를 못하는 SimpleArticle3게시판의 변경&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle3 */
+public class SimpleArticle3 extend Article{
+ public SimpleArticle3(){
+  articleDML = new DoNotUseDeleteDML();
+ }
+ public List selectArticle(){선택을 구현}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;쓰기,수정,삭제가 불가능한 SimpleArticle4게시판의 변경&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/* Article을 상속 받은 SimpleArticle4 */
+public class SimpleArticle4 extend Article{
+ public SimpleArticle3(){
+  articleDML = new DoNotUseAllDML();
+ }
+ public List selectArticle(){ 선택을 구현 }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;결과:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;결과&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;각 Article에 기능을 추가할때 선택 적용 할수 있게 됐다.&lt;/li&gt;
+&lt;li&gt;구현 상속이 아닌 인터페이스 구성을 이용하여 기능의 변경에 좀더 간편 하게 적용할 수 있게 되었다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;이후에-더-변경할-부분을-찾아-보자:ddc50a9188303ce00742c1b5781ef4ac&#34;&gt;이후에 더 변경할 부분을 찾아 보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/stratege&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=java+%EC%BA%A1%EC%8A%90%ED%99%94&#34;&gt;캡슐화&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>팩토리 패턴</title>
+      <link>http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 06 Mar 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h1 id=&#34;팩토리패턴:f60317ff69c8c9dc10970e9a8290b613&#34;&gt;팩토리패턴&lt;/h1&gt;
+
+&lt;p&gt;디자인패턴 중에서 생성 패턴(Creational Pattern)의 대표적인 패턴들이다.&lt;/p&gt;
+
+&lt;h2 id=&#34;팩토리-패턴의-종류:f60317ff69c8c9dc10970e9a8290b613&#34;&gt;팩토리 패턴의 종류&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;팩토리 메서드(Factory Method)&lt;/strong&gt; 패턴&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;추상 팩토리(Abstract Factory)&lt;/strong&gt; 패턴&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;시작하기전에:f60317ff69c8c9dc10970e9a8290b613&#34;&gt;시작하기전에&lt;/h2&gt;
+
+&lt;p&gt;디자인 패턴에 포함되지는 않지만, 팩토리 패턴의 기본이 되는 팩토리 구조에 대해서 알아보자.&lt;/p&gt;
+
+&lt;h3 id=&#34;팩토리를-사용하는-이유:f60317ff69c8c9dc10970e9a8290b613&#34;&gt;팩토리를 사용하는 이유&lt;/h3&gt;
+
+&lt;p&gt;클라이언트에서 사용할 객체를 생성하는 부분을 캡슐화하여 느슨한 결합 상태로 만들어, 변화에는 닫혀있고 확장에는 열려있는 코드를 만들 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;변경 전의 코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Pizza 클래스의 객체의 생성 및 사용을 모두 수행하는 메서드
+Pizza orderPizza(String type) {
+  Pizza pizza;
+
+  if (type.equals(&amp;quot;cheese&amp;quot;)) {
+    pizza = new CheesePizza();
+  } else if (type.equals(&amp;quot;greek&amp;quot;)) {
+    pizza = new GreekPizza();
+  } else if (type.equals(&amp;quot;pepperoni&amp;quot;)) {
+    pizza = new PepperoniPizza();
+  }
+
+  pizza.prepare();
+  pizza.bake();
+  pizza.cut();
+  pizza.box();
+
+  return pizza;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;변경 후의 코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Pizza 클래스의 생성을 전담하는 클래스 = 팩토리
+public class SimplePizzaFactory {
+  public Pizza createPizza(String type) {
+    Pizza = null;
+
+    if (type.equals(&amp;quot;cheese&amp;quot;)) {
+      pizza = new CheesePizza();
+    } else if (type.equals(&amp;quot;greek&amp;quot;)) {
+      pizza = new GreekPizza();
+    } else if (type.equals(&amp;quot;pepperoni&amp;quot;)) {
+      pizza = new PepperoniPizza();
+    }
+
+    return pizza;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;SimplePizzaFactory factory = new SimplePizzaFactory();
+
+// Pizza 객체의 생성은 팩토리에 맞기고 사용에 전념하는 메서드
+Pizza orderPizza(String type) {
+  Pizza pizza;
+
+  pizza = factory.createPizza(type);
+
+  pizza.prepare();
+  pizza.bake();
+  pizza.cut();
+  pizza.box();
+
+  return pizza;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;클래스 다이어그램&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWU215OFdoLXBaWDQ&#34; alt=&#34;팩토리&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##팩토리 메소드 (Factory Method)&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;객체를 생성하는 인터페이스를 정의하지만, 인스턴스를 만들 클래스의 결정은 서브클래스가 한다. Factory Method 패턴에서는 클래스의 인스턴스를 만드는 시점을 서브클래스로 미룬다.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;GoF의 디자인 패턴&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;구조&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWOTEwZy1nd0pHMVE&#34; alt=&#34;팩토리 메소드&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;팩토리 메소드 패턴에서는 서브클래스에서 어떤 클래스를 만들지 결정하게 함으로써 객체 생성을 캡슐화한다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class PizzaStore {
+  // 실제 객체의 생성이 일어날 추상 메서드 (서브 클래스에 객체의 생성의 위임)
+  abstract Pizza createPizza(String item);
+
+  public Pizza OrderPizza(String type) {
+    Pizza pizza = createPizza(type);
+
+    pizza.prepare();
+    pizza.bake();
+    pizza.cut();
+    pizza.box();
+
+    return pizza;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 객체의 생성을 위임 받은 서브 클래스
+public class NYPizzaStore extends PizzaStore {
+  Pizza createPizza(String item) {
+    if (item.equals(&amp;quot;cheese&amp;quot;)) {
+      return new NYStyleCheesePizza();
+    } else if (item.equals(&amp;quot;veggie&amp;quot;)) {
+      return new NYStyleVeggiePizza();
+    } else if (item.equals(&amp;quot;clam&amp;quot;)) {
+      return new NYStyleClamPizza();
+    } else if (item.equals(&amp;quot;pepperoni&amp;quot;)) {
+      return new NYStylePepperoniPizza();
+    } else return null;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;클래스 다이어그램&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWSzNFYXczSUQ0akk&#34; alt=&#34;팩토리메소드 예제 다이어그램&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##추상 팩토리 (Abstract Factory)&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;구체적인 클래스를 지정하지 않고 관련성을 갖는 객체들의 집합을 생성하거나 서로 독립적인 객체들의 집합을 생성할 수 있는 인터페이스를 제공한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;GoF의 디자인 패턴&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;구조&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWY3RXOURJUkl0dlE&#34; alt=&#34;추상 팩토리&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class NYPizzaStore extends PizzaStore {
+ 
+  protected Pizza createPizza(String item) {
+    Pizza pizza = null;
+
+    // 팩토리 객체
+    PizzaIngredientFactory ingredientFactory = 
+      new NYPizzaIngredientFactory();
+ 
+    if (item.equals(&amp;quot;cheese&amp;quot;)) {
+      // 생성된 팩토리 객체를 함께 전달하여 내부에서 재료클래스의 객체를 생성
+      pizza = new CheesePizza(ingredientFactory);
+      pizza.setName(&amp;quot;New York Style Cheese Pizza&amp;quot;);
+    } else if (item.equals(&amp;quot;veggie&amp;quot;)) {
+      pizza = new VeggiePizza(ingredientFactory);
+      pizza.setName(&amp;quot;New York Style Veggie Pizza&amp;quot;);
+    } else if (item.equals(&amp;quot;clam&amp;quot;)) {
+      pizza = new ClamPizza(ingredientFactory);
+      pizza.setName(&amp;quot;New York Style Clam Pizza&amp;quot;);
+    } else if (item.equals(&amp;quot;pepperoni&amp;quot;)) {
+      pizza = new PepperoniPizza(ingredientFactory);
+      pizza.setName(&amp;quot;New York Style Pepperoni Pizza&amp;quot;);
+    } 
+    return pizza;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// 추상 팩토리를 사용하는 클라이언트 역할을 수행
+// Pizza 클래스는 도우, 소스, 치즈등의 재료 객체들의 집합
+public class CheesePizza extends Pizza {
+  // 재료의 인스턴스를 생성해주는 추상 팩토리
+  PizzaIngredientFactory ingredientFactory;
+ 
+  public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+    this.ingredientFactory = ingredientFactory;
+  }
+ 
+  void prepare() {
+    // 객체들의 집합을 생성
+    dough = ingredientFactory.createDough();
+    sauce = ingredientFactory.createSauce();
+    cheese = ingredientFactory.createCheese();
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Abstract Factory
+public interface PizzaIngredientFactory {
+  public Dough createDough();
+  public Sauce createSauce();
+  public Cheese createCheese();
+  public Veggies[] createVeggies();
+  public Pepperoni createPepperoni();
+  public Clams createClam();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// ConcreteFactory1
+public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
+ 
+  public Dough createDough() {
+    return new ThinCrustDough();
+  }
+ 
+  public Sauce createSauce() {
+    return new MarinaraSauce();
+  }
+ 
+  public Cheese createCheese() {
+    return new ReggianoCheese();
+  }
+ 
+  public Veggies[] createVeggies() {
+    Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+    return veggies;
+  }
+ 
+  public Pepperoni createPepperoni() {
+    return new SlicedPepperoni();
+  }
+
+  public Clams createClam() {
+    return new FreshClams();
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// AbstractProductA
+public interface Cheese {
+  public String toString();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// ConcreteProductA1
+public class ReggianoCheese implements Cheese {
+  public String toString() {
+    return &amp;quot;Reggiano Cheese&amp;quot;;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;클래스 다이어그램&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://www.googledrive.com/host/0Byw6XXFkbgXWMEFQMzZELU9MRW8&#34; alt=&#34;팩토리메소드 예제 다이어그램&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>데코레이터 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 28 Feb 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;decorationPatterns&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;OCP(Open-Closed Principle(원칙))&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;디자인 원칙&lt;/li&gt;
+&lt;li&gt;클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다.&lt;/li&gt;
+&lt;li&gt;무조건 OCP를 적용하는 것은 시간 낭비가 될 수도 있고, 괜히 쓸 데 없는 일을 하는 것일 수도 있습니다.&lt;/li&gt;
+&lt;li&gt;결과적으로 불필요하게 복잡하고 이해하기 힘든 코드만 만들게 되는 부작용이 있을 수도 있으니 주의해야합니다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Decorator Pattern의 정의&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는
+객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있습니다.)&lt;/li&gt;
+&lt;li&gt;데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.&lt;/li&gt;
+&lt;li&gt;한마디로 기존 구현되어있는 클래스에 기능을 추가하기위한 패턴이다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;자바 I/O API에서의 데코레이션 패턴&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;java.io 패키지의 많은 부분이 데코레이터 패턴을 바탕으로 만들어져있다.&lt;/li&gt;
+&lt;li&gt;InputStream(추상) &amp;lt; FileInputStream(추상) &amp;lt; BufferedInputStream(구현) &amp;lt; LineNumberInputStream(구현)&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;데코레이션 패턴의 단점&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;위에서도 언급했듯이 데코레이션패턴을 이용해서 디자인하다보면 잡다한 클래스들이 너무 많아지게 된다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>옵저버 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 28 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h2 id=&#34;옵저버-패턴의-정의:c3fd241b372c00a0f0e429e94537ab88&#34;&gt;옵저버 패턴의 정의&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;옵저버 패턴(Observer Pattern)에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다(one-to-many)의존성을 정의 한다&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;신문 구독 메커니즘에서 출판사를 주제(subject), 구독자를 옵저버(observer)라고 생각하시면 이해하기 쉽다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;옵저버 패턴을 적용하여 어플리케이션을 만들어 보겠다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;우리가 만들 애플리케이션은 위치 어플리케이션이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Position 객체를 받아서 x좌표 y좌표를 받아서 디스플레이 장비에서 갱신해 가면서 보여주는 어플리케이션이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Position 인터페이스&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public classPosition {
+public float getPositionX() {
+    return 0.0f;
+}
+
+
+public float getPositionY() {
+    return 0.0f;
+}
+    /*
+    * 포지션 값이 변경될 때마다 알려주기 위한 메서드
+    */
+public void positionChanged(){
+    float positionX = getPositionX();
+    float positionY = getPositionY();
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;지금 알고 있는 것들&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;x좌표 y좌표를 알아낼 수 있는 메서드가 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;새로운 좌표 데이터가 나올 때마다 positionChanged 메소드가 호출된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;새로운 좌표 데이터가 나올 때마다 디스플레이를 갱신해야 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;시스템이 확장 가능해야 한다. 다른 개발자들이 별도의 디스플레이 항목을 만들 수 있도록 해야 하고 사용자들이 애플리케이션에 마음대로 디스플레이 항목을 추가/제거 할 수 있도록 해야 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;위의 어플리케이션에 옵저버 패턴을 적용하기 전 옵저버 패턴을 좀더 자세히 알아보자&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버 패턴은 신문 구독메커니즘과 비슷하다&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;독자가 특정 신문을 구독 신청하면 새로운 신문이 나올 때마다 배달을 받을 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;신문을 더 이상 보고 싶지 않으면 구독 해지 신청을 하면 된다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;신문사가 계속 운영하는 이상 개인, 기관, 회사 등에서 꾸준히 구독 및 해지를 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이것을 옵저버 패턴과 비교를 하면&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;신문사는 주제객체가 된다. 그리고 구독자들은 옵저버 객체가 되는 것이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A라는 객체가 옵저버가 되고 싶어한다. 그러면 주제 객체에 옵저버가 되고 싶다고 요청을 한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이렇게 옵저버 객체들은 주제객체에 옵저버로써 등록을 하게 되며 주제객체의 값이 변경되면 등록된 모든 옵저버들은 주제객체에 값이 바뀌었다는 연락을 받습니다.
+1.등록된 B라는 객체가 옵저버에서 탈퇴하고 싶어한다. 그러면 B라는 객체는 옵저버 집합에서 제외된다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;여기서 옵저버 패턴을 다시 한번 정의해 보자&lt;/li&gt;
+&lt;li&gt;옵저버 패턴에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다 의존성을 정의한다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;여기서 중요한 것은 일대 다 관계를 정의한다는 것과 한 객체의 상태가 변경되면 그 객체에 의존하는 모든 객체에 연락이 가는 것이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버 객체의 느슨한 결합의 위력&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버 패턴에서는 주제와 옵저버가 느슨하게 결합되어 있는 객체 디자인을 제공한다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주제가 옵저버에 대해서 아는 것은 옵저버가 특정 인터페이스를 구현한다는 것 뿐이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버는 언제든지 새로 추가 할 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;새로운 형식의 옵저버를 추가하려고 할 때도 주제를 전혀 변경할 필요가 없다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주제와 옵저버는 서로 독립적으로 재사용 될 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주제나 옵저버가 바뀌더라도 서로한테 영향을 미치지는 않는다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;예제:c3fd241b372c00a0f0e429e94537ab88&#34;&gt;예제&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Subject {
+    public void addObserver(Observer o);
+    public void removeObserver(Observer o);
+    public void notiObserver();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Observer {
+    public void update(float positionX, float positionY);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface displayPosition {
+    public void display();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import java.util.ArrayList;
+
+public class Position implements Subject{
+    private ArrayList&amp;lt;Observer&amp;gt; observers;
+    private float positionX;
+    private float positionY;
+    
+    public Position() {
+        observers = new ArrayList&amp;lt;&amp;gt;();
+    }
+    
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o);
+        if (i &amp;gt;= 0) {
+            observers.remove(i);
+        }
+    }
+
+    @Override
+    public void notiObserver() {
+        for (int i = 0; i &amp;lt; observers.size(); i++) {
+            Observer observer = (Observer) observers.get(i);
+            observer.update(positionX, positionX);
+        }
+        
+    }
+    
+    public float getPositionX() {
+        return 0.0f;
+    }
+    
+    public float getPositionY() {
+        return 0.0f;
+    }
+    public void positionChanged(){
+        notiObserver();
+    }
+    
+    public void setPosition(float positionX, float positionY){
+        this.positionX = positionX;
+        this.positionY = positionY;
+        positionChanged();
+    }
+    
+    //기타메서드
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class CurrentDisplay implements Observer, DisplayPosition{
+    private float positionX;
+    private float positionY;
+    private Subject positionData;
+    
+    public CurrentDisplay(Subject positionData) {
+        this.positionData = positionData;
+        positionData.addObserver(this);
+    }
+    @Override
+    public void display() {
+        System.out.println(&amp;quot;positionX : &amp;quot; + positionX + &amp;quot; positionY :&amp;quot; + positionY);
+    }
+
+    @Override
+    public void update(float positionX, float positionY) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+        display();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자바 내장 옵저버 패턴 사용하기&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;가장 일반적으로 쓸 수 있는 것은 java.util.Observer 와 java.util.Observalbe&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;자바 내장 옵저버 패턴 작동 방식&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;객체가 옵저버가 되는 방식 : 위에서 구현 한 것과 마찬가지로 java.util.Observer 인터페이스를 구현하고 addObserver()를 호출&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Observable에서 연락을 돌리는 방법 : java.util.Observable 클래스를 확장하여 Observable 클래스를 생성 한 후 setChanged() 메소드를 호출해서 객체의 상태가 바뀌었다는 것을 알리고 notifyObservers()를 호출&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;옵저버가 연락을 받는 방법 : update()메소드를 구현&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;예제-1:c3fd241b372c00a0f0e429e94537ab88&#34;&gt;예제&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.javaobserver;
+
+public interface DisplayPosition {
+    public void display();
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.javaobserver;
+import java.util.Observable;
+
+public class Position extends Observable{
+    private float positionX;
+    private float positionY;
+    
+    public float getPositionX() {
+        return positionX;
+    }
+    
+    public float getPositionY() {
+        return positionY;
+    }
+    public void positionChanged(){
+        setChanged();
+        notifyObservers();
+    }
+    
+    public void setPosition(float positionX, float positionY){
+        this.positionX = positionX;
+        this.positionY = positionY;
+        positionChanged();
+    }
+    
+    //기타메서드
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.javaobserver;
+import java.util.Observable;
+import java.util.Observer;
+
+public class CurrentDisplay implements Observer, DisplayPosition{
+    private float positionX;
+    private float positionY;
+    Observable observable;
+    
+    public CurrentDisplay(Observable observable) {
+        this.observable = observable;
+        observable.addObserver(this);
+    }
+    @Override
+    public void display() {
+        System.out.println(&amp;quot;positionX : &amp;quot; + positionX + &amp;quot; positionY :&amp;quot; + positionY);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof Position) {
+            Position position = (Position)o;
+            this.positionX = position.getPositionX();
+            this.positionY = position.getPositionY();
+            display();
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.javaobserver;
+
+public class positionStation {
+
+    public static void main(String[] args) {
+        Position positionData = new Position();
+        CurrentDisplay currentDisplay = new CurrentDisplay(positionData);
+        positionData.setPosition(121.5f, 25.6f);
+        positionData.setPosition(122.5f, 123.6f);
+        positionData.setPosition(56.5f, 77.6f);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;java.util.Observable의 단점&lt;/li&gt;
+&lt;li&gt;Observable은 클래스이기 때문에 서브 클래스를 만들어야 한다. 이미 다른 슈퍼 클래스를 확장하고 있는 클래스에 사용이 불가능하다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Observable 인터페이스라는 것이 없기 때문에 자바에 내장된 Observer API하고 잘 맞는 클래스를 직접 구현하는 것이 불가능하다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;해결법은 확장이 가능하면 Observable를 사용하고 확장할 수 없는 경우라면 직접 구현해서 사용해야 한다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;옵저버-패턴의-예:c3fd241b372c00a0f0e429e94537ab88&#34;&gt;옵저버 패턴의 예&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리스너 : 예를 들어 한 버튼에 여러개의 리스너가 등록이 가능한데 옵저버 패턴의 정의대로 일대 다 관계로 정의 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

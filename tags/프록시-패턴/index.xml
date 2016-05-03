@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>프록시 패턴 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/</link>
+    <description>Recent content in 프록시 패턴 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 27 Mar 2016 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>프록시 패턴</title>
+      <link>http://kwsstudy.github.io/post/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 27 Mar 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%ED%94%84%EB%A1%9D%EC%8B%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;정의:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;어떤 객체에 대한 접근을 제어하기 위한 용도로 대리인이나 대변인에 해당하는 객체를 제공하는 패턴&lt;/li&gt;
+&lt;li&gt;클라이언트에서 메소드 호출시 호출을 중간에 가로채어 메소드 호출/ 접근제한등을 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프록시-종류:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;프록시 종류&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;원격(Remote Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;가상(Virtual Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;동적(Dynamic Proxy) 프록시&lt;/li&gt;
+&lt;li&gt;보호(Protection Proxy) 프록시&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;원격-remote-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;원격(Remote Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;다른 jvm에 들어있는 객체의 대변인에 해당하는 로컬 객체.&lt;/li&gt;
+&lt;li&gt;프록시의 메소드를 호출하면, 그호출이 네트워크를 통해 전달되어 원격객체의 메소드가 호출, 결과는 프록시를 통해 클라이언트에게 전달됨.
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/remote.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;가상-virtual-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;가상(Virtual Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;생성비용이 많이드는 객체를 대신하는 역할.&lt;/li&gt;
+&lt;li&gt;진짜 객체가 필요하기 전까지 객체의 생성을 미루거나, 생성 전/중 진짜 객체를 대신한다.&lt;/li&gt;
+&lt;li&gt;객체 생성 후 요청을 진짜 객체에게 직접 전달.
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/virtual.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;동적-dynamic-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;동적(Dynamic Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;자바에 내장된 reflect 패키지를 이용하여, 즉석에서 한개이상의 인터페이스를 구현하여 메소드 호출을 지정한 클래스에 전달하는 프록시 클래스를 만드는 패턴&lt;/li&gt;
+&lt;li&gt;실제 프록시 클래스는 실행중에 생성됨.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;보호-protection-proxy-프록시:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;보호(Protection Proxy) 프록시&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;접근 권한을 바탕으로 객체에 대한 접근을 제어하는 프록시
+&lt;img src=&#34;http://kwsstudy.github.io/DesignPartterns/protection.png&#34; alt=&#34;image&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프록시패턴의-종류와-사용되는곳을-찾아보자:2e0acdb1838716c12dbc3fa22a5850f7&#34;&gt;프록시패턴의 종류와 사용되는곳을 찾아보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/tree/master/src/com/kws/proxy&#34;&gt;샘플소스확인&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=java%20reflection&#34;&gt;reflection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.co.kr/webhp?sourceid=chrome-instant&amp;amp;ion=1&amp;amp;espv=2&amp;amp;ie=UTF-8#q=spring+aop+proxy+pattern&#34;&gt;spring aop proxy pattern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;프록시 패턴의 종류 책 526P.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

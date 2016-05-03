@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>데코레이터 패턴 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/</link>
+    <description>Recent content in 데코레이터 패턴 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Feb 2016 12:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>데코레이터 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 28 Feb 2016 12:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;decorationPatterns&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;OCP(Open-Closed Principle(원칙))&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;디자인 원칙&lt;/li&gt;
+&lt;li&gt;클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다.&lt;/li&gt;
+&lt;li&gt;무조건 OCP를 적용하는 것은 시간 낭비가 될 수도 있고, 괜히 쓸 데 없는 일을 하는 것일 수도 있습니다.&lt;/li&gt;
+&lt;li&gt;결과적으로 불필요하게 복잡하고 이해하기 힘든 코드만 만들게 되는 부작용이 있을 수도 있으니 주의해야합니다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Decorator Pattern의 정의&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는
+객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있습니다.)&lt;/li&gt;
+&lt;li&gt;데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.&lt;/li&gt;
+&lt;li&gt;한마디로 기존 구현되어있는 클래스에 기능을 추가하기위한 패턴이다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;자바 I/O API에서의 데코레이션 패턴&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;java.io 패키지의 많은 부분이 데코레이터 패턴을 바탕으로 만들어져있다.&lt;/li&gt;
+&lt;li&gt;InputStream(추상) &amp;lt; FileInputStream(추상) &amp;lt; BufferedInputStream(구현) &amp;lt; LineNumberInputStream(구현)&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;데코레이션 패턴의 단점&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;위에서도 언급했듯이 데코레이션패턴을 이용해서 디자인하다보면 잡다한 클래스들이 너무 많아지게 된다.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

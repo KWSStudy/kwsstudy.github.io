@@ -1,0 +1,934 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>팩토리 패턴</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="DesignPartterns - 팩토리 패턴">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="팩토리 패턴"/>
+<meta name="twitter:description" content="DesignPartterns - 팩토리 패턴"/>
+
+
+
+        <meta property="og:title" content="팩토리 패턴" />
+<meta property="og:description" content="DesignPartterns - 팩토리 패턴" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/" />
+
+
+<meta property="og:updated_time" content="2016-03-06T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="팩토리 패턴">
+<meta itemprop="description" content="DesignPartterns - 팩토리 패턴">
+
+
+<meta itemprop="dateModified" content="2016-03-06T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="620">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,DesignPartterns,나머지 패턴,데코레이터 패턴,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/"><p>컴파운드 패턴</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/">팩토리 패턴</a></h1>
+            
+        
+        
+            <p>DesignPartterns - 팩토리 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-03-06'>
+            March 6, 2016</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ed%8c%a9%ed%86%a0%eb%a6%ac%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25ED%258C%25A9%25ED%2586%25A0%25EB%25A6%25AC-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h1 id="팩토리패턴:f60317ff69c8c9dc10970e9a8290b613">팩토리패턴</h1>
+
+<p>디자인패턴 중에서 생성 패턴(Creational Pattern)의 대표적인 패턴들이다.</p>
+
+<h2 id="팩토리-패턴의-종류:f60317ff69c8c9dc10970e9a8290b613">팩토리 패턴의 종류</h2>
+
+<ul>
+<li><strong>팩토리 메서드(Factory Method)</strong> 패턴</li>
+<li><strong>추상 팩토리(Abstract Factory)</strong> 패턴</li>
+</ul>
+
+<h2 id="시작하기전에:f60317ff69c8c9dc10970e9a8290b613">시작하기전에</h2>
+
+<p>디자인 패턴에 포함되지는 않지만, 팩토리 패턴의 기본이 되는 팩토리 구조에 대해서 알아보자.</p>
+
+<h3 id="팩토리를-사용하는-이유:f60317ff69c8c9dc10970e9a8290b613">팩토리를 사용하는 이유</h3>
+
+<p>클라이언트에서 사용할 객체를 생성하는 부분을 캡슐화하여 느슨한 결합 상태로 만들어, 변화에는 닫혀있고 확장에는 열려있는 코드를 만들 수 있다.</p>
+
+<p><strong>변경 전의 코드</strong></p>
+
+<pre><code class="language-java">// Pizza 클래스의 객체의 생성 및 사용을 모두 수행하는 메서드
+Pizza orderPizza(String type) {
+  Pizza pizza;
+
+  if (type.equals(&quot;cheese&quot;)) {
+    pizza = new CheesePizza();
+  } else if (type.equals(&quot;greek&quot;)) {
+    pizza = new GreekPizza();
+  } else if (type.equals(&quot;pepperoni&quot;)) {
+    pizza = new PepperoniPizza();
+  }
+
+  pizza.prepare();
+  pizza.bake();
+  pizza.cut();
+  pizza.box();
+
+  return pizza;
+}
+</code></pre>
+
+<p><strong>변경 후의 코드</strong></p>
+
+<pre><code class="language-java">// Pizza 클래스의 생성을 전담하는 클래스 = 팩토리
+public class SimplePizzaFactory {
+  public Pizza createPizza(String type) {
+    Pizza = null;
+
+    if (type.equals(&quot;cheese&quot;)) {
+      pizza = new CheesePizza();
+    } else if (type.equals(&quot;greek&quot;)) {
+      pizza = new GreekPizza();
+    } else if (type.equals(&quot;pepperoni&quot;)) {
+      pizza = new PepperoniPizza();
+    }
+
+    return pizza;
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">SimplePizzaFactory factory = new SimplePizzaFactory();
+
+// Pizza 객체의 생성은 팩토리에 맞기고 사용에 전념하는 메서드
+Pizza orderPizza(String type) {
+  Pizza pizza;
+
+  pizza = factory.createPizza(type);
+
+  pizza.prepare();
+  pizza.bake();
+  pizza.cut();
+  pizza.box();
+
+  return pizza;
+}
+</code></pre>
+
+<p><strong>클래스 다이어그램</strong></p>
+
+<p><img src="https://www.googledrive.com/host/0Byw6XXFkbgXWU215OFdoLXBaWDQ" alt="팩토리" /></p>
+
+<p>##팩토리 메소드 (Factory Method)</p>
+
+<blockquote>
+<p>객체를 생성하는 인터페이스를 정의하지만, 인스턴스를 만들 클래스의 결정은 서브클래스가 한다. Factory Method 패턴에서는 클래스의 인스턴스를 만드는 시점을 서브클래스로 미룬다.</p>
+
+<p><em>GoF의 디자인 패턴</em></p>
+</blockquote>
+
+<p><strong>구조</strong></p>
+
+<p><img src="https://www.googledrive.com/host/0Byw6XXFkbgXWOTEwZy1nd0pHMVE" alt="팩토리 메소드" /></p>
+
+<p>팩토리 메소드 패턴에서는 서브클래스에서 어떤 클래스를 만들지 결정하게 함으로써 객체 생성을 캡슐화한다.</p>
+
+<pre><code class="language-java">public abstract class PizzaStore {
+  // 실제 객체의 생성이 일어날 추상 메서드 (서브 클래스에 객체의 생성의 위임)
+  abstract Pizza createPizza(String item);
+
+  public Pizza OrderPizza(String type) {
+    Pizza pizza = createPizza(type);
+
+    pizza.prepare();
+    pizza.bake();
+    pizza.cut();
+    pizza.box();
+
+    return pizza;
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">// 객체의 생성을 위임 받은 서브 클래스
+public class NYPizzaStore extends PizzaStore {
+  Pizza createPizza(String item) {
+    if (item.equals(&quot;cheese&quot;)) {
+      return new NYStyleCheesePizza();
+    } else if (item.equals(&quot;veggie&quot;)) {
+      return new NYStyleVeggiePizza();
+    } else if (item.equals(&quot;clam&quot;)) {
+      return new NYStyleClamPizza();
+    } else if (item.equals(&quot;pepperoni&quot;)) {
+      return new NYStylePepperoniPizza();
+    } else return null;
+  }
+}
+</code></pre>
+
+<p><strong>클래스 다이어그램</strong></p>
+
+<p><img src="https://www.googledrive.com/host/0Byw6XXFkbgXWSzNFYXczSUQ0akk" alt="팩토리메소드 예제 다이어그램" /></p>
+
+<p>##추상 팩토리 (Abstract Factory)</p>
+
+<blockquote>
+<p>구체적인 클래스를 지정하지 않고 관련성을 갖는 객체들의 집합을 생성하거나 서로 독립적인 객체들의 집합을 생성할 수 있는 인터페이스를 제공한다.</p>
+
+<p><em>GoF의 디자인 패턴</em></p>
+</blockquote>
+
+<p><strong>구조</strong></p>
+
+<p><img src="https://www.googledrive.com/host/0Byw6XXFkbgXWY3RXOURJUkl0dlE" alt="추상 팩토리" /></p>
+
+<pre><code class="language-java">public class NYPizzaStore extends PizzaStore {
+ 
+  protected Pizza createPizza(String item) {
+    Pizza pizza = null;
+
+    // 팩토리 객체
+    PizzaIngredientFactory ingredientFactory = 
+      new NYPizzaIngredientFactory();
+ 
+    if (item.equals(&quot;cheese&quot;)) {
+      // 생성된 팩토리 객체를 함께 전달하여 내부에서 재료클래스의 객체를 생성
+      pizza = new CheesePizza(ingredientFactory);
+      pizza.setName(&quot;New York Style Cheese Pizza&quot;);
+    } else if (item.equals(&quot;veggie&quot;)) {
+      pizza = new VeggiePizza(ingredientFactory);
+      pizza.setName(&quot;New York Style Veggie Pizza&quot;);
+    } else if (item.equals(&quot;clam&quot;)) {
+      pizza = new ClamPizza(ingredientFactory);
+      pizza.setName(&quot;New York Style Clam Pizza&quot;);
+    } else if (item.equals(&quot;pepperoni&quot;)) {
+      pizza = new PepperoniPizza(ingredientFactory);
+      pizza.setName(&quot;New York Style Pepperoni Pizza&quot;);
+    } 
+    return pizza;
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">// 추상 팩토리를 사용하는 클라이언트 역할을 수행
+// Pizza 클래스는 도우, 소스, 치즈등의 재료 객체들의 집합
+public class CheesePizza extends Pizza {
+  // 재료의 인스턴스를 생성해주는 추상 팩토리
+  PizzaIngredientFactory ingredientFactory;
+ 
+  public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+    this.ingredientFactory = ingredientFactory;
+  }
+ 
+  void prepare() {
+    // 객체들의 집합을 생성
+    dough = ingredientFactory.createDough();
+    sauce = ingredientFactory.createSauce();
+    cheese = ingredientFactory.createCheese();
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">// Abstract Factory
+public interface PizzaIngredientFactory {
+  public Dough createDough();
+  public Sauce createSauce();
+  public Cheese createCheese();
+  public Veggies[] createVeggies();
+  public Pepperoni createPepperoni();
+  public Clams createClam();
+}
+</code></pre>
+
+<pre><code class="language-java">// ConcreteFactory1
+public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
+ 
+  public Dough createDough() {
+    return new ThinCrustDough();
+  }
+ 
+  public Sauce createSauce() {
+    return new MarinaraSauce();
+  }
+ 
+  public Cheese createCheese() {
+    return new ReggianoCheese();
+  }
+ 
+  public Veggies[] createVeggies() {
+    Veggies veggies[] = { new Garlic(), new Onion(), new Mushroom(), new RedPepper() };
+    return veggies;
+  }
+ 
+  public Pepperoni createPepperoni() {
+    return new SlicedPepperoni();
+  }
+
+  public Clams createClam() {
+    return new FreshClams();
+  }
+}
+</code></pre>
+
+<pre><code class="language-java">// AbstractProductA
+public interface Cheese {
+  public String toString();
+}
+</code></pre>
+
+<pre><code class="language-java">// ConcreteProductA1
+public class ReggianoCheese implements Cheese {
+  public String toString() {
+    return &quot;Reggiano Cheese&quot;;
+  }
+}
+</code></pre>
+
+<p><strong>클래스 다이어그램</strong></p>
+
+<p><img src="https://www.googledrive.com/host/0Byw6XXFkbgXWMEFQMzZELU9MRW8" alt="팩토리메소드 예제 다이어그램" /></p>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/"
+                class="button big previous">데코레이터 패턴</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%8B%B0%EC%A7%80-%ED%8C%A8%ED%84%B4/"
+                class="button big next">스트래티지 패턴</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4\/';
+    var disqus_title = '팩토리 패턴';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 스터디 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

@@ -1,0 +1,1109 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>커맨드 패턴</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="DesignPartterns - 커맨드 패턴">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="커맨드 패턴"/>
+<meta name="twitter:description" content="DesignPartterns - 커맨드 패턴"/>
+
+
+
+        <meta property="og:title" content="커맨드 패턴" />
+<meta property="og:description" content="DesignPartterns - 커맨드 패턴" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/" />
+
+
+<meta property="og:updated_time" content="2016-03-13T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="커맨드 패턴">
+<meta itemprop="description" content="DesignPartterns - 커맨드 패턴">
+
+
+<meta itemprop="dateModified" content="2016-03-13T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="1379">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,DesignPartterns,나머지 패턴,데코레이터 패턴,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/"><p>컴파운드 패턴</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/">커맨드 패턴</a></h1>
+            
+        
+        
+            <p>DesignPartterns - 커맨드 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-03-13'>
+            March 13, 2016</time>
+        <span class="author"></span>
+        
+            <p>7 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&text=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f&title=%ec%bb%a4%eb%a7%a8%eb%93%9c%20%ed%8c%a8%ed%84%b4" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BB%25A4%25EB%25A7%25A8%25EB%2593%259C-%25ED%258C%25A8%25ED%2584%25B4%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h3 id="커맨드-패턴의-정의:eb1bcca3611df5937b86df1b9dafdc57">커맨드 패턴의 정의</h3>
+
+<ul>
+<li>커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.</li>
+</ul>
+
+<h3 id="커맨드-패턴의-목적:eb1bcca3611df5937b86df1b9dafdc57">커맨드 패턴의 목적</h3>
+
+<ul>
+<li>한 차원 높은 단계의 캡슐화. 즉 메소드 호출을 캡슐화하는 것. 메소드 호출을 캡슐화하면 계산 과정의 각 부분들을 결정화시킬 수 있기 때문에, 계산하는 코드를 호출한 객체에서는 어떤 식으로 일을 처리해야 하는지에 대해 전혀 신경쓰지 않아도 된다. 그냥 결정화된 메소드를 호출해서 필요한 일만 잘 할 수 있으면 된다. 그 외에도 캡슐화된 메소드 호출을 로그 기록용으로 저장을 한다거나 취소(undo)기능을 구현하기 위해 재사용하는 것과 같은 작업도 할 수 있다.</li>
+</ul>
+
+<h3 id="요구사항:eb1bcca3611df5937b86df1b9dafdc57">요구사항</h3>
+
+<ul>
+<li>리모컨 API를 만들어야 한다.</li>
+<li>업체에서 공급 받은 자바 클래스들이 있다.</li>
+</ul>
+
+<h3 id="클래스들을-살펴보자:eb1bcca3611df5937b86df1b9dafdc57">클래스들을 살펴보자</h3>
+
+<table>
+<tr><td>TV</td></tr>
+<tr><td>on()<br/>off()<br/>setInputChannel()<br/>setVolume()</td></tr>
+</table>
+
+<table>
+<tr><td>Light</td></tr>
+<tr><td>on()<br/>off()</td></tr>
+</table>
+
+<table>
+<tr><td>FaucetControl</td></tr>
+<tr><td>openValue()<br/>closeValue()</td></tr>
+</table>
+
+<h3 id="클래스-분석:eb1bcca3611df5937b86df1b9dafdc57">클래스 분석</h3>
+
+<ul>
+<li>공통적인 인터페이스가 있지는 않은거 같음.</li>
+<li>가장 큰 문제는 앞으로도 이런 클래스들이 더 추가될 수가 있다는 것</li>
+</ul>
+
+<h3 id="디자인-설계에-앞서:eb1bcca3611df5937b86df1b9dafdc57">디자인 설계에 앞서&hellip;</h3>
+
+<ul>
+<li>모든 클래스에 on()하고 off()메소드만 있을 줄 알았는데 다른 메소들이 잔뜩 있다.</li>
+<li>다른 제품이 추가 될 경우 다른 이름을 가진 메소드들이 추가될 수 있다.</li>
+<li>리모컨 버튼을 클릭하면 자동으로 일을 처리하도록 만들어야 된다.</li>
+<li>리모컨 자체에서는 티비의 볼륨을 높인다던지 하는 기능에 대한 자세한 내용은 모르도록 해야한다.</li>
+<li>리모컨 제품 제작 업체가 제공한 클래스에 대해 자세하게 알 필요가 없도록 만들어야 된다.</li>
+<li>커맨드 패턴이라는 걸 쓰면 어떤 작업을 요청하는 쪽하고 그 작업을 처리한 쪽을 분리시킬 수 있다고 한다.</li>
+<li>리모컨에서 작업을 요청하고 업체에서 공급한 클래스에서 그 작업을 처리한다고 보면 커맨드 패턴을 적용할 수 있을 거 같다.</li>
+</ul>
+
+<h3 id="커맨드-패턴의-소개에-앞서:eb1bcca3611df5937b86df1b9dafdc57">커맨드 패턴의 소개에 앞서</h3>
+
+<ul>
+<li><p>식당의 운영 방식 소개</p></li>
+
+<li><p>고객이 웨이트리스한테 주문</p></li>
+
+<li><p>웨이트리스는 주문을 받아 카운터에 가져다 줌</p></li>
+
+<li><p>주방장이 주문대로 음식을 준비</p></li>
+
+<li><p>이것을 객체와 메소드를 이용하여 적어보자</p></li>
+
+<li><p>createOrder() 고객이 주문한 내용생성</p></li>
+
+<li><p>takeOrder() 그 내용을 웨이트리스한테 전달</p></li>
+
+<li><p>orderUp() 주문을 처리하기 위해 준비단계</p></li>
+
+<li><p>makeBurger(), makeShake() 객체가 주방장에서 요리 생성 메소드를 호출하여 지시를 내림</p></li>
+
+<li><p>객체와 메소드간의 역할을 알아보자</p></li>
+
+<li><p>주문서는 주문한 메뉴를 캡슐화한다. (웨이트리스는 주문서에 주문화 된 내용이 캡슐화 되어있기에 내용을 몰라도 된다. 그저 적당한 곳에 주문서를 전달만 하면 된다.)</p></li>
+
+<li><p>웨이트리리스는 주문서를 받아서 거기에 있는 orderUp()메소드를 호출하는 일을 한다. (여러 고객들은 takeOrder() 메소드에서 여러 고객이 여러 주문서를 매개변수로 전달합니다. 하지만 주문이 상당히 많아도 별로 어려운 것은 없다. 모든 주문서는 orderUp()이 있고 이 메소드만 호출하면 식사가 준비가 된다.)</p></li>
+
+<li><p>주방장은 식사를 준비하는데 필요한 정보를 가지고 있다. (중요한 점은 실제로 식사를 준비하는 방법은 주방장만 알고 있다는 것이다. 웨이트리스는 각 주문서에 있는 메소드를 호출 할 뿐이고, 주방장은 주문서로부터 할 일을 전달 받는다. 즉 웨이트리스하고 직접 얘기를 할 필요가 전혀 없다는 것이다.</p></li>
+
+<li><p>정리</p></li>
+</ul>
+
+<p>식당은 어떤 것을 요구하는 객체와 그 요구를 받아들이고 처리하는 객체를 분리시키는 객체지향 디자인 패턴의 한 모델이다. 이것을 위의 리모컨 API와 비교해 보면 리모컨 버튼을 눌렸을 때 호출되는 코드와 특정 업체에서 제공한, 실제로 일을 처리하는 코드를 분리시키는 것이 가능하다.
+버튼을 눌렸을 때 그 객체의 &ldquo;orderUp()&ldquo;같은 메소드가 호출되면서, 리모컨에서는 어떤 객체가 무슨일을 하는지 모르지만 불이 켜진다는 식으로 일이 처리가 가능할 것이다.</p>
+
+<h3 id="식당과-커맨드패턴의-비교:eb1bcca3611df5937b86df1b9dafdc57">식당과 커맨드패턴의 비교</h3>
+
+<ul>
+<li>식당과 커맨드 패턴을 비교해보자</li>
+</ul>
+
+<p>클라이언트 -&gt; createCommandObject() -&gt; 커맨드(execute()) -&gt; 인보커(setCommand()) -&gt; execute() -&gt; 리시버(action1, action2)</p>
+
+<ul>
+<li>클라이언트는 커맨드 객체를 생성해야 한다. 커맨드 객체는 리시버에 전달할 일련의 행동으로 구성된다.</li>
+<li>커맨드 객체에는 행동과 리시버에 대한 정보가 같이 들어있다.</li>
+<li>커맨드 객체에서 제공하는 메소드는 execute() 하나 뿐이다. 이 메소드는 행동을 캡슐화하고 리시버에 있는 특정 행동을 처리한다.</li>
+<li>클라이언트에서는 인보커 객체의 setCommand() 메소드를 호출하는데, 이때 커맨드 객체를 넘겨준다. 그 커맨드 객체는 나중에 쓰이기 전까지 인보커 객체에 보관된다.</li>
+
+<li><p>인보커에서 커맨드 객체의 execute()를 호출하면 리시버에 있는 특정 행동을 하는 메소드가 호출 됩니다.</p></li>
+
+<li><p>식당과 커맨드 패턴의 비교</p></li>
+
+<li><p>웨이트리스 - 커맨드객체</p></li>
+
+<li><p>주방장 - execute()</p></li>
+
+<li><p>orderUp - 클라이언트 객체</p></li>
+
+<li><p>주문서 - 인보커 객체</p></li>
+
+<li><p>손님 - 리시버 객체</p></li>
+
+<li><p>takeOrder() - setCommand()</p></li>
+</ul>
+
+<hr />
+
+<h3 id="첫-번째-커맨드-객체:eb1bcca3611df5937b86df1b9dafdc57">첫 번째 커맨드 객체</h3>
+
+<ul>
+<li>Command 인터페이스 만들기</li>
+</ul>
+
+<pre><code class="language-java">public interface Command {
+    public void execute();
+}
+</code></pre>
+
+<ul>
+<li><p>전등을 켜기 위한 인터페이스 구현</p>
+
+<pre><code class="language-java">public class LightOnCommand implements Command {
+Light light;
+
+
+public LightOnCommand(Light light) {
+    this.light = light;
+}
+
+
+@Override
+public void execute() {
+    light.on();
+}
+}
+</code></pre></li>
+</ul>
+
+<pre><code class="language-java">public class Light{
+    public void on() {
+        System.out.println(&quot;light is on&quot;);
+    }
+}
+</code></pre>
+
+<ul>
+<li>커맨드 객체 사용하기</li>
+</ul>
+
+<pre><code class="language-java">public class SimpleRemoteControl {
+    Command slot;
+    
+    public void setCommand(Command command) {
+        slot = command;
+    }
+    
+    public void buttonWasPressed() {
+        slot.execute();
+    }
+}
+</code></pre>
+
+<ul>
+<li>리모컨을 사용하기 위한 간단한 테스트 클래스</li>
+</ul>
+
+<pre><code class="language-java">public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+
+    }
+
+}
+</code></pre>
+
+<hr />
+
+<h3 id="차고문을-열기위한-garagedooropencommand클래스를-만들어보자:eb1bcca3611df5937b86df1b9dafdc57">차고문을 열기위한 GarageDoorOpenCommand클래스를 만들어보자</h3>
+
+<ul>
+<li>GarageDoor 클래스
+<table>
+<tr><td>TV</td></tr>
+<tr><td>up()<br/>down()<br/>stop()<br/>lightOn()<br/>lightOff()</td></tr>
+</table></li>
+</ul>
+
+<pre><code class="language-java">public class GarageDoor {
+
+    public void up() {
+        System.out.println(&quot;Garage Door is open&quot;);
+    }
+    
+    public void down() {
+        System.out.println(&quot;Garage Door is close&quot;);
+    }
+    
+    public void stop() {
+        System.out.println(&quot;Garage Door is stop&quot;);
+    }
+    
+    public void lightOn() {
+        System.out.println(&quot;Garage Door is light on&quot;);
+    }
+    
+    public void lightOff() {
+        System.out.println(&quot;Garage Door is light off&quot;);
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">public class GarageDoorOpenCommand implements Command {
+
+    GarageDoor garageDoor;
+
+    
+    public GarageDoorOpenCommand(GarageDoor garageDoor) {
+        this.garageDoor = garageDoor;
+    }
+
+
+    @Override
+    public void execute() {
+        garageDoor.up();
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        GarageDoor garageDoor = new GarageDoor();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+        remote.setCommand(garageOpen);
+        remote.buttonWasPressed();
+
+    }
+
+}
+</code></pre>
+
+<hr />
+
+<h3 id="커맨드-패턴의-정의-1:eb1bcca3611df5937b86df1b9dafdc57">커맨드 패턴의 정의</h3>
+
+<ul>
+<li><p>커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.</p></li>
+
+<li><p>커맨드 객체는 일련의 행동을 특정 리시버하고 연결시킴으로써 요구사항을 캡슐화한 것이다. 이렇게 하기 위해 행동과 리시버를 한 객체에 집어 넣고, execute()라는 메소드만 외부에 공개하는 방법을 사용한다.
+*외부에서 볼 때는 어떤 객체가 리시버 역할을 하는지, 리시버가 실제 어떤 일을 하는지 알 수 없다.
+*명령을 통해서 객체를 매개변수화하는 예도 볼수 있었다. 예를 들어 전등켜기를 했다가 차고 문 열기 명령을 로딩하기도 했다.
+*그리고 커맨드 패턴을 조금만 확장하면 메타 커맨드 패턴이라는 것도 사용이 가능한데 메타, 커맨드 패턴은 명령들로 이루어진 매크로를 만들어서 여러 개의 명령을 한 번에 실행할 수 있다.</p></li>
+</ul>
+
+<h3 id="리모컨-코드:eb1bcca3611df5937b86df1b9dafdc57">리모컨 코드</h3>
+
+<pre><code class="language-java">package com.kws.command.remote;
+
+import com.kws.command.Command;
+import com.kws.command.NoCommand;
+
+public class RemoteControl {
+    Command[] onCommands;
+    Command[] offCommands;
+    
+    public RemoteControl() {
+        onCommands = new Command[7];
+        offCommands = new Command[7];
+        
+        Command noCommand = new NoCommand();
+        for(int i = 0; i &lt; 7; i++) {
+            onCommands[i] = noCommand;
+            offCommands[i] = noCommand;
+        }
+    }
+    
+    public void setCommand(int slot, Command onCommand, Command offCommand) {
+        onCommands[slot] = onCommand;
+        offCommands[slot] = offCommand;
+    }
+    
+    public void onButtonWasPushed(int slot) {
+        onCommands[slot].execute();
+    }
+    
+    public void offButtonWasPushed(int slot) {
+        offCommands[slot].execute();
+    }
+    
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;\n----- Remote Control ------ \n&quot;);
+        
+        for (int i = 0; i &lt; onCommands.length; i++) {
+            stringBuffer.append(&quot;[slot &quot; + i + &quot;]&quot; + onCommands[i].getClass().getName() + &quot;   &quot; + offCommands.getClass().getName() + &quot;\n&quot;);
+        }
+        
+        return stringBuffer.toString();
+    }
+}
+</code></pre>
+
+<pre><code class="language-java">package com.kws.command;
+
+import com.kws.command.command.GarageDoor;
+import com.kws.command.command.GarageDoorCloseCommand;
+import com.kws.command.command.GarageDoorOpenCommand;
+import com.kws.command.command.Light;
+import com.kws.command.command.LightOffCommand;
+import com.kws.command.command.LightOnCommand;
+import com.kws.command.command.Stereo;
+import com.kws.command.command.StereoOffWithCDCommand;
+import com.kws.command.command.StereoOnWithCDCommand;
+import com.kws.command.remote.RemoteControl;
+
+public class RemoteControlTest {
+
+    public static void main(String[] args) {
+    
+        //기본테스트 
+//      SimpleRemoteControl remote = new SimpleRemoteControl();
+//      Light light = new Light();
+//      GarageDoor garageDoor = new GarageDoor();
+//      LightOnCommand lightOn = new LightOnCommand(light);
+//      GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+//      
+//      remote.setCommand(lightOn);
+//      remote.buttonWasPressed();
+//      remote.setCommand(garageOpen);
+//      remote.buttonWasPressed();
+        
+        
+        RemoteControl remoteControl = new RemoteControl();
+        
+        Light livingRoomLight = new Light(&quot;Living Room&quot;);
+        Light kitchenLight = new Light(&quot;kitchen Room&quot;);
+        GarageDoor garageDoor = new GarageDoor(&quot;&quot;);
+        Stereo stereo = new Stereo(&quot;Living Room&quot;);
+        
+        LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+        LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+        LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
+        LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
+        
+        GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garageDoor);
+        GarageDoorCloseCommand garageDoorClose = new GarageDoorCloseCommand(garageDoor);
+        
+        StereoOnWithCDCommand stereoOnWithCD = new StereoOnWithCDCommand(stereo);
+        StereoOffWithCDCommand stereoOffWithCD = new StereoOffWithCDCommand(stereo);
+        
+        
+        
+        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
+        remoteControl.setCommand(2, garageDoorOpen, garageDoorClose);
+        remoteControl.setCommand(3, stereoOnWithCD, stereoOffWithCD);
+        
+        System.out.println(remoteControl);
+        
+        remoteControl.onButtonWasPushed(0);
+        remoteControl.offButtonWasPushed(0);
+        remoteControl.onButtonWasPushed(1);
+        remoteControl.offButtonWasPushed(1);
+        remoteControl.onButtonWasPushed(2);
+        remoteControl.offButtonWasPushed(2);
+        remoteControl.onButtonWasPushed(3);
+        remoteControl.offButtonWasPushed(3);
+    }
+
+}
+
+</code></pre>
+
+<h3 id="nocommand:eb1bcca3611df5937b86df1b9dafdc57">NoCommand???</h3>
+
+<p>*NoCommand 객체는 일종의 널 객체이다. 딱히 리턴할 객체는 없지만 클라이언트 쪽에서 null을 처리하지 않아도 되도록 하고 싶을 때 널 객체를 활용하면 좋다. 리모컨에서는 execute()메소드가 호출됐을 때 아무 일도 하지 않지만 빈 자리를 채우기 위한 용도로 NoCommand라는 객체를 집어 넣어 두었다. 널 객체는 여러 디자인 패턴에서 유용하게 쓰인다. 널 객체를 일종의 디자인 패턴으로 분류하기도 한다.</p>
+
+<p>###커맨드 패턴 활용
+* 요청을 큐에 저장하기
+* 요청을 로그에 기록하기</p>
+
+<h3 id="핵심정리:eb1bcca3611df5937b86df1b9dafdc57">핵심정리</h3>
+
+<ul>
+<li>커맨드 패턴을 이용하면 요청을 하는 객체와 그 요청을 수행하는 객체를 분리시킬 수 있다.</li>
+<li>이렇게 분리시키는 과정의 중심에는 커맨드 객체가 있으며, 이 객체가 행동이 들어있는 리시버를 캡슐화 한다.</li>
+<li>인보커에서는 요청을 할 때는 커맨드 객체의 execute 메소드를 호출하면 된다.</li>
+<li>인보커는 커맨드를 통해서 매개변수화 될 수 있다. 실행중에 동적으로 설정할 수도 있다.</li>
+<li>execute()메소드가 마지막으로 호출되기 전의 기존 상태로 되돌리기 위한 작업취소 메소드를 구현하면 커맨드 패턴을 통해서 작업취소 기능을 지원 할 수도 있다.</li>
+<li>프로그래밍을 하다 보면 요청 자체를 리시버한테 넘기지 않고 자기가 처리하는 커맨드 객체를 사용하는 경우도 종종 있다.</li>
+<li>커맨드 패턴을 활용하여 로그 및 트랜잭션 시스템을 구현하는 것도 가능하다.</li>
+</ul>
+
+<h3 id="커맨드-패턴의-단점:eb1bcca3611df5937b86df1b9dafdc57">커맨드 패턴의 단점</h3>
+
+<ul>
+<li>객체 구성 부분이 추가 되면 추상부분부터 수정해서 추가해 줘야 한다.</li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%8B%B1%EA%B8%80%ED%84%B4-%ED%8C%A8%ED%84%B4/"
+                class="button big previous">싱글턴 패턴</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/"
+                class="button big next">어댑터 패턴과 퍼사드 패턴</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4\/';
+    var disqus_title = '커맨드 패턴';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 스터디 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>커맨드 패턴 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+    <description>Recent content in 커맨드 패턴 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Mar 2016 11:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>커맨드 패턴</title>
+      <link>http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/</link>
+      <pubDate>Sun, 13 Mar 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EC%BB%A4%EB%A7%A8%EB%93%9C-%ED%8C%A8%ED%84%B4/</guid>
+      <description>
+
+&lt;h3 id=&#34;커맨드-패턴의-정의:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-목적:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 목적&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;한 차원 높은 단계의 캡슐화. 즉 메소드 호출을 캡슐화하는 것. 메소드 호출을 캡슐화하면 계산 과정의 각 부분들을 결정화시킬 수 있기 때문에, 계산하는 코드를 호출한 객체에서는 어떤 식으로 일을 처리해야 하는지에 대해 전혀 신경쓰지 않아도 된다. 그냥 결정화된 메소드를 호출해서 필요한 일만 잘 할 수 있으면 된다. 그 외에도 캡슐화된 메소드 호출을 로그 기록용으로 저장을 한다거나 취소(undo)기능을 구현하기 위해 재사용하는 것과 같은 작업도 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;요구사항:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;요구사항&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리모컨 API를 만들어야 한다.&lt;/li&gt;
+&lt;li&gt;업체에서 공급 받은 자바 클래스들이 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;클래스들을-살펴보자:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;클래스들을 살펴보자&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;TV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;on()&lt;br/&gt;off()&lt;br/&gt;setInputChannel()&lt;br/&gt;setVolume()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Light&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;on()&lt;br/&gt;off()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;FaucetControl&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;openValue()&lt;br/&gt;closeValue()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;클래스-분석:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;클래스 분석&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;공통적인 인터페이스가 있지는 않은거 같음.&lt;/li&gt;
+&lt;li&gt;가장 큰 문제는 앞으로도 이런 클래스들이 더 추가될 수가 있다는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디자인-설계에-앞서:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;디자인 설계에 앞서&amp;hellip;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;모든 클래스에 on()하고 off()메소드만 있을 줄 알았는데 다른 메소들이 잔뜩 있다.&lt;/li&gt;
+&lt;li&gt;다른 제품이 추가 될 경우 다른 이름을 가진 메소드들이 추가될 수 있다.&lt;/li&gt;
+&lt;li&gt;리모컨 버튼을 클릭하면 자동으로 일을 처리하도록 만들어야 된다.&lt;/li&gt;
+&lt;li&gt;리모컨 자체에서는 티비의 볼륨을 높인다던지 하는 기능에 대한 자세한 내용은 모르도록 해야한다.&lt;/li&gt;
+&lt;li&gt;리모컨 제품 제작 업체가 제공한 클래스에 대해 자세하게 알 필요가 없도록 만들어야 된다.&lt;/li&gt;
+&lt;li&gt;커맨드 패턴이라는 걸 쓰면 어떤 작업을 요청하는 쪽하고 그 작업을 처리한 쪽을 분리시킬 수 있다고 한다.&lt;/li&gt;
+&lt;li&gt;리모컨에서 작업을 요청하고 업체에서 공급한 클래스에서 그 작업을 처리한다고 보면 커맨드 패턴을 적용할 수 있을 거 같다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-소개에-앞서:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 소개에 앞서&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;식당의 운영 방식 소개&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;고객이 웨이트리스한테 주문&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리스는 주문을 받아 카운터에 가져다 줌&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장이 주문대로 음식을 준비&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;이것을 객체와 메소드를 이용하여 적어보자&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;createOrder() 고객이 주문한 내용생성&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;takeOrder() 그 내용을 웨이트리스한테 전달&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;orderUp() 주문을 처리하기 위해 준비단계&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;makeBurger(), makeShake() 객체가 주방장에서 요리 생성 메소드를 호출하여 지시를 내림&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;객체와 메소드간의 역할을 알아보자&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주문서는 주문한 메뉴를 캡슐화한다. (웨이트리스는 주문서에 주문화 된 내용이 캡슐화 되어있기에 내용을 몰라도 된다. 그저 적당한 곳에 주문서를 전달만 하면 된다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리리스는 주문서를 받아서 거기에 있는 orderUp()메소드를 호출하는 일을 한다. (여러 고객들은 takeOrder() 메소드에서 여러 고객이 여러 주문서를 매개변수로 전달합니다. 하지만 주문이 상당히 많아도 별로 어려운 것은 없다. 모든 주문서는 orderUp()이 있고 이 메소드만 호출하면 식사가 준비가 된다.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장은 식사를 준비하는데 필요한 정보를 가지고 있다. (중요한 점은 실제로 식사를 준비하는 방법은 주방장만 알고 있다는 것이다. 웨이트리스는 각 주문서에 있는 메소드를 호출 할 뿐이고, 주방장은 주문서로부터 할 일을 전달 받는다. 즉 웨이트리스하고 직접 얘기를 할 필요가 전혀 없다는 것이다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;정리&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;식당은 어떤 것을 요구하는 객체와 그 요구를 받아들이고 처리하는 객체를 분리시키는 객체지향 디자인 패턴의 한 모델이다. 이것을 위의 리모컨 API와 비교해 보면 리모컨 버튼을 눌렸을 때 호출되는 코드와 특정 업체에서 제공한, 실제로 일을 처리하는 코드를 분리시키는 것이 가능하다.
+버튼을 눌렸을 때 그 객체의 &amp;ldquo;orderUp()&amp;ldquo;같은 메소드가 호출되면서, 리모컨에서는 어떤 객체가 무슨일을 하는지 모르지만 불이 켜진다는 식으로 일이 처리가 가능할 것이다.&lt;/p&gt;
+
+&lt;h3 id=&#34;식당과-커맨드패턴의-비교:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;식당과 커맨드패턴의 비교&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;식당과 커맨드 패턴을 비교해보자&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;클라이언트 -&amp;gt; createCommandObject() -&amp;gt; 커맨드(execute()) -&amp;gt; 인보커(setCommand()) -&amp;gt; execute() -&amp;gt; 리시버(action1, action2)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;클라이언트는 커맨드 객체를 생성해야 한다. 커맨드 객체는 리시버에 전달할 일련의 행동으로 구성된다.&lt;/li&gt;
+&lt;li&gt;커맨드 객체에는 행동과 리시버에 대한 정보가 같이 들어있다.&lt;/li&gt;
+&lt;li&gt;커맨드 객체에서 제공하는 메소드는 execute() 하나 뿐이다. 이 메소드는 행동을 캡슐화하고 리시버에 있는 특정 행동을 처리한다.&lt;/li&gt;
+&lt;li&gt;클라이언트에서는 인보커 객체의 setCommand() 메소드를 호출하는데, 이때 커맨드 객체를 넘겨준다. 그 커맨드 객체는 나중에 쓰이기 전까지 인보커 객체에 보관된다.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;인보커에서 커맨드 객체의 execute()를 호출하면 리시버에 있는 특정 행동을 하는 메소드가 호출 됩니다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;식당과 커맨드 패턴의 비교&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;웨이트리스 - 커맨드객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주방장 - execute()&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;orderUp - 클라이언트 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;주문서 - 인보커 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;손님 - 리시버 객체&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;takeOrder() - setCommand()&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;첫-번째-커맨드-객체:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;첫 번째 커맨드 객체&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Command 인터페이스 만들기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public interface Command {
+    public void execute();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;전등을 켜기 위한 인터페이스 구현&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class LightOnCommand implements Command {
+Light light;
+
+
+public LightOnCommand(Light light) {
+    this.light = light;
+}
+
+
+@Override
+public void execute() {
+    light.on();
+}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Light{
+    public void on() {
+        System.out.println(&amp;quot;light is on&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 객체 사용하기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SimpleRemoteControl {
+    Command slot;
+    
+    public void setCommand(Command command) {
+        slot = command;
+    }
+    
+    public void buttonWasPressed() {
+        slot.execute();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리모컨을 사용하기 위한 간단한 테스트 클래스&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;차고문을-열기위한-garagedooropencommand클래스를-만들어보자:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;차고문을 열기위한 GarageDoorOpenCommand클래스를 만들어보자&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GarageDoor 클래스
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;TV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;up()&lt;br/&gt;down()&lt;br/&gt;stop()&lt;br/&gt;lightOn()&lt;br/&gt;lightOff()&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class GarageDoor {
+
+    public void up() {
+        System.out.println(&amp;quot;Garage Door is open&amp;quot;);
+    }
+    
+    public void down() {
+        System.out.println(&amp;quot;Garage Door is close&amp;quot;);
+    }
+    
+    public void stop() {
+        System.out.println(&amp;quot;Garage Door is stop&amp;quot;);
+    }
+    
+    public void lightOn() {
+        System.out.println(&amp;quot;Garage Door is light on&amp;quot;);
+    }
+    
+    public void lightOff() {
+        System.out.println(&amp;quot;Garage Door is light off&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class GarageDoorOpenCommand implements Command {
+
+    GarageDoor garageDoor;
+
+    
+    public GarageDoorOpenCommand(GarageDoor garageDoor) {
+        this.garageDoor = garageDoor;
+    }
+
+
+    @Override
+    public void execute() {
+        garageDoor.up();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RemoteControlTest {
+
+    public static void main(String[] args) {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+        GarageDoor garageDoor = new GarageDoor();
+        LightOnCommand lightOn = new LightOnCommand(light);
+        GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+        
+        remote.setCommand(lightOn);
+        remote.buttonWasPressed();
+        remote.setCommand(garageOpen);
+        remote.buttonWasPressed();
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-정의-1:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;커맨드 패턴을 이용하면 요구 사항을 객체로 캡슐화 할 수 있으며, 매개변수를 써서 여러 가지 다른 요구 사항을 집어넣을 수도 있다. 또한 요청 내역을 큐에 저장하거나 로그로 기록할 수도 있으며, 작업취소 기능도 지원 가능하다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;커맨드 객체는 일련의 행동을 특정 리시버하고 연결시킴으로써 요구사항을 캡슐화한 것이다. 이렇게 하기 위해 행동과 리시버를 한 객체에 집어 넣고, execute()라는 메소드만 외부에 공개하는 방법을 사용한다.
+*외부에서 볼 때는 어떤 객체가 리시버 역할을 하는지, 리시버가 실제 어떤 일을 하는지 알 수 없다.
+*명령을 통해서 객체를 매개변수화하는 예도 볼수 있었다. 예를 들어 전등켜기를 했다가 차고 문 열기 명령을 로딩하기도 했다.
+*그리고 커맨드 패턴을 조금만 확장하면 메타 커맨드 패턴이라는 것도 사용이 가능한데 메타, 커맨드 패턴은 명령들로 이루어진 매크로를 만들어서 여러 개의 명령을 한 번에 실행할 수 있다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;리모컨-코드:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;리모컨 코드&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.command.remote;
+
+import com.kws.command.Command;
+import com.kws.command.NoCommand;
+
+public class RemoteControl {
+    Command[] onCommands;
+    Command[] offCommands;
+    
+    public RemoteControl() {
+        onCommands = new Command[7];
+        offCommands = new Command[7];
+        
+        Command noCommand = new NoCommand();
+        for(int i = 0; i &amp;lt; 7; i++) {
+            onCommands[i] = noCommand;
+            offCommands[i] = noCommand;
+        }
+    }
+    
+    public void setCommand(int slot, Command onCommand, Command offCommand) {
+        onCommands[slot] = onCommand;
+        offCommands[slot] = offCommand;
+    }
+    
+    public void onButtonWasPushed(int slot) {
+        onCommands[slot].execute();
+    }
+    
+    public void offButtonWasPushed(int slot) {
+        offCommands[slot].execute();
+    }
+    
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&amp;quot;\n----- Remote Control ------ \n&amp;quot;);
+        
+        for (int i = 0; i &amp;lt; onCommands.length; i++) {
+            stringBuffer.append(&amp;quot;[slot &amp;quot; + i + &amp;quot;]&amp;quot; + onCommands[i].getClass().getName() + &amp;quot;   &amp;quot; + offCommands.getClass().getName() + &amp;quot;\n&amp;quot;);
+        }
+        
+        return stringBuffer.toString();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;package com.kws.command;
+
+import com.kws.command.command.GarageDoor;
+import com.kws.command.command.GarageDoorCloseCommand;
+import com.kws.command.command.GarageDoorOpenCommand;
+import com.kws.command.command.Light;
+import com.kws.command.command.LightOffCommand;
+import com.kws.command.command.LightOnCommand;
+import com.kws.command.command.Stereo;
+import com.kws.command.command.StereoOffWithCDCommand;
+import com.kws.command.command.StereoOnWithCDCommand;
+import com.kws.command.remote.RemoteControl;
+
+public class RemoteControlTest {
+
+    public static void main(String[] args) {
+    
+        //기본테스트 
+//      SimpleRemoteControl remote = new SimpleRemoteControl();
+//      Light light = new Light();
+//      GarageDoor garageDoor = new GarageDoor();
+//      LightOnCommand lightOn = new LightOnCommand(light);
+//      GarageDoorOpenCommand garageOpen = new GarageDoorOpenCommand(garageDoor);
+//      
+//      remote.setCommand(lightOn);
+//      remote.buttonWasPressed();
+//      remote.setCommand(garageOpen);
+//      remote.buttonWasPressed();
+        
+        
+        RemoteControl remoteControl = new RemoteControl();
+        
+        Light livingRoomLight = new Light(&amp;quot;Living Room&amp;quot;);
+        Light kitchenLight = new Light(&amp;quot;kitchen Room&amp;quot;);
+        GarageDoor garageDoor = new GarageDoor(&amp;quot;&amp;quot;);
+        Stereo stereo = new Stereo(&amp;quot;Living Room&amp;quot;);
+        
+        LightOnCommand livingRoomLightOn = new LightOnCommand(livingRoomLight);
+        LightOffCommand livingRoomLightOff = new LightOffCommand(livingRoomLight);
+        LightOnCommand kitchenLightOn = new LightOnCommand(kitchenLight);
+        LightOffCommand kitchenLightOff = new LightOffCommand(kitchenLight);
+        
+        GarageDoorOpenCommand garageDoorOpen = new GarageDoorOpenCommand(garageDoor);
+        GarageDoorCloseCommand garageDoorClose = new GarageDoorCloseCommand(garageDoor);
+        
+        StereoOnWithCDCommand stereoOnWithCD = new StereoOnWithCDCommand(stereo);
+        StereoOffWithCDCommand stereoOffWithCD = new StereoOffWithCDCommand(stereo);
+        
+        
+        
+        remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
+        remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
+        remoteControl.setCommand(2, garageDoorOpen, garageDoorClose);
+        remoteControl.setCommand(3, stereoOnWithCD, stereoOffWithCD);
+        
+        System.out.println(remoteControl);
+        
+        remoteControl.onButtonWasPushed(0);
+        remoteControl.offButtonWasPushed(0);
+        remoteControl.onButtonWasPushed(1);
+        remoteControl.offButtonWasPushed(1);
+        remoteControl.onButtonWasPushed(2);
+        remoteControl.offButtonWasPushed(2);
+        remoteControl.onButtonWasPushed(3);
+        remoteControl.offButtonWasPushed(3);
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;nocommand:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;NoCommand???&lt;/h3&gt;
+
+&lt;p&gt;*NoCommand 객체는 일종의 널 객체이다. 딱히 리턴할 객체는 없지만 클라이언트 쪽에서 null을 처리하지 않아도 되도록 하고 싶을 때 널 객체를 활용하면 좋다. 리모컨에서는 execute()메소드가 호출됐을 때 아무 일도 하지 않지만 빈 자리를 채우기 위한 용도로 NoCommand라는 객체를 집어 넣어 두었다. 널 객체는 여러 디자인 패턴에서 유용하게 쓰인다. 널 객체를 일종의 디자인 패턴으로 분류하기도 한다.&lt;/p&gt;
+
+&lt;p&gt;###커맨드 패턴 활용
+* 요청을 큐에 저장하기
+* 요청을 로그에 기록하기&lt;/p&gt;
+
+&lt;h3 id=&#34;핵심정리:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;핵심정리&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;커맨드 패턴을 이용하면 요청을 하는 객체와 그 요청을 수행하는 객체를 분리시킬 수 있다.&lt;/li&gt;
+&lt;li&gt;이렇게 분리시키는 과정의 중심에는 커맨드 객체가 있으며, 이 객체가 행동이 들어있는 리시버를 캡슐화 한다.&lt;/li&gt;
+&lt;li&gt;인보커에서는 요청을 할 때는 커맨드 객체의 execute 메소드를 호출하면 된다.&lt;/li&gt;
+&lt;li&gt;인보커는 커맨드를 통해서 매개변수화 될 수 있다. 실행중에 동적으로 설정할 수도 있다.&lt;/li&gt;
+&lt;li&gt;execute()메소드가 마지막으로 호출되기 전의 기존 상태로 되돌리기 위한 작업취소 메소드를 구현하면 커맨드 패턴을 통해서 작업취소 기능을 지원 할 수도 있다.&lt;/li&gt;
+&lt;li&gt;프로그래밍을 하다 보면 요청 자체를 리시버한테 넘기지 않고 자기가 처리하는 커맨드 객체를 사용하는 경우도 종종 있다.&lt;/li&gt;
+&lt;li&gt;커맨드 패턴을 활용하여 로그 및 트랜잭션 시스템을 구현하는 것도 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;커맨드-패턴의-단점:eb1bcca3611df5937b86df1b9dafdc57&#34;&gt;커맨드 패턴의 단점&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;객체 구성 부분이 추가 되면 추상부분부터 수정해서 추가해 줘야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HEAD First Design Patterns Study</title>
+      <link>http://kwsstudy.github.io/post/Home/</link>
+      <pubDate>Sun, 21 Feb 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/Home/</guid>
+      <description>
+
+&lt;h1 id=&#34;head-first-design-patterns-study:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;HEAD First Design Patterns Study&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;스터디 기간 : 02/28 ~ 04/10&lt;/li&gt;
+&lt;li&gt;스터디 장소 : 서울대 입구역 AZ Story&lt;/li&gt;
+&lt;li&gt;스터디원 : 노휘겸 / 박민규 / 이돈일 / 이지훈&lt;/li&gt;
+&lt;li&gt;보증금 : 20,000원&lt;/li&gt;
+&lt;li&gt;스터디 룸비 : 28,000원&lt;/li&gt;
+&lt;li&gt;한달 한번 결석 가능&lt;/li&gt;
+&lt;li&gt;발표날 빠지면 영구 제명( 천재지변 / 경조사제외 )&lt;/li&gt;
+&lt;li&gt;자기 발표 부분 &lt;a href=&#34;https://github.com/KWSStudy/DesignPartterns/wiki&#34;&gt;Wiki&lt;/a&gt;에 정리 필&lt;/li&gt;
+&lt;li&gt;스터디 목표 : 디자인 패턴을 실무에 적용 할 수있는 레벨까지 끌어 올리기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;스터디-진행:b4d7124d2993cd13aabeec1fc19baf51&#34;&gt;스터디 진행&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;02/28&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/옵저버-패턴&#34;&gt;옵저버 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/데코레이터-패턴&#34;&gt;데코레이터 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/06&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/팩토리-패턴&#34;&gt;팩토리 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스트래티지-패턴&#34;&gt;스트래티지 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/싱글턴-패턴&#34;&gt;싱글턴 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/13&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/커맨드-패턴&#34;&gt;커맨드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/어댑터-패턴과-퍼사드-패턴&#34;&gt;어댑터 패턴과 퍼사드 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/20 (노휘겸 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/템플릿-메소드-패턴&#34;&gt;템플릿 메소드 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/이터레이터와-컴포지트-패턴&#34;&gt;이터레이터와 컴포지트 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;03/27(이지훈 결)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/스테이트-패턴&#34;&gt;스테이트 패턴&lt;/a&gt; (노휘겸)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/프록시-패턴&#34;&gt;프록시 패턴&lt;/a&gt; (박민규)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;04/03&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/컴파운드-패턴&#34;&gt;컴파운드 패턴&lt;/a&gt; (이돈일)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kwsstudy.github.io/post/나머지-패턴&#34;&gt;나머지 패턴&lt;/a&gt; (이지훈)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
