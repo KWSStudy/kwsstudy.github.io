@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/post/" />
 
 
-<meta property="og:updated_time" content="2016-04-03T12:00:00&#43;09:00"/>
+<meta property="og:updated_time" content="2016-05-08T11:00:00&#43;09:00"/>
 
 
 
@@ -171,11 +171,11 @@
 
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/"><p>컴파운드 패턴</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/"><p>맛보기 예제</p></a>
                     </li>
                 
             </ul>
@@ -191,6 +191,144 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h2>
+        
+        
+            <p>Refactoring - 리팩토링 개론</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-08'>
+            May 8, 2016</time>
+        <span class="author"></span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>팩토링은 무엇인가 (명사) 겉으로 드러나는 기능은 그대로 둔 채, 알아보기 쉽고 수정하기 간편하게 소프트웨어 내부를 수정하는 방법 (동사) 리팩토링 기법을 연달아 적용해서 겉으로 드러나는 기능은 그대로 둔 채 소프트웨어 구조를 변경한다. 강조할 내용 리팩토링의 목적은 소프트웨어를 더 이해하기 쉽고 수정하기 쉽게 만드는 것이다. 리팩토링은 겉으로 드러나는 소프트웨어 기능에 영향을 주지 않는다. 리팩토링은 왜 해야 하나 소프트웨어 설계가 개선되기 되니까 소프트웨어를 이해하기가 더 쉬워지기 되니까 버그를 찾기가 쉬워지니까 프로그래밍 속도가 빨라지니까 리팩토링은 어떨 때 필요한가 같은 작업의 삼진아웃 때 비슷한 작업을 할 때 두번까진 그냥하고 세번째 하게 되면 리팩토링을 실시하는 것이다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/">맛보기 예제</a></h2>
+        
+        
+            <p>Refactoring - 맛보기 예제</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-08'>
+            May 8, 2016</time>
+        <span class="author"></span>
+        
+            <p>8 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>원래의 프로그램 맛보기 예제는 단순히 비디오 대여점에서 고객의 대여료 내역을 계산하고 출력하는 간단한 프로그램이다. 이 프로그램은 고객이 대여한 비디오와 대여기간을 표시한 후, 비디오 종류와 대여 기간을 토대로 대여료를 계산한다. 비디오 종류에는 일반물, 아동물, 최신물 세종류다. 대여료 계산과 더불어 내역을 바탕으로 적립 포인트도 계산되는데, 이 포인트는 비디오가 최신물인지 아닌지에 따라 달라진다. Movie클래스 public class Movie { public static final int CHILDRENS = 2; public static final int REGULAR = 0; public static final int NEW_RELEASE = 1; private String _title; private int _priceCode; public Movie(String title, int priceCode){ _title = title; _priceCode = priceCode; } public int getPriceCode() { return _priceCode; } public void setPriceCode(int arg) { _priceCode = arg; } public String getTitle() { return _title; } } Rental 클래스 <code>java public class Rental { private Movie _movie; private int _daysRented; public Rental(Movie movie, int daysRented) { _movie = movie; _daysRented = daysRented; } public int getDaysRented() { return _daysRented; } public Movie getMovie() { return _movie; } } * Customer 클래스</code>java public class Customer { private String _name; private Vector _rentals = new Vector(); public Customer(String name) { _name = name; } public void addRental(Rental arg) { _rentals.addElement(arg); } public String getName() { return _name; } //리팩토링이 필요한 핵심 메서드 //너무 많은 기능을 가지고 있다 public String statement() { double totalAmount = 0; int frequentRenterPoints = 0; Enumeration&lt;Rental&gt; rentals = _rentals.elements(); String result = getName() + &quot; 고객님의 대여 기록 \n&quot;; while(rentals.hasMoreElements()) { double thisAmount = 0; Rental each = (Rental) rentals.nextElement(); //비디오 종류별 대여로 계산 switch (each.getMovie().getPriceCode()) { case Movie.REGULAR: thisAmount += 2; if(each.getDaysRented() &gt; 2) thisAmount += (each.getDaysRented() - 2) * 1.5; break; case Movie.NEW_RELEASE: thisAmount += each.getDaysRented() * 3; break; case Movie.CHILDRENS: thisAmount += 1.5; if(each.getDaysRented() &gt; 3) thisAmount += (each.getDaysRented() - 3) * 1.5; break; } //적립 포인트 1포인트 증 frequentRenterPoints ++; //최신물을 이틀 이상 대여하면 보너스 포인트 지급 if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &amp;&amp; each.getDaysRented() &gt; 1) frequentRenterPoints++; //대여하는 비디오 정보와 대여로를 출 result += &quot;\t&quot; + each.getMovie().getTitle() + &quot;\t&quot; + String.valueOf(thisAmount) + &quot;\n&quot;; //현재까지 누적된 총 대여료 totalAmount += thisAmount; } //footer result += &quot;누적 대여료 : &quot; + String.valueOf(totalAmount) + &quot;\n&quot;; result += &quot;적립 포인트 : &quot; + String.valueOf(frequentRenterPoints); return result; } } 맛보기 프로그램설명 statement 메서드에서 지나치게 많은 기능이 들어 있는데 대부분의 기능은 다른 두 클래스에 들어가야 하는 기능이다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -226,144 +364,6 @@
     <footer>
         <ul class="actions">
             <li><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h2>
-        
-        
-            <p>DesignPartterns - 컴파운드 패턴</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-04-03'>
-            April 3, 2016</time>
-        <span class="author"></span>
-        
-            <p>4 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>컴파운드 패턴이란? 반복적으로 생길 수 있는 일반적인 문제를 해결하기 위한 용도로 두 개 이상의 패턴을 결합해서 사용하는 것. 패턴을 같이 쓴다고 무조건 컴파운드 패턴은 아니다. 문제를 해결하기 위한 용도로 사용해야 된다. 대표적인 컴파운드 패턴은 MVC이다. //Quckable인터페이스를 구현한 클래스들 public interface Quackable { public void quack(); } public class DuckCall implements Quackable{ @Override public void quack() { System.out.println(&quot;Kwak&quot;); } } public class MallardDuck implements Quackable { @Override public void quack() { System.out.println(&quot;Quack&quot;); } } public class RedheadDuck implements Quackable { @Override public void quack() { System.out.println(&quot;quack&quot;); } } public class RubberDuck implements Quackable{ @Override public void quack() { System.out.println(&quot;Squeak&quot;); } } 실행 public class DuckSimulator { public static void main(String [] args) { DuckSimulator simulator = new DuckSimulator(); simulator.simulator(); } void simulator() { Quackable mallardDuck = new MallardDuck(); Quackable redheadDuck = new RedheadDuck(); Quackable duckCall = new DuckCall(); Quackable rubberDuck = new RubberDuck(); System.out.println(&quot;\nDuck Simulator&quot;); simulator(mallardDuck); simulator(redheadDuck); simulator(duckCall); simulator(rubberDuck); } void simulator(Quackable duck) { duck.quack(); } } &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Duck Simulator Quack quack Kwak Squeak 거위가 추가되었다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/MVC/">컴파운드 패턴-MVC</a></h2>
-        
-        
-            <p>DesignPartterns - 컴파운드 패턴-MVC</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-04-03'>
-            April 3, 2016</time>
-        <span class="author"></span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>MP3에대한 MVC 디자인 패턴의 관계에서 바라본 MVC 사용자는 뷰하고만 접촉할 수 있다. 컨트롤러에서 모델한테 상태를 변경하라는 요청을 한다. 컨트롤러에서 뷰를 변경해 달라고 요청할 수도 있다. 상태가 변경되면 모델에서 뷰한테 그 사실을 알린다. 뷰에서 모델한테 상태를 요청한다. 패턴 안경을 끼고 MVC를 살펴보자 스트래티지 패턴의 적용 원칙 자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다. 스트래티지 패턴(뷰와 컨트롤러) - 뷰 객체를 여러 전략을 써서 제공한다. 전략은 컨트롤러가 제공한다. 뷰에서는 애플리케이션의 겉모습에만 신경을 쓰고, 인터페이스의 행동에 대한 결정은 모두 컨트롤러한테 맡긴다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/MVC/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -513,13 +513,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-04-03'>
-                                    April 3, 2016</time>
+                                    '2016-05-08'>
+                                    May 8, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -527,13 +527,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/">맛보기 예제</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-04-03'>
-                                    April 3, 2016</time>
+                                    '2016-05-08'>
+                                    May 8, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -571,8 +571,8 @@
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/designpartterns/">DesignPartterns</a>
-                                <span style="float:right;">15</span>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">16</span>
                             </header>
                         </article>
                     </li>
@@ -580,8 +580,17 @@
                     <li>
                         <article>
                             <header>
-                                <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">15</span>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">2</span>
                             </header>
                         </article>
                     </li>

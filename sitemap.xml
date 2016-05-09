@@ -3,8 +3,18 @@
   
   <url>
     <loc>http://kwsstudy.github.io/</loc>
-    <lastmod>2016-04-03T12:00:00+09:00</lastmod>
+    <lastmod>2016-05-08T11:00:00+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/</loc>
+    <lastmod>2016-05-08T11:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/</loc>
+    <lastmod>2016-05-08T11:00:00+09:00</lastmod>
   </url>
   
   <url>
@@ -75,11 +85,6 @@
   <url>
     <loc>http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/</loc>
     <lastmod>2016-02-28T11:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://kwsstudy.github.io/post/Home/</loc>
-    <lastmod>2016-02-21T11:00:00+09:00</lastmod>
   </url>
   
 </urlset>
