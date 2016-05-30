@@ -57,7 +57,7 @@
 
 
 
-<meta itemprop="keywords" content="DesignPartterns,KWSStudy,Refactoring,DesignPartterns,Refactoring,나머지 패턴,데코레이터 패턴,리팩토링 개론,맛보기 예제,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,Refactoring,DesignPartterns,Refactoring,객체 간의 기능 이동,나머지 패턴,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
 
         
 
@@ -186,11 +186,23 @@
 
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/"><p>맛보기 예제</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"><p>리팩토링 기법 카탈로그</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"><p>테스트작성</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
                     </li>
                 
             </ul>
@@ -348,28 +360,28 @@
 </ul>
 
 <pre><code class="language-java">public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    private String _title;
-    private int _priceCode;
-    
-    public Movie(String title, int priceCode){
-        _title = title;
-        _priceCode = priceCode;
-    }
-    
-    public int getPriceCode() {
-        return _priceCode;
-    }
-    
-    public void setPriceCode(int arg) {
-        _priceCode = arg;
-    }
-    
-    public String getTitle() {
-        return _title;
-    }
+	public static final int CHILDRENS = 2;
+	public static final int REGULAR = 0;
+	public static final int NEW_RELEASE = 1;
+	private String _title;
+	private int _priceCode;
+	
+	public Movie(String title, int priceCode){
+		_title = title;
+		_priceCode = priceCode;
+	}
+	
+	public int getPriceCode() {
+		return _priceCode;
+	}
+	
+	public void setPriceCode(int arg) {
+		_priceCode = arg;
+	}
+	
+	public String getTitle() {
+		return _title;
+	}
 }
 
 </code></pre>
@@ -380,94 +392,92 @@
 </ul>
 
 <p>public class Rental {
-    private Movie _movie;
-    private int _daysRented;</p>
+	private Movie _movie;
+	private int _daysRented;</p>
 
-<pre><code>public Rental(Movie movie, int daysRented) {
-    _movie = movie;
-    _daysRented = daysRented;
-}
+<p>	public Rental(Movie movie, int daysRented) {
+		_movie = movie;
+		_daysRented = daysRented;
+	}</p>
 
-public int getDaysRented() {
-    return _daysRented;
-}
+<p>	public int getDaysRented() {
+		return _daysRented;
+	}</p>
 
-public Movie getMovie() {
-    return _movie;
-}
-</code></pre>
-
-<p>}</p>
+<p>	public Movie getMovie() {
+		return _movie;
+	}
+}</p>
 
 <pre><code>
 * Customer 클래스
 ```java
 public class Customer {
-    private String _name;
-    private Vector _rentals = new Vector();
-    
-    public Customer(String name) {
-        _name = name;
-    }
-    
-    public void addRental(Rental arg) {
-        _rentals.addElement(arg);
-    }
-    
-    public String getName() {
-        return _name;
-    }
-    
-    //리팩토링이 필요한 핵심 메서드
-    //너무 많은 기능을 가지고 있다
-    public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-        Enumeration&lt;Rental&gt; rentals = _rentals.elements();
-        String result = getName() + &quot; 고객님의 대여 기록 \n&quot;;
-        
-        while(rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
-            
-            //비디오 종류별 대여로 계산 
-            switch (each.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                thisAmount += 2;
-                if(each.getDaysRented() &gt; 2) 
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE: 
-                thisAmount += each.getDaysRented() * 3;
-                break;  
-            case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if(each.getDaysRented() &gt; 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
-                break;  
-            }
-            
-            //적립 포인트 1포인트 증
-            frequentRenterPoints ++;
-            
-            //최신물을 이틀 이상 대여하면 보너스 포인트 지급 
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &amp;&amp; each.getDaysRented() &gt; 1)
-                frequentRenterPoints++;
-            
-            //대여하는 비디오 정보와 대여로를 출
-            result += &quot;\t&quot; + each.getMovie().getTitle() + &quot;\t&quot; + String.valueOf(thisAmount) + &quot;\n&quot;;
-            
-            //현재까지 누적된 총 대여료
-            totalAmount += thisAmount;
-        }
-        
-        //footer
-        result += &quot;누적 대여료 : &quot; + String.valueOf(totalAmount) + &quot;\n&quot;;
-        result += &quot;적립 포인트 : &quot; + String.valueOf(frequentRenterPoints);
-        return result;
-    }
-    
-    
+	private String _name;
+	private Vector _rentals = new Vector();
+	
+	public Customer(String name) {
+		_name = name;
+	}
+	
+	public void addRental(Rental arg) {
+		_rentals.addElement(arg);
+	}
+	
+	public String getName() {
+		return _name;
+	}
+	
+	//리팩토링이 필요한 핵심 메서드
+	//너무 많은 기능을 가지고 있다
+	public String statement() {
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
+		Enumeration&lt;Rental&gt; rentals = _rentals.elements();
+		String result = getName() + &quot; 고객님의 대여 기록 \n&quot;;
+		
+		while(rentals.hasMoreElements()) {
+			double thisAmount = 0;
+			Rental each = (Rental) rentals.nextElement();
+			
+			//비디오 종류별 대여로 계산 
+			switch (each.getMovie().getPriceCode()) {
+			case Movie.REGULAR:
+				thisAmount += 2;
+				if(each.getDaysRented() &gt; 2) 
+					thisAmount += (each.getDaysRented() - 2) * 1.5;
+				break;
+			case Movie.NEW_RELEASE:	
+				thisAmount += each.getDaysRented() * 3;
+				break;	
+			case Movie.CHILDRENS:
+				thisAmount += 1.5;
+				if(each.getDaysRented() &gt; 3)
+					thisAmount += (each.getDaysRented() - 3) * 1.5;
+				break;	
+			}
+			
+			//적립 포인트 1포인트 증
+			frequentRenterPoints ++;
+			
+			//최신물을 이틀 이상 대여하면 보너스 포인트 지급 
+			if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &amp;&amp; each.getDaysRented() &gt; 1)
+				frequentRenterPoints++;
+			
+			//대여하는 비디오 정보와 대여로를 출
+			result += &quot;\t&quot; + each.getMovie().getTitle() + &quot;\t&quot; + String.valueOf(thisAmount) + &quot;\n&quot;;
+			
+			//현재까지 누적된 총 대여료
+			totalAmount += thisAmount;
+		}
+		
+		//footer
+		result += &quot;누적 대여료 : &quot; + String.valueOf(totalAmount) + &quot;\n&quot;;
+		result += &quot;적립 포인트 : &quot; + String.valueOf(frequentRenterPoints);
+		return result;
+	}
+	
+	
 }
 </code></pre>
 
@@ -527,27 +537,27 @@ public class Customer {
 </ul>
 
 <pre><code class="language-java">private double getTotalCharge() {
-        double result = 0;
-        Iterator&lt;Rental&gt; rentals = _rentals.iterator();
-        
-        while (rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            result += each.getCharge();
-        }
-        return result;
-    }
+		double result = 0;
+		Iterator&lt;Rental&gt; rentals = _rentals.iterator();
+		
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			result += each.getCharge();
+		}
+		return result;
+	}
 
-    private int getTotalFrequentRenterPoints() {
-        int result = 0;
-        
-        Iterator&lt;Rental&gt; rentals = _rentals.iterator();
-        
-        while (rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            result += each.getFrequentRenterPoints();
-        }
-        return result;
-    }
+	private int getTotalFrequentRenterPoints() {
+		int result = 0;
+		
+		Iterator&lt;Rental&gt; rentals = _rentals.iterator();
+		
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			result += each.getFrequentRenterPoints();
+		}
+		return result;
+	}
 </code></pre>
 
 <ul>
@@ -561,19 +571,19 @@ public class Customer {
 <p>-htmlStatement 메서드를 추가하다</p>
 
 <pre><code class="language-java">public String htmlStatement() {
-        Iterator&lt;Rental&gt; rentals = _rentals.iterator();
-        String result = &quot;&lt;H1&gt;&lt;EM&gt;&quot; + getName() + &quot;고객님의 대여 기록 &lt;/EM&gt;&lt;/H1&gt;&lt;P&gt;\n&quot;;
-        while(rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            
-            //모든 대여 비디오 정보와 대여로를 출
-            result += each.getMovie().getTitle() + &quot;\t&quot; + String.valueOf(each.getCharge()) + &quot;&lt;BR&gt;\n&quot;;
-        }
-        //footer
-        result += &quot;&lt;P&gt;누적 대여료 : &lt;EM&gt;&quot; + String.valueOf(getTotalCharge()) + &quot;&lt;/EM&gt;&lt;/P&gt;\n&quot;;
-        result += &quot;&lt;P&gt;적립 포인트 : &lt;EM&gt;&quot; + String.valueOf(getTotalFrequentRenterPoints()) + &quot;&lt;/EM&gt;&lt;/P&quot;;
-        return result;
-    }
+		Iterator&lt;Rental&gt; rentals = _rentals.iterator();
+		String result = &quot;&lt;H1&gt;&lt;EM&gt;&quot; + getName() + &quot;고객님의 대여 기록 &lt;/EM&gt;&lt;/H1&gt;&lt;P&gt;\n&quot;;
+		while(rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			
+			//모든 대여 비디오 정보와 대여로를 출
+			result += each.getMovie().getTitle() + &quot;\t&quot; + String.valueOf(each.getCharge()) + &quot;&lt;BR&gt;\n&quot;;
+		}
+		//footer
+		result += &quot;&lt;P&gt;누적 대여료 : &lt;EM&gt;&quot; + String.valueOf(getTotalCharge()) + &quot;&lt;/EM&gt;&lt;/P&gt;\n&quot;;
+		result += &quot;&lt;P&gt;적립 포인트 : &lt;EM&gt;&quot; + String.valueOf(getTotalFrequentRenterPoints()) + &quot;&lt;/EM&gt;&lt;/P&quot;;
+		return result;
+	}
 </code></pre>
 
 <ul>
@@ -613,35 +623,35 @@ public class Customer {
 </ul>
 
 <pre><code class="language-java">public abstract class Price {
-    abstract int getPriceCode();
+	abstract int getPriceCode();
 }
 
 
 class ChildrensPrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.CHILDRENS;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.CHILDRENS;
+	}
+	
 }
 
 class NewReleasePrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.NEW_RELEASE;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.NEW_RELEASE;
+	}
+	
 }
 
 class RegularPrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.REGULAR;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.REGULAR;
+	}
+	
 }
 </code></pre>
 
@@ -650,23 +660,23 @@ class RegularPrice extends Price {
 </ul>
 
 <pre><code class="language-java">        public int getPriceCode() {
-        return _price.getPriceCode();
-    }
-    
-    public void setPriceCode(int arg){
-        switch(arg) {
-            case REGULAR:
-                _price = new RegularPrice();
-                break;
-            case CHILDRENS:
-                _price = new ChildrensPrice();
-                break;
-            case NEW_RELEASE:
-                _price = new NewReleasePrice();
-                break;
-        }
-    
-    }
+		return _price.getPriceCode();
+	}
+	
+	public void setPriceCode(int arg){
+		switch(arg) {
+			case REGULAR:
+				_price = new RegularPrice();
+				break;
+			case CHILDRENS:
+				_price = new ChildrensPrice();
+				break;
+			case NEW_RELEASE:
+				_price = new NewReleasePrice();
+				break;
+		}
+	
+	}
 </code></pre>
 
 <ul>
@@ -722,8 +732,8 @@ class RegularPrice extends Price {
 </article>
 <ul class="actions pagination">
     
-        <li><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"
-                class="button big previous">나머지 패턴</a></li>
+        <li><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"
+                class="button big previous">맛보기 예제</a></li>
     
 
     
@@ -852,13 +862,13 @@ class RegularPrice extends Price {
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
+                                    '2016-05-29'>
+                                    May 29, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -866,7 +876,49 @@ class RegularPrice extends Price {
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/">맛보기 예제</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
                                 
                                     
                                 
@@ -911,7 +963,7 @@ class RegularPrice extends Price {
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">21</span>
                             </header>
                         </article>
                     </li>
@@ -929,7 +981,7 @@ class RegularPrice extends Price {
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

@@ -1,0 +1,895 @@
+
+
+
+    
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            <title>코드의 구린내 - Korea Web Service Study Group</title>
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+            
+        
+
+        
+        <meta property="og:title" content="코드의 구린내" />
+<meta property="og:description" content="KWS(Korea Web Service) Study Group 사이트 입니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://kwsstudy.github.io/tags/ecbd94eb939cec9d98-eab5aceba6b0eb82b4/" />
+
+
+<meta property="og:updated_time" content="2016-05-14T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="코드의 구린내">
+<meta itemprop="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"><p>리팩토링 기법 카탈로그</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"><p>테스트작성</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+            
+        
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h2>
+        
+        
+            <p>Refactoring - 객체 간의 기능 이동</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-29'>
+            May 29, 2016</time>
+        <span class="author"></span>
+        
+            <p>13 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>객체 간 이동이 가능한 상황 및 상황별 리팩토링 기법 기능을 넣을 적절한 위치를 찾는 경우 메서드 이동(Move Method) 필드 이동(Move Field) 방대해진 클래스의 정리 또는 클래스 기능이 너무 적은 경우 클래스 추출(Extract Class) - 기능이 너무 많아 방대해진 클래스 클래스 직접 삽입(Inline Class) - 리팩토링 결과로 클래스 내에 기능이 너무 작아진 경우 다른 클래스로 합침 다른 클래스(대리 클래스)를 이용할 경우 대리 객체 은폐(Hide Delegate) - 대리 클래스가 사용 중이라는 것을 외부에 감춤 과잉 중개 메서드 제거(Remove Middle Man) - 대리 객체 은폐시 대리 클래스를 사용 중인 클래스의 인터페이스가 변경될 때 클래스의 원본 코드에 접근할 수 없는 상황에서 수정 불가능한 클래스의 기능을 이동해야 할 때 외래 클래스에 메서드 추가(Introduce Foreign Method) - 기능을 이동할 메서드가 한두개 뿐일 때 국소적 상속확장 클래스 사용(Introduce Local Extension) - 기능을 이동할 메서드가 세개 이상일 때 메서드 이동 (Move Method) 메서드가 자신이 속한 클래스보다 다른 클래스의 기능을 더 많이 사용할 때 → 그 메서드가 가장 많이 이용하는 클래스 안에서 비슷한 내용의 메서드를 작성 → 기존 메서드는 간단한 대리 메서드로 전환하던지 아예 삭제 동기 언제 적용하는게 좋을까?</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h2>
+        
+        
+            <p>Refactoring - 리팩토링 기법 카탈로그</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-14'>
+            May 14, 2016</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>리팩토링 기법 카탈로그에 대해 1. 각 리팩토링 기법 절의 구성 카탈로그 부분의 각 리팩토링 기법은 다음과 같은 5개의 하위 절로 구성했다. 이름 : 각종 리팩토링 기법을 구별하기 위한 필수적인 요소, 카탈로그의 각 절 제목으로도 사용했다. 요약 : 기법의 적용 시점과 목적을 설명. 이부분을 보면 자신에게 필요한 리팩토링 기법을 더 빨리 찾을 수 있다. 동기 : 기법을 실시하는 이유와 실시하지 말아야 할 경우를 설명한다. 방법 : 기법을 수행하는 절차를 단계적으로 간단명료하게 설명한다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h2>
+        
+        
+            <p>Refactoring - 코드의 구린내</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-14'>
+            May 14, 2016</time>
+        <span class="author"></span>
+        
+            <p>5 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p><ol>
+<li>코드의 구린내 구린게 있으면 그 부분을 바로 잡으세요. 리팩토링을 어떨 때 시작하고 어떨 때 그만둬야 할지 판단하는 일은 리팩토링 기법을 적용하는 방법만큼 중요하다. 1. 중복코드 구린내의 제왕 중복코드. 똑같은 코드 구조가 두 군데 이상 있을 때는 그 부분을 하나로 통일하면 프로그램이 개선 한 클래스의 두 메서드 안에 같은 코드가 들어있는경우 -&gt; 메서드 추출 기법을 적용해서 겹치는 코드를 빼내어 별도의 메서드로 만들고 그 메서 드를 두 곳에서 호출 수퍼클래스의 두 하위 클래스에 같은 코드가 들어 있는 경우 -&gt; 메서드 추출 기법을 적용해서 중복을 없앤 후 메서드 상향 기법을 적용하면 된다.</li>
+</ol>
+</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h2>
+        
+        
+            <p>Refactoring - 테스트작성</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-14'>
+            May 14, 2016</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>04 테스트 작성 리팩토링을 실시하기 위한 필수 전제조건은 반드시 견고한 테스트를 해야한다. 적절한 테스트를 작성하면 설령 리팩토링을 하지않더라도 프로그래밍 속도가 월등히 왜 빨라지는 가에 대해서 설명 1. 자가 테스트 코드의 가치 버그를 찾는 데 시간을 많이 소요하는 프로그래머들이 존재 모든 테스트를 완전히 자동화하고 결과를 자체적으로 검사하게 하자. 테스트 스위트(하나의 테스트)는 버그를 찾는 시간을 획기적으로 줄여주는 강력한 버그 감지 도구이다. 2. JUnit 테스트 프레임 워크 예제 소스 3. 단위 테스트와 기능 테스트 단위 테스트(Unit Test) -&gt; 부분적인 단위만 테스트 한다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h2>
+        
+        
+            <p>Refactoring - 리팩토링 개론</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-08'>
+            May 8, 2016</time>
+        <span class="author"></span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>팩토링은 무엇인가 (명사) 겉으로 드러나는 기능은 그대로 둔 채, 알아보기 쉽고 수정하기 간편하게 소프트웨어 내부를 수정하는 방법 (동사) 리팩토링 기법을 연달아 적용해서 겉으로 드러나는 기능은 그대로 둔 채 소프트웨어 구조를 변경한다. 강조할 내용 리팩토링의 목적은 소프트웨어를 더 이해하기 쉽고 수정하기 쉽게 만드는 것이다. 리팩토링은 겉으로 드러나는 소프트웨어 기능에 영향을 주지 않는다. 리팩토링은 왜 해야 하나 소프트웨어 설계가 개선되기 되니까 소프트웨어를 이해하기가 더 쉬워지기 되니까 버그를 찾기가 쉬워지니까 프로그래밍 속도가 빨라지니까 리팩토링은 어떨 때 필요한가 같은 작업의 삼진아웃 때 비슷한 작업을 할 때 두번까진 그냥하고 세번째 하게 되면 리팩토링을 실시하는 것이다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+
+        
+<ul class="actions pagination">
+    
+        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+    
+
+    
+        <li><a href="/tags/ecbd94eb939cec9d98-eab5aceba6b0eb82b4/page/2/"
+                class="button big next">Next Page</a></li>
+    
+</ul>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-29'>
+                                    May 29, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-08'>
+                                    May 8, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">21</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">7</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

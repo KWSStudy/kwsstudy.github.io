@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/tags/refactoring/" />
 
 
-<meta property="og:updated_time" content="2016-03-06T12:00:00&#43;09:00"/>
+<meta property="og:updated_time" content="2016-02-28T11:00:00&#43;09:00"/>
 
 
 
@@ -171,11 +171,23 @@
 
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/"><p>맛보기 예제</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"><p>리팩토링 기법 카탈로그</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"><p>테스트작성</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
                     </li>
                 
             </ul>
@@ -197,148 +209,10 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://kwsstudy.github.io/post/%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%8B%B0%EC%A7%80-%ED%8C%A8%ED%84%B4/">스트래티지 패턴</a></h2>
+            <h2><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/">옵저버 패턴</a></h2>
         
         
-            <p>DesignPartterns - 스트래티지 패턴</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-03-06'>
-            March 6, 2016</time>
-        <span class="author"></span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>정의 알고리즘군(기능)을 정의하고 각각을 캡슐화하여 교환해서 사용할 수 있도록 한다. 스트래티지 패턴을 사용하면 알고리즘을 사용하는 클라이언트와 독립적으로 알고리즘을 변경할 수 있다. 스트래티지 패턴의 적용 원칙 자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다. 상속 보다는 구성(멤버 변수?)을 활용한다. 구현이 아닌 인터페이스에 맞추어 프로그래밍 한다. 원칙을 무시한 코드 /* 모든 게시판이 만들어질때 상속 받을 슈퍼 클래스 <em>/ public class Article{ public boolean insertArticle(){ 입력을 구현 } public List selectArticle(){ 선택을 구현 } public boolean updateArticle(){ 수정을 구현 } } /</em> Article을 상속 받은 SimpleArticle1 <em>/ public class SimpleArticle1 extend Article{ public List selectArticle(){선택을 구현} } /</em> Article을 상속 받은 SimpleArticle2 <em>/ public class SimpleArticle2 extend Article{ public List selectArticle(){선택을 구현} } 게시판에 삭제기능도 필요 하다는 요구조건이 추가되어 최상위 클래스인 Article에 삭제기능을 추가 /</em> 모든 게시판이 만들어질때 상속 받을 슈퍼 클래스 <em>/ public class Article{ public boolean insertArticle(){ 입력을 구현 } public List selectArticle(){ 선택을 구현 } public boolean updateArticle(){ 수정을 구현 } public boolean deleteArticle(){ 삭제를 구현 } } 이후 새로운 SimpleArticle3게시판을 추가했는데 해당 게시판은 글 삭제가 불가능한 게시판 /</em> Article을 상속 받은 SimpleArticle3 <em>/ public class SimpleArticle3 extend Article{ public List selectArticle(){선택을 구현} public boolean deleteArticle(){ 아무것도 하지 않도록 구현 } } 새로운 SimpleArticle4게시판을 추가했는데 해당 게시판은 글 쓰기,수정,삭제가 불가능한 게시판 /</em> Article을 상속 받은 SimpleArticle4 */ public class SimpleArticle4 extend Article{ public boolean insertArticle(){ 아무것도 하지 않도록 구현 } public List selectArticle(){ 선택을 구현 } public boolean updateArticle(){ 아무것도 하지 않도록 구현 } public boolean deleteArticle(){ 아무것도 하지 않도록 구현 } } 문제점 선택 이외의 기능들은 자주 변경이 일어남.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%8A%A4%ED%8A%B8%EB%9E%98%ED%8B%B0%EC%A7%80-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/">팩토리 패턴</a></h2>
-        
-        
-            <p>DesignPartterns - 팩토리 패턴</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-03-06'>
-            March 6, 2016</time>
-        <span class="author"></span>
-        
-            <p>3 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>팩토리패턴 디자인패턴 중에서 생성 패턴(Creational Pattern)의 대표적인 패턴들이다. 팩토리 패턴의 종류 팩토리 메서드(Factory Method) 패턴 추상 팩토리(Abstract Factory) 패턴 시작하기전에 디자인 패턴에 포함되지는 않지만, 팩토리 패턴의 기본이 되는 팩토리 구조에 대해서 알아보자. 팩토리를 사용하는 이유 클라이언트에서 사용할 객체를 생성하는 부분을 캡슐화하여 느슨한 결합 상태로 만들어, 변화에는 닫혀있고 확장에는 열려있는 코드를 만들 수 있다. 변경 전의 코드 // Pizza 클래스의 객체의 생성 및 사용을 모두 수행하는 메서드 Pizza orderPizza(String type) { Pizza pizza; if (type.equals(&quot;cheese&quot;)) { pizza = new CheesePizza(); } else if (type.equals(&quot;greek&quot;)) { pizza = new GreekPizza(); } else if (type.equals(&quot;pepperoni&quot;)) { pizza = new PepperoniPizza(); } pizza.prepare(); pizza.bake(); pizza.cut(); pizza.box(); return pizza; } 변경 후의 코드 // Pizza 클래스의 생성을 전담하는 클래스 = 팩토리 public class SimplePizzaFactory { public Pizza createPizza(String type) { Pizza = null; if (type.equals(&quot;cheese&quot;)) { pizza = new CheesePizza(); } else if (type.equals(&quot;greek&quot;)) { pizza = new GreekPizza(); } else if (type.equals(&quot;pepperoni&quot;)) { pizza = new PepperoniPizza(); } return pizza; } } SimplePizzaFactory factory = new SimplePizzaFactory(); // Pizza 객체의 생성은 팩토리에 맞기고 사용에 전념하는 메서드 Pizza orderPizza(String type) { Pizza pizza; pizza = factory.createPizza(type); pizza.prepare(); pizza.bake(); pizza.cut(); pizza.box(); return pizza; } 클래스 다이어그램 ##팩토리 메소드 (Factory Method) 객체를 생성하는 인터페이스를 정의하지만, 인스턴스를 만들 클래스의 결정은 서브클래스가 한다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/">데코레이터 패턴</a></h2>
-        
-        
-            <p>DesignPartterns - 데코레이터 패턴</p>
+            <p>DesignPartterns - 옵저버 패턴</p>
         
     </div>
     <div class="meta">
@@ -351,7 +225,7 @@
             February 28, 2016</time>
         <span class="author"></span>
         
-            <p>1 minute read</p>
+            <p>5 minute read</p>
         
         
     </div>
@@ -359,11 +233,11 @@
 
     
 
-    <p>decorationPatterns OCP(Open-Closed Principle(원칙)) 디자인 원칙 클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다. 무조건 OCP를 적용하는 것은 시간 낭비가 될 수도 있고, 괜히 쓸 데 없는 일을 하는 것일 수도 있습니다. 결과적으로 불필요하게 복잡하고 이해하기 힘든 코드만 만들게 되는 부작용이 있을 수도 있으니 주의해야합니다. Decorator Pattern의 정의 데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는 객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있습니다.) 데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.</p>
+    <p>옵저버 패턴의 정의 옵저버 패턴(Observer Pattern)에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다(one-to-many)의존성을 정의 한다 신문 구독 메커니즘에서 출판사를 주제(subject), 구독자를 옵저버(observer)라고 생각하시면 이해하기 쉽다. 옵저버 패턴을 적용하여 어플리케이션을 만들어 보겠다. 우리가 만들 애플리케이션은 위치 어플리케이션이다. Position 객체를 받아서 x좌표 y좌표를 받아서 디스플레이 장비에서 갱신해 가면서 보여주는 어플리케이션이다. Position 인터페이스 public classPosition { public float getPositionX() { return 0.0f; } public float getPositionY() { return 0.0f; } /* * 포지션 값이 변경될 때마다 알려주기 위한 메서드 */ public void positionChanged(){ float positionX = getPositionX(); float positionY = getPositionY(); } } 지금 알고 있는 것들 x좌표 y좌표를 알아낼 수 있는 메서드가 있다.</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
+            <li><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
@@ -409,8 +283,7 @@
     
 
     
-        <li><a href="/tags/refactoring/page/6/"
-                class="button big next">Next Page</a></li>
+        <li><a href="#" class="disabled button big next">Next Page</a></li>
     
 </ul>
 
@@ -514,13 +387,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
+                                    '2016-05-29'>
+                                    May 29, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -528,7 +401,49 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/">맛보기 예제</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
                                 
                                     
                                 
@@ -573,7 +488,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">21</span>
                             </header>
                         </article>
                     </li>
@@ -591,7 +506,7 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">7</span>
                             </header>
                         </article>
                     </li>

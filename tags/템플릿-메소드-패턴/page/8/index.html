@@ -1,0 +1,536 @@
+
+
+
+    
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            <title>템플릿 메소드 패턴 - Korea Web Service Study Group</title>
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+            
+        
+
+        
+        <meta property="og:title" content="템플릿 메소드 패턴" />
+<meta property="og:description" content="KWS(Korea Web Service) Study Group 사이트 입니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://kwsstudy.github.io/tags/ed859ced948ceba6bf-eba994ec868ceb939c-ed8ca8ed84b4/" />
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="템플릿 메소드 패턴">
+<meta itemprop="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>맛보기 예제</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+            
+        
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"></a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='0001-01-01'>
+            January 1, 0001</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-14T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;테스트작성&quot;] title = &quot;테스트작성&quot; description = &quot;Refactoring - 테스트작성&quot; +++ 04 테스트 작성 리팩토링을 실시하기 위한 필수 전제조건은 반드시 견고한 테스트를 해야한다. 적절한 테스트를 작성하면 설령 리팩토링을 하지않더라도 프로그래밍 속도가 월등히 왜 빨라지는 가에 대해서 설명 1. 자가 테스트 코드의 가치 버그를 찾는 데 시간을 많이 소요하는 프로그래머들이 존재 모든 테스트를 완전히 자동화하고 결과를 자체적으로 검사하게 하자. 테스트 스위트(하나의 테스트)는 버그를 찾는 시간을 획기적으로 줄여주는 강력한 버그 감지 도구이다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+
+    
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+
+        
+<ul class="actions pagination">
+    
+        <li><a href="/tags/ed859ced948ceba6bf-eba994ec868ceb939c-ed8ca8ed84b4/page/7/"
+                class="button big previous">Previous Page</a></li>
+    
+
+    
+        <li><a href="#" class="disabled button big next">Next Page</a></li>
+    
+</ul>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">맛보기 예제</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-08'>
+                                    May 8, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

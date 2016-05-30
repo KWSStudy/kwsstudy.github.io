@@ -26,28 +26,28 @@
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class Movie {
-    public static final int CHILDRENS = 2;
-    public static final int REGULAR = 0;
-    public static final int NEW_RELEASE = 1;
-    private String _title;
-    private int _priceCode;
-    
-    public Movie(String title, int priceCode){
-        _title = title;
-        _priceCode = priceCode;
-    }
-    
-    public int getPriceCode() {
-        return _priceCode;
-    }
-    
-    public void setPriceCode(int arg) {
-        _priceCode = arg;
-    }
-    
-    public String getTitle() {
-        return _title;
-    }
+	public static final int CHILDRENS = 2;
+	public static final int REGULAR = 0;
+	public static final int NEW_RELEASE = 1;
+	private String _title;
+	private int _priceCode;
+	
+	public Movie(String title, int priceCode){
+		_title = title;
+		_priceCode = priceCode;
+	}
+	
+	public int getPriceCode() {
+		return _priceCode;
+	}
+	
+	public void setPriceCode(int arg) {
+		_priceCode = arg;
+	}
+	
+	public String getTitle() {
+		return _title;
+	}
 }
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -58,94 +58,92 @@
 &lt;/ul&gt;
 
 &lt;p&gt;public class Rental {
-    private Movie _movie;
-    private int _daysRented;&lt;/p&gt;
+	private Movie _movie;
+	private int _daysRented;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;public Rental(Movie movie, int daysRented) {
-    _movie = movie;
-    _daysRented = daysRented;
-}
+&lt;p&gt;	public Rental(Movie movie, int daysRented) {
+		_movie = movie;
+		_daysRented = daysRented;
+	}&lt;/p&gt;
 
-public int getDaysRented() {
-    return _daysRented;
-}
+&lt;p&gt;	public int getDaysRented() {
+		return _daysRented;
+	}&lt;/p&gt;
 
-public Movie getMovie() {
-    return _movie;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;	public Movie getMovie() {
+		return _movie;
+	}
+}&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 * Customer 클래스
 ```java
 public class Customer {
-    private String _name;
-    private Vector _rentals = new Vector();
-    
-    public Customer(String name) {
-        _name = name;
-    }
-    
-    public void addRental(Rental arg) {
-        _rentals.addElement(arg);
-    }
-    
-    public String getName() {
-        return _name;
-    }
-    
-    //리팩토링이 필요한 핵심 메서드
-    //너무 많은 기능을 가지고 있다
-    public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-        Enumeration&amp;lt;Rental&amp;gt; rentals = _rentals.elements();
-        String result = getName() + &amp;quot; 고객님의 대여 기록 \n&amp;quot;;
-        
-        while(rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
-            
-            //비디오 종류별 대여로 계산 
-            switch (each.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                thisAmount += 2;
-                if(each.getDaysRented() &amp;gt; 2) 
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE: 
-                thisAmount += each.getDaysRented() * 3;
-                break;  
-            case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if(each.getDaysRented() &amp;gt; 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
-                break;  
-            }
-            
-            //적립 포인트 1포인트 증
-            frequentRenterPoints ++;
-            
-            //최신물을 이틀 이상 대여하면 보너스 포인트 지급 
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &amp;amp;&amp;amp; each.getDaysRented() &amp;gt; 1)
-                frequentRenterPoints++;
-            
-            //대여하는 비디오 정보와 대여로를 출
-            result += &amp;quot;\t&amp;quot; + each.getMovie().getTitle() + &amp;quot;\t&amp;quot; + String.valueOf(thisAmount) + &amp;quot;\n&amp;quot;;
-            
-            //현재까지 누적된 총 대여료
-            totalAmount += thisAmount;
-        }
-        
-        //footer
-        result += &amp;quot;누적 대여료 : &amp;quot; + String.valueOf(totalAmount) + &amp;quot;\n&amp;quot;;
-        result += &amp;quot;적립 포인트 : &amp;quot; + String.valueOf(frequentRenterPoints);
-        return result;
-    }
-    
-    
+	private String _name;
+	private Vector _rentals = new Vector();
+	
+	public Customer(String name) {
+		_name = name;
+	}
+	
+	public void addRental(Rental arg) {
+		_rentals.addElement(arg);
+	}
+	
+	public String getName() {
+		return _name;
+	}
+	
+	//리팩토링이 필요한 핵심 메서드
+	//너무 많은 기능을 가지고 있다
+	public String statement() {
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
+		Enumeration&amp;lt;Rental&amp;gt; rentals = _rentals.elements();
+		String result = getName() + &amp;quot; 고객님의 대여 기록 \n&amp;quot;;
+		
+		while(rentals.hasMoreElements()) {
+			double thisAmount = 0;
+			Rental each = (Rental) rentals.nextElement();
+			
+			//비디오 종류별 대여로 계산 
+			switch (each.getMovie().getPriceCode()) {
+			case Movie.REGULAR:
+				thisAmount += 2;
+				if(each.getDaysRented() &amp;gt; 2) 
+					thisAmount += (each.getDaysRented() - 2) * 1.5;
+				break;
+			case Movie.NEW_RELEASE:	
+				thisAmount += each.getDaysRented() * 3;
+				break;	
+			case Movie.CHILDRENS:
+				thisAmount += 1.5;
+				if(each.getDaysRented() &amp;gt; 3)
+					thisAmount += (each.getDaysRented() - 3) * 1.5;
+				break;	
+			}
+			
+			//적립 포인트 1포인트 증
+			frequentRenterPoints ++;
+			
+			//최신물을 이틀 이상 대여하면 보너스 포인트 지급 
+			if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &amp;amp;&amp;amp; each.getDaysRented() &amp;gt; 1)
+				frequentRenterPoints++;
+			
+			//대여하는 비디오 정보와 대여로를 출
+			result += &amp;quot;\t&amp;quot; + each.getMovie().getTitle() + &amp;quot;\t&amp;quot; + String.valueOf(thisAmount) + &amp;quot;\n&amp;quot;;
+			
+			//현재까지 누적된 총 대여료
+			totalAmount += thisAmount;
+		}
+		
+		//footer
+		result += &amp;quot;누적 대여료 : &amp;quot; + String.valueOf(totalAmount) + &amp;quot;\n&amp;quot;;
+		result += &amp;quot;적립 포인트 : &amp;quot; + String.valueOf(frequentRenterPoints);
+		return result;
+	}
+	
+	
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -205,27 +203,27 @@ public class Customer {
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private double getTotalCharge() {
-        double result = 0;
-        Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
-        
-        while (rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            result += each.getCharge();
-        }
-        return result;
-    }
+		double result = 0;
+		Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
+		
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			result += each.getCharge();
+		}
+		return result;
+	}
 
-    private int getTotalFrequentRenterPoints() {
-        int result = 0;
-        
-        Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
-        
-        while (rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            result += each.getFrequentRenterPoints();
-        }
-        return result;
-    }
+	private int getTotalFrequentRenterPoints() {
+		int result = 0;
+		
+		Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
+		
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			result += each.getFrequentRenterPoints();
+		}
+		return result;
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -239,19 +237,19 @@ public class Customer {
 &lt;p&gt;-htmlStatement 메서드를 추가하다&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public String htmlStatement() {
-        Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
-        String result = &amp;quot;&amp;lt;H1&amp;gt;&amp;lt;EM&amp;gt;&amp;quot; + getName() + &amp;quot;고객님의 대여 기록 &amp;lt;/EM&amp;gt;&amp;lt;/H1&amp;gt;&amp;lt;P&amp;gt;\n&amp;quot;;
-        while(rentals.hasNext()) {
-            Rental each = (Rental) rentals.next();
-            
-            //모든 대여 비디오 정보와 대여로를 출
-            result += each.getMovie().getTitle() + &amp;quot;\t&amp;quot; + String.valueOf(each.getCharge()) + &amp;quot;&amp;lt;BR&amp;gt;\n&amp;quot;;
-        }
-        //footer
-        result += &amp;quot;&amp;lt;P&amp;gt;누적 대여료 : &amp;lt;EM&amp;gt;&amp;quot; + String.valueOf(getTotalCharge()) + &amp;quot;&amp;lt;/EM&amp;gt;&amp;lt;/P&amp;gt;\n&amp;quot;;
-        result += &amp;quot;&amp;lt;P&amp;gt;적립 포인트 : &amp;lt;EM&amp;gt;&amp;quot; + String.valueOf(getTotalFrequentRenterPoints()) + &amp;quot;&amp;lt;/EM&amp;gt;&amp;lt;/P&amp;quot;;
-        return result;
-    }
+		Iterator&amp;lt;Rental&amp;gt; rentals = _rentals.iterator();
+		String result = &amp;quot;&amp;lt;H1&amp;gt;&amp;lt;EM&amp;gt;&amp;quot; + getName() + &amp;quot;고객님의 대여 기록 &amp;lt;/EM&amp;gt;&amp;lt;/H1&amp;gt;&amp;lt;P&amp;gt;\n&amp;quot;;
+		while(rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
+			
+			//모든 대여 비디오 정보와 대여로를 출
+			result += each.getMovie().getTitle() + &amp;quot;\t&amp;quot; + String.valueOf(each.getCharge()) + &amp;quot;&amp;lt;BR&amp;gt;\n&amp;quot;;
+		}
+		//footer
+		result += &amp;quot;&amp;lt;P&amp;gt;누적 대여료 : &amp;lt;EM&amp;gt;&amp;quot; + String.valueOf(getTotalCharge()) + &amp;quot;&amp;lt;/EM&amp;gt;&amp;lt;/P&amp;gt;\n&amp;quot;;
+		result += &amp;quot;&amp;lt;P&amp;gt;적립 포인트 : &amp;lt;EM&amp;gt;&amp;quot; + String.valueOf(getTotalFrequentRenterPoints()) + &amp;quot;&amp;lt;/EM&amp;gt;&amp;lt;/P&amp;quot;;
+		return result;
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -291,35 +289,35 @@ public class Customer {
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public abstract class Price {
-    abstract int getPriceCode();
+	abstract int getPriceCode();
 }
 
 
 class ChildrensPrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.CHILDRENS;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.CHILDRENS;
+	}
+	
 }
 
 class NewReleasePrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.NEW_RELEASE;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.NEW_RELEASE;
+	}
+	
 }
 
 class RegularPrice extends Price {
 
-    @Override
-    int getPriceCode() {
-        return Movie.REGULAR;
-    }
-    
+	@Override
+	int getPriceCode() {
+		return Movie.REGULAR;
+	}
+	
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -328,23 +326,23 @@ class RegularPrice extends Price {
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;        public int getPriceCode() {
-        return _price.getPriceCode();
-    }
-    
-    public void setPriceCode(int arg){
-        switch(arg) {
-            case REGULAR:
-                _price = new RegularPrice();
-                break;
-            case CHILDRENS:
-                _price = new ChildrensPrice();
-                break;
-            case NEW_RELEASE:
-                _price = new NewReleasePrice();
-                break;
-        }
-    
-    }
+		return _price.getPriceCode();
+	}
+	
+	public void setPriceCode(int arg){
+		switch(arg) {
+			case REGULAR:
+				_price = new RegularPrice();
+				break;
+			case CHILDRENS:
+				_price = new ChildrensPrice();
+				break;
+			case NEW_RELEASE:
+				_price = new NewReleasePrice();
+				break;
+		}
+	
+	}
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -361,6 +359,30 @@ class RegularPrice extends Price {
 &lt;ul&gt;
 &lt;li&gt;이장은 리팩토링이 무엇인지 어느 정도 감을 잡기 위한 장이다. 예제에서 몇가지 기법을 사용했는데. 이런 기법을 적용하면 기능 분배가 균등해지고 코드 유지보수도 쉬워진다. 가장 중요한 교훈은 &amp;lsquo;간단한 수정 -&amp;gt; 테스트&amp;rsquo;를 리듬처럼 반복해야 한다는 것이다. 이 리듬을 지킬 때만이 리팩토링을 빠르고 안정적으로 완료할 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>맛보기 예제</title>
+      <link>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/</link>
+      <pubDate>Sun, 08 May 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/</guid>
+      <description>&lt;p&gt;메서드명 변경 Rename Method
+매개변수 추가 Add Parameter
+매개변수 제거 Remove Parameter
+상태 변경 메서드와 값 반환 메서드를 분리 Separate Query from Modifier
+메서드를 매개변수로 전환 Parameterize Method
+매개변수를 메서드로 전환 Replace Parameter with Explicit Methods
+객체를 통째로 전달 Preserve Whole Object
+매개변수 세트를 메서드로 전환 Replace Parameter with Method
+매개변수 세트를 객체로 전환 Introduce Parameter Object
+쓰기 메서드 제거 Remove Setting Method
+메서드 은폐 Hide Method
+생성자를 팩토리 메서드로 전환 Replace Constructor with Factory Method
+하향 타입 변환을 캡슐화 Encapsulate Downcast
+에러 부호를 예외 통지로 교체 Replace Error Code with Exception
+예외 처리를 테스트로 교체 Replace Exception with Test&lt;/p&gt;
 </description>
     </item>
     

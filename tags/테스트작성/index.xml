@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>테스트작성 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9E%91%EC%84%B1/</link>
+    <description>Recent content in 테스트작성 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 14 May 2016 11:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9E%91%EC%84%B1/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>테스트작성</title>
+      <link>http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/</link>
+      <pubDate>Sat, 14 May 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/</guid>
+      <description>
+
+&lt;h3 id=&#34;04-테스트-작성:3a266575c8c9dd1ccaba733e70d3c7a6&#34;&gt;04 테스트 작성&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;리팩토링을 실시하기 위한 필수 전제조건은 반드시 견고한 테스트를 해야한다.&lt;/li&gt;
+&lt;li&gt;적절한 테스트를 작성하면 설령 리팩토링을 하지않더라도 프로그래밍 속도가 월등히 왜 빨라지는 가에 대해서 설명&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;1-자가-테스트-코드의-가치:3a266575c8c9dd1ccaba733e70d3c7a6&#34;&gt;1. 자가 테스트 코드의 가치&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;버그를 찾는 데 시간을 많이 소요하는 프로그래머들이 존재&lt;/li&gt;
+&lt;li&gt;모든 테스트를 완전히 자동화하고 결과를 자체적으로 검사하게 하자.&lt;/li&gt;
+&lt;li&gt;테스트 스위트(하나의 테스트)는 버그를 찾는 시간을 획기적으로 줄여주는 강력한 버그 감지 도구이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-junit-테스트-프레임-워크:3a266575c8c9dd1ccaba733e70d3c7a6&#34;&gt;2. JUnit 테스트 프레임 워크&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;예제 소스&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;3-단위-테스트와-기능-테스트:3a266575c8c9dd1ccaba733e70d3c7a6&#34;&gt;3. 단위 테스트와 기능 테스트&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;단위 테스트(Unit Test) -&amp;gt; 부분적인 단위만 테스트 한다. 한정적이다&lt;/li&gt;
+&lt;li&gt;junit 의 경우 단위테스트용 도구이다&lt;/li&gt;
+&lt;li&gt;기능 테스트(Functional Test): 소프트웨어 전체가 제대로 동작하는 지 확인하기 위해 작성한다.&lt;/li&gt;
+&lt;li&gt;보통 전체 시스템을 하나의 블랙박스처럼 취급한다. GUI를 통해 테스트를 하고 특정 입력에 대해서 데이터가 어떻게 변하는 지를 본다.&lt;/li&gt;
+&lt;li&gt;버그 발견 시 코드를 수정해야 하고 버그를 볼수 있게 표시하는 단위테스트를 작성한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;4-테스트-추가:3a266575c8c9dd1ccaba733e70d3c7a6&#34;&gt;4. 테스트 추가&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;완벽한 테스트를 작성하려다 아예 테스트를 포기하느니, 차라리 불완전한 테스트를 작성해 실행하는 편이 낫다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

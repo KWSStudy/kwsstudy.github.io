@@ -1,0 +1,985 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Korea Web Service Study Group</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+            
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="&#43;&#43;&#43; categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-06-05T11:00:00&#43;09:00&quot; tags = [&quot;Refactoring&quot;,&quot;데이타 체계화&quot;] title = &quot;데이타 체계화&quot; description = &quot;Refactoring - 데이타 체계화&quot; &#43;&#43;&#43; 데이터 체계화 필드 자체 캡슐화 필드에 직접 접근하고 있는데 필드에 대한 결합이 이상해지면 get/set 메소드를 만들어 필드에 접근. #####before private int _low, _high; boolean includes(int arg){ return arg &gt;= _low &amp;&amp; arg &lt;= _high; } #####after private int _low, _high; boolean includes(int arg){ return arg &gt;= getLow() &amp;&amp; arg &lt;= getHigh(); } int getLow() {return _low;} int getHigh() {return _high;} 필드 자체 캡슐화를 실시해야 할 가장 절실할 시점은 상위클래스 안의 필드에 접근하되 이 변수 접근을 하위클래스에서 계산된 값으로 재정의해야 할때다."/>
+
+
+
+        <meta property="og:title" content="" />
+<meta property="og:description" content="&#43;&#43;&#43; categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-06-05T11:00:00&#43;09:00&quot; tags = [&quot;Refactoring&quot;,&quot;데이타 체계화&quot;] title = &quot;데이타 체계화&quot; description = &quot;Refactoring - 데이타 체계화&quot; &#43;&#43;&#43; 데이터 체계화 필드 자체 캡슐화 필드에 직접 접근하고 있는데 필드에 대한 결합이 이상해지면 get/set 메소드를 만들어 필드에 접근. #####before private int _low, _high; boolean includes(int arg){ return arg &gt;= _low &amp;&amp; arg &lt;= _high; } #####after private int _low, _high; boolean includes(int arg){ return arg &gt;= getLow() &amp;&amp; arg &lt;= getHigh(); } int getLow() {return _low;} int getHigh() {return _high;} 필드 자체 캡슐화를 실시해야 할 가장 절실할 시점은 상위클래스 안의 필드에 접근하되 이 변수 접근을 하위클래스에서 계산된 값으로 재정의해야 할때다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="">
+<meta itemprop="description" content="&#43;&#43;&#43; categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-06-05T11:00:00&#43;09:00&quot; tags = [&quot;Refactoring&quot;,&quot;데이타 체계화&quot;] title = &quot;데이타 체계화&quot; description = &quot;Refactoring - 데이타 체계화&quot; &#43;&#43;&#43; 데이터 체계화 필드 자체 캡슐화 필드에 직접 접근하고 있는데 필드에 대한 결합이 이상해지면 get/set 메소드를 만들어 필드에 접근. #####before private int _low, _high; boolean includes(int arg){ return arg &gt;= _low &amp;&amp; arg &lt;= _high; } #####after private int _low, _high; boolean includes(int arg){ return arg &gt;= getLow() &amp;&amp; arg &lt;= getHigh(); } int getLow() {return _low;} int getHigh() {return _high;} 필드 자체 캡슐화를 실시해야 할 가장 절실할 시점은 상위클래스 안의 필드에 접근하되 이 변수 접근을 하위클래스에서 계산된 값으로 재정의해야 할때다.">
+
+
+
+<meta itemprop="wordCount" content="673">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,Refactoring,DesignPartterns,Refactoring,나머지 패턴,데코레이터 패턴,맛보기 예제,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>맛보기 예제</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&text=&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"></a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='0001-01-01'>
+            January 1, 0001</time>
+        <span class="author"></span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&text=&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f&title=" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25B2%25B4%25EA%25B3%2584%25ED%2599%2594%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<pre><code>+++
+categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;]
+date = &quot;2016-06-05T11:00:00+09:00&quot;
+tags = [&quot;Refactoring&quot;,&quot;데이타 체계화&quot;]
+title = &quot;데이타 체계화&quot;
+description = &quot;Refactoring - 데이타 체계화&quot;
++++
+
+
+</code></pre>
+
+<hr />
+
+<h4 id="데이터-체계화:df0f84d1496ba770be122b5112e062d8">데이터 체계화</h4>
+
+<hr />
+
+<h4 id="필드-자체-캡슐화:df0f84d1496ba770be122b5112e062d8">필드 자체 캡슐화</h4>
+
+<p>필드에 직접 접근하고 있는데 필드에 대한 결합이 이상해지면 get/set 메소드를 만들어 필드에 접근.</p>
+
+<p>#####before</p>
+
+<pre><code class="language-java">
+private int _low, _high;
+boolean includes(int arg){
+  return arg &gt;= _low &amp;&amp; arg &lt;= _high;
+}
+
+</code></pre>
+
+<p>#####after</p>
+
+<pre><code class="language-java">
+private int _low, _high;
+boolean includes(int arg){
+  return arg &gt;= getLow() &amp;&amp; arg &lt;= getHigh();
+}
+int getLow() {return _low;}
+int getHigh() {return _high;}
+
+</code></pre>
+
+<p>필드 자체 캡슐화를 실시해야 할 가장 절실할 시점은 상위클래스 안의 필드에 접근하되 이 변수 접근을 하위클래스에서 계산된 값으로 재정의해야 할때다. 먼저 필드를 자체 캡슐화한 후 필요할때 읽기 메서드와 쓰기 메서드를 재정의하면 된다.</p>
+
+<p>방법
+- 필드 읽기메서드와 쓰기메서드를 작성하자.
+- 그 필드 참조 부분을 전부 찾아서 읽기 메서드와 쓰기 메서드로 고치자
+- 필드를 private로 만들자.
+- 참조 코드를 빠짐없이 수정했는지 다시 확인하자.
+- 테스트를 실시하자.</p>
+
+<p>예제</p>
+
+<p>#####before</p>
+
+<pre><code class="language-java">
+package com.kws.eight;
+
+public class IntRange {
+	private int _low,_high;
+	
+	boolean includes(int arg){
+		return arg &gt;= _low &amp;&amp; arg &lt;= _high;
+	}
+	
+	void grow(int factor){
+		_high = _high * factor;
+	}
+	
+	IntRange(int low, int high){
+		_low = low;
+		_high = high;
+	}
+}
+
+</code></pre>
+
+<p>#####after</p>
+
+<pre><code class="language-java">package com.kws.eight;
+
+public class IntRange {
+	private int _low,_high;
+	
+	boolean includes(int arg){
+		return arg &gt;= get_low() &amp;&amp; arg &lt;= get_high();
+	}
+	
+	void grow(int factor){
+		this._high = get_high() * factor;
+	}
+
+	public int get_low() {
+		return _low;
+	}
+
+	public void set_low(int _low) {
+		this._low = _low;
+	}
+
+	public int get_high() {
+		return _high;
+	}
+
+	public void set_high(int _high) {
+		this._high = _high;
+	}
+	
+}
+
+
+</code></pre>
+
+<p>자체 캡슐화를 실시할 때는 생성자 안에 쓰기 메서드를 사용할 때 주의해야 한다.대체로 객체가 생성된 후엔 속성을 변경하려고 쓰기 메서드를 사용하므로,쓰기 메서드에 초기화 시점과 다른 기능이 추가 됐을 수 있다고 전체할 때가 많다. 이럴땐 생성자나 별도의 초기화 메서드에서 직접 접근하게 하는 것이 좋다.</p>
+
+<pre><code class="language-java">package com.kws.eight;
+
+public class IntRange {
+	private int _low,_high;
+	
+	IntRange(int low, int high){
+		initialize(low, high);
+	}
+	
+	private void initialize(int low, int high){
+		this._low = low;
+		this._high = high;
+	}
+
+	boolean includes(int arg){
+		return arg &gt;= get_low() &amp;&amp; arg &lt;= get_high();
+	}
+	
+	void grow(int factor){
+		this._high = get_high() * factor;
+	}
+
+	public int get_low() {
+		return _low;
+	}
+
+	public void set_low(int _low) {
+		this._low = _low;
+	}
+
+	public int get_high() {
+		return _high;
+	}
+
+	public void set_high(int _high) {
+		this._high = _high;
+	}
+	
+}
+
+</code></pre>
+
+<p>생성자 초기화 메서드를 해두면 IntRange의 기능을 전부 재정의하면 기능을 하나도 수정하지 않고 cap을 계산에 넣을 수 있다.</p>
+
+<pre><code class="language-java">package com.kws.eight;
+
+public class CappedRange extends IntRange{
+	private int _cap;
+	
+	CappedRange(int low, int high,int cap) {
+		super(low, high);
+		this._cap = cap;
+	}
+
+	public int get_cap() {
+		return _cap;
+	}
+
+	public void set_cap(int _cap) {
+		this._cap = _cap;
+	}
+	
+}
+
+
+</code></pre>
+
+<hr />
+
+<h4 id="데이터-값을-객체로-전환:df0f84d1496ba770be122b5112e062d8">데이터 값을 객체로 전환</h4>
+
+<p>추가적인 데이터나 동작을 필요로 하는 데이터 아이템이 있을 때는 데이터 아이템을 객체로 바꾸어라.
+예를 들면 Telephone번호는 String으로 정의할 수 있지만 이와 관련된 동작(포맷팅,지역코드 추출등)이 필요하다는 것을 알게 된다.
+이때 데이터 값을 객체로 바꾸어야 한다.</p>
+
+<p>#####before</p>
+
+<pre><code class="language-java">package com.kws.eight.twos;
+
+import java.util.List;
+
+import com.kws.eight.Log;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class OrderBefore {
+	private String _customer;
+	
+	public String get_customer() {
+		return _customer;
+	}
+	public void set_customer(String _customer) {
+		this._customer = _customer;
+	}
+	
+	static int numberOrderFor(List&lt;OrderBefore&gt; orders, String customer){
+		
+		int result = 0;
+		
+		@SuppressWarnings(&quot;rawtypes&quot;)
+		Iterator iter = orders.iterator();
+		
+		while(iter.hasNext()){
+			OrderBefore each = (OrderBefore) iter.next();
+			if(each.get_customer().equals(customer)){
+				Log.systemLog(&quot;customer :&quot; , each.get_customer());
+				result++;
+			}
+			
+		}
+		
+		return result;
+	}
+	
+	@SuppressWarnings({ &quot;static-access&quot;})
+	public static void main(String[] args) {
+		
+		int result = 0;
+		
+		OrderBefore orderCollection = new OrderBefore();
+		
+		orderCollection.set_customer(&quot;customer&quot;);
+		
+		List&lt;OrderBefore&gt; orders = new ArrayList&lt;OrderBefore&gt;();
+		
+		orders.add(orderCollection);
+		
+		result += orderCollection.numberOrderFor(orders, &quot;customer&quot;);
+		
+		Log.systemLog(&quot;Count : &quot;, result);
+		
+	}
+	
+}
+
+</code></pre>
+
+<p>#####after</p>
+
+<pre><code class="language-java">package com.kws.eight.twos;
+
+import java.util.List;
+
+import com.kws.eight.Log;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class OrderBefore {
+    private String _customer;
+    
+    public String get_customer() {
+        return _customer;
+    }
+    public void set_customer(String _customer) {
+        this._customer = _customer;
+    }
+    
+    static int numberOrderFor(List&lt;OrderBefore&gt; orders, String customer){
+        
+        int result = 0;
+        
+        @SuppressWarnings(&quot;rawtypes&quot;)
+        Iterator iter = orders.iterator();
+        
+        while(iter.hasNext()){
+            OrderBefore each = (OrderBefore) iter.next();
+            if(each.get_customer().equals(customer)){
+                Log.systemLog(&quot;customer :&quot; , each.get_customer());
+                result++;
+            }
+            
+        }
+        
+        return result;
+    }
+    
+    @SuppressWarnings({ &quot;static-access&quot;})
+    public static void main(String[] args) {
+        
+        int result = 0;
+        
+        OrderBefore orderCollection = new OrderBefore();
+        
+        orderCollection.set_customer(&quot;customer&quot;);
+        
+        List&lt;OrderBefore&gt; orders = new ArrayList&lt;OrderBefore&gt;();
+        
+        orders.add(orderCollection);
+        
+        result += orderCollection.numberOrderFor(orders, &quot;customer&quot;);
+        
+        Log.systemLog(&quot;Count : &quot;, result);
+        
+    }
+    
+}
+
+
+</code></pre>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+
+    
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"
+                class="button big previous"></a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"
+                class="button big next"></a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94\/';
+    var disqus_title = '';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">맛보기 예제</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-08'>
+                                    May 8, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">15</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">1</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

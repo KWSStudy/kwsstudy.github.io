@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/tags/ec9db4ed84b0eba088ec9db4ed84b0ec9980-ecbbb4ed8faceca780ed8ab8-ed8ca8ed84b4/" />
 
 
-<meta property="og:updated_time" content="2016-02-28T11:00:00&#43;09:00"/>
+
 
 
 
@@ -171,11 +171,11 @@
 
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>맛보기 예제</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/"><p>맛보기 예제</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
                     </li>
                 
             </ul>
@@ -197,10 +197,8 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/">옵저버 패턴</a></h2>
+            <h2><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"></a></h2>
         
-        
-            <p>DesignPartterns - 옵저버 패턴</p>
         
     </div>
     <div class="meta">
@@ -209,11 +207,11 @@
         
 
         <time class="published"
-            datetime='2016-02-28'>
-            February 28, 2016</time>
+            datetime='0001-01-01'>
+            January 1, 0001</time>
         <span class="author"></span>
         
-            <p>5 minute read</p>
+            <p>13 minute read</p>
         
         
     </div>
@@ -221,40 +219,102 @@
 
     
 
-    <p>옵저버 패턴의 정의 옵저버 패턴(Observer Pattern)에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다(one-to-many)의존성을 정의 한다 신문 구독 메커니즘에서 출판사를 주제(subject), 구독자를 옵저버(observer)라고 생각하시면 이해하기 쉽다. 옵저버 패턴을 적용하여 어플리케이션을 만들어 보겠다. 우리가 만들 애플리케이션은 위치 어플리케이션이다. Position 객체를 받아서 x좌표 y좌표를 받아서 디스플레이 장비에서 갱신해 가면서 보여주는 어플리케이션이다. Position 인터페이스 public classPosition { public float getPositionX() { return 0.0f; } public float getPositionY() { return 0.0f; } /* * 포지션 값이 변경될 때마다 알려주기 위한 메서드 */ public void positionChanged(){ float positionX = getPositionX(); float positionY = getPositionY(); } } 지금 알고 있는 것들 x좌표 y좌표를 알아낼 수 있는 메서드가 있다.</p>
+    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-29T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;객체 간의 기능 이동&quot;] title = &quot;객체 간의 기능 이동&quot; description = &quot;Refactoring - 객체 간의 기능 이동&quot; +++ 객체 간 이동이 가능한 상황 및 상황별 리팩토링 기법 기능을 넣을 적절한 위치를 찾는 경우 메서드 이동(Move Method) 필드 이동(Move Field) 방대해진 클래스의 정리 또는 클래스 기능이 너무 적은 경우 클래스 추출(Extract Class) - 기능이 너무 많아 방대해진 클래스 클래스 직접 삽입(Inline Class) - 리팩토링 결과로 클래스 내에 기능이 너무 작아진 경우 다른 클래스로 합침 다른 클래스(대리 클래스)를 이용할 경우 대리 객체 은폐(Hide Delegate) - 대리 클래스가 사용 중이라는 것을 외부에 감춤 과잉 중개 메서드 제거(Remove Middle Man) - 대리 객체 은폐시 대리 클래스를 사용 중인 클래스의 인터페이스가 변경될 때 클래스의 원본 코드에 접근할 수 없는 상황에서 수정 불가능한 클래스의 기능을 이동해야 할 때 외래 클래스에 메서드 추가(Introduce Foreign Method) - 기능을 이동할 메서드가 한두개 뿐일 때 국소적 상속확장 클래스 사용(Introduce Local Extension) - 기능을 이동할 메서드가 세개 이상일 때 메서드 이동 (Move Method) 메서드가 자신이 속한 클래스보다 다른 클래스의 기능을 더 많이 사용할 때 → 그 메서드가 가장 많이 이용하는 클래스 안에서 비슷한 내용의 메서드를 작성 → 기존 메서드는 간단한 대리 메서드로 전환하던지 아예 삭제 동기 언제 적용하는게 좋을까?</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
+            <li><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
-        
+
+    
+    
+</ul>
+
+    </footer>
+</article>
 
         
+            <article class="post">
+    <header>
+    <div class="title">
         
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
+            <h2><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"></a></h2>
         
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='0001-01-01'>
+            January 1, 0001</time>
+        <span class="author"></span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-06-05T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;데이타 체계화&quot;] title = &quot;데이타 체계화&quot; description = &quot;Refactoring - 데이타 체계화&quot; +++ 데이터 체계화 필드 자체 캡슐화 필드에 직접 접근하고 있는데 필드에 대한 결합이 이상해지면 get/set 메소드를 만들어 필드에 접근. #####before private int _low, _high; boolean includes(int arg){ return arg &gt;= _low &amp;&amp; arg &lt;= _high; } #####after private int _low, _high; boolean includes(int arg){ return arg &gt;= getLow() &amp;&amp; arg &lt;= getHigh(); } int getLow() {return _low;} int getHigh() {return _high;} 필드 자체 캡슐화를 실시해야 할 가장 절실할 시점은 상위클래스 안의 필드에 접근하되 이 변수 접근을 하위클래스에서 계산된 값으로 재정의해야 할때다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
     
 
     
     
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"></a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='0001-01-01'>
+            January 1, 0001</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
     
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+
+    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-14T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;리팩토링 기법 카탈로그&quot;] title = &quot;리팩토링 기법 카탈로그&quot; description = &quot;Refactoring - 리팩토링 기법 카탈로그&quot; +++ 리팩토링 기법 카탈로그에 대해 1. 각 리팩토링 기법 절의 구성 카탈로그 부분의 각 리팩토링 기법은 다음과 같은 5개의 하위 절로 구성했다. 이름 : 각종 리팩토링 기법을 구별하기 위한 필수적인 요소, 카탈로그의 각 절 제목으로도 사용했다. 요약 : 기법의 적용 시점과 목적을 설명. 이부분을 보면 자신에게 필요한 리팩토링 기법을 더 빨리 찾을 수 있다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+
+    
     
 </ul>
 
@@ -271,7 +331,8 @@
     
 
     
-        <li><a href="#" class="disabled button big next">Next Page</a></li>
+        <li><a href="/tags/ec9db4ed84b0eba088ec9db4ed84b0ec9980-ecbbb4ed8faceca780ed8ab8-ed8ca8ed84b4/page/7/"
+                class="button big next">Next Page</a></li>
     
 </ul>
 
@@ -375,7 +436,7 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">맛보기 예제</a></h3>
                                 
                                     
                                 
@@ -389,13 +450,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/">맛보기 예제</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
+                                    '2016-04-03'>
+                                    April 3, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -434,7 +495,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">16</span>
+                                <span style="float:right;">15</span>
                             </header>
                         </article>
                     </li>
@@ -452,7 +513,7 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">2</span>
+                                <span style="float:right;">1</span>
                             </header>
                         </article>
                     </li>
