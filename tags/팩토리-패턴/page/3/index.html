@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/tags/ed8ca9ed86a0eba6ac-ed8ca8ed84b4/" />
 
 
-<meta property="og:updated_time" content="2016-03-27T12:00:00&#43;09:00"/>
+<meta property="og:updated_time" content="2016-04-03T11:00:00&#43;09:00"/>
 
 
 
@@ -171,7 +171,15 @@
 
                 
                     <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"><p>데이타 체계화</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/"><p>메서드 정리</p></a>
                     </li>
                 
                     <li>
@@ -180,14 +188,6 @@
                 
                     <li>
                         <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"><p>테스트작성</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
                     </li>
                 
             </ul>
@@ -203,6 +203,144 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/">컴파운드 패턴</a></h2>
+        
+        
+            <p>DesignPartterns - 컴파운드 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-04-03'>
+            April 3, 2016</time>
+        <span class="author"></span>
+        
+            <p>4 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>컴파운드 패턴이란? 반복적으로 생길 수 있는 일반적인 문제를 해결하기 위한 용도로 두 개 이상의 패턴을 결합해서 사용하는 것. 패턴을 같이 쓴다고 무조건 컴파운드 패턴은 아니다. 문제를 해결하기 위한 용도로 사용해야 된다. 대표적인 컴파운드 패턴은 MVC이다. //Quckable인터페이스를 구현한 클래스들 public interface Quackable { public void quack(); } public class DuckCall implements Quackable{ @Override public void quack() { System.out.println(&quot;Kwak&quot;); } } public class MallardDuck implements Quackable { @Override public void quack() { System.out.println(&quot;Quack&quot;); } } public class RedheadDuck implements Quackable { @Override public void quack() { System.out.println(&quot;quack&quot;); } } public class RubberDuck implements Quackable{ @Override public void quack() { System.out.println(&quot;Squeak&quot;); } } 실행 public class DuckSimulator { public static void main(String [] args) { DuckSimulator simulator = new DuckSimulator(); simulator.simulator(); } void simulator() { Quackable mallardDuck = new MallardDuck(); Quackable redheadDuck = new RedheadDuck(); Quackable duckCall = new DuckCall(); Quackable rubberDuck = new RubberDuck(); System.out.println(&quot;\nDuck Simulator&quot;); simulator(mallardDuck); simulator(redheadDuck); simulator(duckCall); simulator(rubberDuck); } void simulator(Quackable duck) { duck.quack(); } } &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; Duck Simulator Quack quack Kwak Squeak 거위가 추가되었다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EC%BB%B4%ED%8C%8C%EC%9A%B4%EB%93%9C-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/MVC/">컴파운드 패턴-MVC</a></h2>
+        
+        
+            <p>DesignPartterns - 컴파운드 패턴-MVC</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-04-03'>
+            April 3, 2016</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>MP3에대한 MVC 디자인 패턴의 관계에서 바라본 MVC 사용자는 뷰하고만 접촉할 수 있다. 컨트롤러에서 모델한테 상태를 변경하라는 요청을 한다. 컨트롤러에서 뷰를 변경해 달라고 요청할 수도 있다. 상태가 변경되면 모델에서 뷰한테 그 사실을 알린다. 뷰에서 모델한테 상태를 요청한다. 패턴 안경을 끼고 MVC를 살펴보자 스트래티지 패턴의 적용 원칙 자주 바뀌는 부분(기능)을 바뀌지 않는 부분과 분리하여 캡슐화 한다. 스트래티지 패턴(뷰와 컨트롤러) - 뷰 객체를 여러 전략을 써서 제공한다. 전략은 컨트롤러가 제공한다. 뷰에서는 애플리케이션의 겉모습에만 신경을 쓰고, 인터페이스의 행동에 대한 결정은 모두 컨트롤러한테 맡긴다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/MVC/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -412,144 +550,6 @@
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/">템플릿 메소드 패턴</a></h2>
-        
-        
-            <p>DesignPartterns - 템플릿 메소드 패턴</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-03-20'>
-            March 20, 2016</time>
-        <span class="author"></span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>정의 서로 다른 클래스들의 알고리즘이 공통될 때(상세 기능이 아닌 일반적인 관점에서) 공통된 알고리즘을 슈퍼클래스에서 정의하고 일부 다른부분은 추상 메소드로 정의하여 서브클래스에서 구현하는 패턴 템플릿 메소드 패턴의 특징 코드의 재사용에 크게 도움된다. 클래스간의 의존성을 낮춰준다. 프레임워크를 만들때 자주 사용되는 패턴이다. 변경이 일어나지 않는 부분은 슈퍼 클래스에서 final로 지정하여 오버라이드하지 못하게 막는다 템플릿 메소드 디자인 원칙(책에서는 헐리우드 원칙이라 나옴) 저수준 구성요소가 고수준의 구성요소를 직접 호출할 수 없다.(고수준의 구성요소에서 호출하기전에 저수준 구성요소는 대기한다.) 클래스의 주요 기능은 고수준 구성요소에서 장악하고 구현이 필요한 기능만 저수준 클래스를 호출한다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A9%94%EC%86%8C%EB%93%9C-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/">어댑터 패턴과 퍼사드 패턴</a></h2>
-        
-        
-            <p>DesignPartterns - 어댑터 패턴과 퍼사드 패턴</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-03-13'>
-            March 13, 2016</time>
-        <span class="author"></span>
-        
-            <p>2 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>어댑터? 국산 플러그와 유럽식 소켓사이에서 국산 전원 플러그를 유럽식 소켓에 꽂을 수 있게 해주는 역할을 해주는 것. 어댑터 패턴(Adapter Pattern)의 정의 한 클래스(어떤)의 인터페이스를 클라이언트에서 사용하고자 하는 다른 인터페이스로 변환합니다. 어탭터를 이용하면 인터페이스 호환성 문제 때문에 같이 쓸 수 없는 클래스들을 연결해서 쓸 수 있습니다. 어댑터는 클라이언트로부터 요청을 받아서 새로운 업체에서 제공하는 클래스에서 받아들일 수 있는 형태의 요청으로 변환시켜주는 중개인 역할을 합니다. 어댑티? -&gt; 어댑터를 가운데 두고, 클라이언트와 정반대 위치에 있는것을 어댑티라고 부름.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%96%B4%EB%8C%91%ED%84%B0-%ED%8C%A8%ED%84%B4%EA%B3%BC-%ED%8D%BC%EC%82%AC%EB%93%9C-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -664,6 +664,20 @@
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/">데이타 체계화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-05'>
+                                    June 5, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
                                 
                                     
@@ -671,6 +685,20 @@
                                 <time class="published" datetime=
                                     '2016-05-29'>
                                     May 29, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/">메서드 정리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-22'>
+                                    May 22, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -699,34 +727,6 @@
                                 <time class="published" datetime=
                                     '2016-05-14'>
                                     May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-14'>
-                                    May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -765,7 +765,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">21</span>
+                                <span style="float:right;">23</span>
                             </header>
                         </article>
                     </li>
@@ -783,7 +783,7 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">7</span>
+                                <span style="float:right;">9</span>
                             </header>
                         </article>
                     </li>

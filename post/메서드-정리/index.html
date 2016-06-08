@@ -1,0 +1,767 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>메서드 정리</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="Refactoring - 메서드 정리">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="메서드 정리"/>
+<meta name="twitter:description" content="Refactoring - 메서드 정리"/>
+
+
+
+        <meta property="og:title" content="메서드 정리" />
+<meta property="og:description" content="Refactoring - 메서드 정리" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/" />
+
+
+<meta property="og:updated_time" content="2016-05-22T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="메서드 정리">
+<meta itemprop="description" content="Refactoring - 메서드 정리">
+
+
+<meta itemprop="dateModified" content="2016-05-22T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="0">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,Refactoring,DesignPartterns,Refactoring,객체 간의 기능 이동,나머지 패턴,데이타 체계화,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,메서드 정리,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"><p>데이타 체계화</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/"><p>메서드 정리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"><p>리팩토링 기법 카탈로그</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&text=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/">메서드 정리</a></h1>
+            
+        
+        
+            <p>Refactoring - 메서드 정리</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-22'>
+            May 22, 2016</time>
+        <span class="author"></span>
+        
+            <p>0 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&text=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f&title=%eb%a9%94%ec%84%9c%eb%93%9c%20%ec%a0%95%eb%a6%ac" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25A9%2594%25EC%2584%259C%25EB%2593%259C-%25EC%25A0%2595%25EB%25A6%25AC%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        <p><img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/%EB%A9%94%EC%84%9C%EB%93%9C%EC%A0%95%EB%A6%AC.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/2.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/3.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/4.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/5.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/6.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/7.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/8.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/9.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/10.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/11.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/12.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/13.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/14.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/15.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/16.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/17.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/18.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/19.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/20.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/21.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/22.png" alt="" />
+<img src="https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/23.png" alt="" /></p>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"
+                class="button big previous">리팩토링 기법 카탈로그</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"
+                class="button big next">객체 간의 기능 이동</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC\/';
+    var disqus_title = '메서드 정리';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/">데이타 체계화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-05'>
+                                    June 5, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-29'>
+                                    May 29, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/">메서드 정리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-22'>
+                                    May 22, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-14'>
+                                    May 14, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">23</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">9</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

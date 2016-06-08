@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/tags/ec9db4ed84b0eba088ec9db4ed84b0ec9980-ecbbb4ed8faceca780ed8ab8-ed8ca8ed84b4/" />
 
 
-<meta property="og:updated_time" content="2016-02-28T11:00:00&#43;09:00"/>
+<meta property="og:updated_time" content="2016-03-06T11:00:00&#43;09:00"/>
 
 
 
@@ -171,7 +171,15 @@
 
                 
                     <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"><p>데이타 체계화</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/"><p>메서드 정리</p></a>
                     </li>
                 
                     <li>
@@ -180,14 +188,6 @@
                 
                     <li>
                         <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/"><p>테스트작성</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"><p>리팩토링 개론</p></a>
                     </li>
                 
             </ul>
@@ -203,6 +203,144 @@
         
             
         
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/">팩토리 패턴</a></h2>
+        
+        
+            <p>DesignPartterns - 팩토리 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-03-06'>
+            March 6, 2016</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>팩토리패턴 디자인패턴 중에서 생성 패턴(Creational Pattern)의 대표적인 패턴들이다. 팩토리 패턴의 종류 팩토리 메서드(Factory Method) 패턴 추상 팩토리(Abstract Factory) 패턴 시작하기전에 디자인 패턴에 포함되지는 않지만, 팩토리 패턴의 기본이 되는 팩토리 구조에 대해서 알아보자. 팩토리를 사용하는 이유 클라이언트에서 사용할 객체를 생성하는 부분을 캡슐화하여 느슨한 결합 상태로 만들어, 변화에는 닫혀있고 확장에는 열려있는 코드를 만들 수 있다. 변경 전의 코드 // Pizza 클래스의 객체의 생성 및 사용을 모두 수행하는 메서드 Pizza orderPizza(String type) { Pizza pizza; if (type.equals(&quot;cheese&quot;)) { pizza = new CheesePizza(); } else if (type.equals(&quot;greek&quot;)) { pizza = new GreekPizza(); } else if (type.equals(&quot;pepperoni&quot;)) { pizza = new PepperoniPizza(); } pizza.prepare(); pizza.bake(); pizza.cut(); pizza.box(); return pizza; } 변경 후의 코드 // Pizza 클래스의 생성을 전담하는 클래스 = 팩토리 public class SimplePizzaFactory { public Pizza createPizza(String type) { Pizza = null; if (type.equals(&quot;cheese&quot;)) { pizza = new CheesePizza(); } else if (type.equals(&quot;greek&quot;)) { pizza = new GreekPizza(); } else if (type.equals(&quot;pepperoni&quot;)) { pizza = new PepperoniPizza(); } return pizza; } } SimplePizzaFactory factory = new SimplePizzaFactory(); // Pizza 객체의 생성은 팩토리에 맞기고 사용에 전념하는 메서드 Pizza orderPizza(String type) { Pizza pizza; pizza = factory.createPizza(type); pizza.prepare(); pizza.bake(); pizza.cut(); pizza.box(); return pizza; } 클래스 다이어그램 ##팩토리 메소드 (Factory Method) 객체를 생성하는 인터페이스를 정의하지만, 인스턴스를 만들 클래스의 결정은 서브클래스가 한다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%ED%8C%A9%ED%86%A0%EB%A6%AC-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/">데코레이터 패턴</a></h2>
+        
+        
+            <p>DesignPartterns - 데코레이터 패턴</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-02-28'>
+            February 28, 2016</time>
+        <span class="author"></span>
+        
+            <p>1 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>decorationPatterns OCP(Open-Closed Principle(원칙)) 디자인 원칙 클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다. 무조건 OCP를 적용하는 것은 시간 낭비가 될 수도 있고, 괜히 쓸 데 없는 일을 하는 것일 수도 있습니다. 결과적으로 불필요하게 복잡하고 이해하기 힘든 코드만 만들게 되는 부작용이 있을 수도 있으니 주의해야합니다. Decorator Pattern의 정의 데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는 객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있습니다.) 데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
+    
+</ul>
+
+    </footer>
+</article>
 
         
             <article class="post">
@@ -387,6 +525,20 @@
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/">데이타 체계화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-05'>
+                                    June 5, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
                                 
                                     
@@ -394,6 +546,20 @@
                                 <time class="published" datetime=
                                     '2016-05-29'>
                                     May 29, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/">메서드 정리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-22'>
+                                    May 22, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -422,34 +588,6 @@
                                 <time class="published" datetime=
                                     '2016-05-14'>
                                     May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1/">테스트작성</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-14'>
-                                    May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/">리팩토링 개론</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -488,7 +626,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">21</span>
+                                <span style="float:right;">23</span>
                             </header>
                         </article>
                     </li>
@@ -506,7 +644,7 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">7</span>
+                                <span style="float:right;">9</span>
                             </header>
                         </article>
                     </li>

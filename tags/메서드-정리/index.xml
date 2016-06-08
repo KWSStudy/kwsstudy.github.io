@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>메서드 정리 on Korea Web Service Study Group</title>
+    <link>http://kwsstudy.github.io/tags/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/</link>
+    <description>Recent content in 메서드 정리 on Korea Web Service Study Group</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 May 2016 11:00:00 +0900</lastBuildDate>
+    <atom:link href="http://kwsstudy.github.io/tags/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>메서드 정리</title>
+      <link>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/</link>
+      <pubDate>Sun, 22 May 2016 11:00:00 +0900</pubDate>
+      
+      <guid>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/%EB%A9%94%EC%84%9C%EB%93%9C%EC%A0%95%EB%A6%AC.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/2.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/3.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/4.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/5.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/6.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/7.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/8.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/9.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/10.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/11.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/12.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/13.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/14.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/15.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/16.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/17.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/18.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/19.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/20.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/21.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/22.png&#34; alt=&#34;&#34; /&gt;
+&lt;img src=&#34;https://raw.githubusercontent.com/KWSStudy/Refactoring/master/src/com/kws/MethodClean/6%EC%9E%A5%EC%BA%A1%EC%B3%90/23.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
