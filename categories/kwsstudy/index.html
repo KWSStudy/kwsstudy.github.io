@@ -36,7 +36,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/categories/kwsstudy/" />
 
 
-<meta property="og:updated_time" content="2016-06-05T11:00:00&#43;09:00"/>
+<meta property="og:updated_time" content="2016-06-19T11:00:00&#43;09:00"/>
 
 
 
@@ -173,6 +173,14 @@
 
                 
                     <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>메서드 호출 단순화</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/"><p>조건문 간결화</p></a>
+                    </li>
+                
+                    <li>
                         <a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"><p>데이타 체계화</p></a>
                     </li>
                 
@@ -182,14 +190,6 @@
                 
                     <li>
                         <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/"><p>메서드 정리</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/"><p>리팩토링 기법 카탈로그</p></a>
-                    </li>
-                
-                    <li>
-                        <a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"><p>코드의 구린내</p></a>
                     </li>
                 
             </ul>
@@ -203,6 +203,147 @@
     <div id="main">
         <h1>KWSStudy</h1>
         
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">메서드 호출 단순화</a></h2>
+        
+        
+            <p>Refactoring - 메서드 호출 단순화</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-06-19'>
+            June 19, 2016</time>
+        <span class="author"></span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>메서드 호출 단순화 객체에서 가장 중요한 것은 인터페이스. 이해와 사용이 쉬운 인터페이스를 작성하는 기술이야 말로 좋은 객체지향 소프트웨어 개발에 꼭 필요. 인터페이스를 더 쉽게 만드는 리펙토링 기법을 설명 함. 1. 메서드명 변경 Rename Method 1.1 동기 저자가 주장하는 코드 스타일의 가장 중요한 부분은 복잡한 과정을 여러 작은 메서드로 잘개 쪼개는것. 메서드를 쪼개는 과정을 잘못 적용할 경우 메서드의 역할을 파악하기 힘들어짐. 이런 문제를 방지하기 위해 메서드명을 잘 지어야함. 1.2 방법 메서드가 상위클래스나 하위클래스에 구현 되어 있는지 검사.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/">조건문 간결화</a></h2>
+        
+        
+            <p>Refactoring - 조건문 간결화</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-06-12'>
+            June 12, 2016</time>
+        <span class="author"></span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p><ol>
+<li>조건문 간결화 조건문을 간호화 하는 리팩토링 종류 조건문을 여러 개로 나누는 조건문 쪼개기 여러 조건 검사가 있는데 결과가 모두 같을 땐 중복 조건식 통합 조건문 안의 중복 코드를 제거하려면 조건문의 공통 실행 코드 빼내기 특수한 case 조건문을 명확히 하려면 여러 겹의 조건문을 감시 절로 전환 복잡한 제어 플래그를 제거하려면 제어 플래그 제거 ** 1. 조건문 쪼개기 ** 복잡한 조건문 (if-then-else)이 있을 땐 if, then, else 부분을 각각 메서드로 빼내자 동기 프로그램에서 가장 복잡한 부분은 주로 복잡한 조건문이다.</li>
+</ol>
+</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
         
             <article class="post">
     <header>
@@ -411,147 +552,6 @@
 </article>
 
         
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h2>
-        
-        
-            <p>Refactoring - 리팩토링 기법 카탈로그</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-05-14'>
-            May 14, 2016</time>
-        <span class="author"></span>
-        
-            <p>1 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>리팩토링 기법 카탈로그에 대해 1. 각 리팩토링 기법 절의 구성 카탈로그 부분의 각 리팩토링 기법은 다음과 같은 5개의 하위 절로 구성했다. 이름 : 각종 리팩토링 기법을 구별하기 위한 필수적인 요소, 카탈로그의 각 절 제목으로도 사용했다. 요약 : 기법의 적용 시점과 목적을 설명. 이부분을 보면 자신에게 필요한 리팩토링 기법을 더 빨리 찾을 수 있다. 동기 : 기법을 실시하는 이유와 실시하지 말아야 할 경우를 설명한다. 방법 : 기법을 수행하는 절차를 단계적으로 간단명료하게 설명한다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/refactoring'>Refactoring</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h2>
-        
-        
-            <p>Refactoring - 코드의 구린내</p>
-        
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='2016-05-14'>
-            May 14, 2016</time>
-        <span class="author"></span>
-        
-            <p>5 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p><ol>
-<li>코드의 구린내 구린게 있으면 그 부분을 바로 잡으세요. 리팩토링을 어떨 때 시작하고 어떨 때 그만둬야 할지 판단하는 일은 리팩토링 기법을 적용하는 방법만큼 중요하다. 1. 중복코드 구린내의 제왕 중복코드. 똑같은 코드 구조가 두 군데 이상 있을 때는 그 부분을 하나로 통일하면 프로그램이 개선 한 클래스의 두 메서드 안에 같은 코드가 들어있는경우 -&gt; 메서드 추출 기법을 적용해서 겹치는 코드를 빼내어 별도의 메서드로 만들고 그 메서 드를 두 곳에서 호출 수퍼클래스의 두 하위 클래스에 같은 코드가 들어 있는 경우 -&gt; 메서드 추출 기법을 적용해서 중복을 없앤 후 메서드 상향 기법을 적용하면 된다.</li>
-</ol>
-</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-        
-
-        
-        
-            <li>
-                
-                
-                    
-
-                    
-
-                    
-
-                    
-                        Categories
-                    
-                
-            </li>
-        
-    
-
-    
-    
-        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
-    
-        <li><a href='/categories/refactoring'>Refactoring</a></li>
-    
-</ul>
-
-    </footer>
-</article>
-
-        
 
         
 <ul class="actions pagination">
@@ -665,6 +665,34 @@
                     <li>
                         <article>
                             <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">메서드 호출 단순화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-19'>
+                                    June 19, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/">조건문 간결화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-12'>
+                                    June 12, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
                                 <h3><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/">데이타 체계화</a></h3>
                                 
                                     
@@ -704,34 +732,6 @@
                         </article>
                     </li>
                 
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81-%EA%B8%B0%EB%B2%95-%EC%B9%B4%ED%83%88%EB%A1%9C%EA%B7%B8/">리팩토링 기법 카탈로그</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-14'>
-                                    May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/">코드의 구린내</a></h3>
-                                
-                                    
-                                
-                                <time class="published" datetime=
-                                    '2016-05-14'>
-                                    May 14, 2016</time>
-                            </header>
-                        </article>
-                    </li>
-                
 
                 
                     <li>
@@ -766,7 +766,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">23</span>
+                                <span style="float:right;">24</span>
                             </header>
                         </article>
                     </li>
@@ -784,7 +784,7 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">9</span>
+                                <span style="float:right;">10</span>
                             </header>
                         </article>
                     </li>

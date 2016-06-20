@@ -1,0 +1,1009 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>조건문 간결화</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="Refactoring - 조건문 간결화">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="조건문 간결화"/>
+<meta name="twitter:description" content="Refactoring - 조건문 간결화"/>
+
+
+
+        <meta property="og:title" content="조건문 간결화" />
+<meta property="og:description" content="Refactoring - 조건문 간결화" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/" />
+
+
+<meta property="og:updated_time" content="2016-06-12T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="조건문 간결화">
+<meta itemprop="description" content="Refactoring - 조건문 간결화">
+
+
+<meta itemprop="dateModified" content="2016-06-12T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="1130">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,Refactoring,DesignPartterns,Refactoring,객체 간의 기능 이동,나머지 패턴,데이타 체계화,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,메서드 정리,메서드 호출 단순화,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,조건문 간결화,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>메서드 호출 단순화</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/"><p>조건문 간결화</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"><p>데이타 체계화</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/"><p>객체 간의 기능 이동</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/"><p>메서드 정리</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&text=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/">조건문 간결화</a></h1>
+            
+        
+        
+            <p>Refactoring - 조건문 간결화</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-06-12'>
+            June 12, 2016</time>
+        <span class="author"></span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&text=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f&title=%ec%a1%b0%ea%b1%b4%eb%ac%b8%20%ea%b0%84%ea%b2%b0%ed%99%94" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25A1%25B0%25EA%25B1%25B4%25EB%25AC%25B8-%25EA%25B0%2584%25EA%25B2%25B0%25ED%2599%2594%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h3 id="09-조건문-간결화:4bd6cb0fac208163e0b66baaf4dc662d">09. 조건문 간결화</h3>
+
+<ul>
+<li><p>조건문을 간호화 하는 리팩토링 종류</p>
+
+<ol>
+<li>조건문을 여러 개로 나누는 <strong>조건문 쪼개기</strong></li>
+<li>여러 조건 검사가 있는데 결과가 모두 같을 땐 <strong>중복 조건식 통합</strong></li>
+<li>조건문 안의 중복 코드를 제거하려면 조건문의 <strong>공통 실행 코드 빼내기</strong></li>
+<li>특수한 case 조건문을 명확히 하려면 여러 겹의 조건문을 <strong>감시 절로 전환</strong></li>
+<li>복잡한 제어 플래그를 제거하려면 <strong>제어 플래그 제거</strong></li>
+</ol></li>
+
+<li><p>** 1. 조건문 쪼개기 **</p>
+
+<ul>
+<li><strong>복잡한 조건문 (if-then-else)이 있을 땐 if, then, else 부분을 각각 메서드로 빼내자</strong></li>
+</ul></li>
+
+<li><p>동기</p>
+
+<ul>
+<li>프로그램에서 가장 복잡한 부분은 주로 복잡한 조건문이다.</li>
+<li>즉 복잡한 조건문을 쪼개 조건이 눈에 잘 들어오고 갈라지는 로직의 흐름을 알아보기 쉽게~! 게다가 로직을 왜그렇게 갈라 놨는지도
+확실히 알기 쉽게 하기위해</li>
+</ul></li>
+
+<li><p>방법</p>
+
+<ul>
+<li>위에 첫줄에 적은 대로</li>
+<li>if 절과 별도의 메서드로 배내자</li>
+<li>then 절과 else 절을 각각의 메서드로 빼내자</li>
+<li>예제 소스 참조 (DecomposeConditional.class)</li>
+</ul></li>
+</ul>
+
+<pre><code>    if(date.before(SUMMER_START) || date.after(SUMMER)_END))
+        charge = quantity * _winterRate + _winterServiceCharge;
+    else charge = quantity * _summerRate
+</code></pre>
+
+<pre><code> if(notSummer(date))
+    charge = winterCharge(quantity);
+ else charge = summerCharge(quantity);
+
+private boolean notSummer(Date date){
+    return date.before(SUMMER_START) || date.after(SUMMER_END)
+}
+
+private double summerCharge(int quantity){
+    return quantity * _summerRate;
+}
+private double winterCharge(int quantity){
+    return quantity * _winterRate + _winterServiceCharge;
+}
+</code></pre>
+
+<ul>
+<li><p>결론</p>
+
+<ul>
+<li>대부분의 프로그래머는 이런 상황에서 조건부를 빼내지 않는다.</li>
+<li>짧은 조건문에서도 원본 코드에 비해 notSummer(date) 를 보는것이 코드의 의도를 더욱 분명히 알 수 있다.</li>
+<li>원본 코드를 보면 그 기능을 파악해야한다.</li>
+<li>예제처럼 간단한 코드는 쉽게 파악할 수 있지만 메서드로 빼내면 더욱 쉽게 파악할 수 있다.</li>
+</ul></li>
+
+<li><p><strong>### 2. 중복 조건식 통합###</strong>
+<strong>- 여러 조건 검사식의 결과가 같을 땐 하나의 조건문으로 합친 후 메서드로 빼내자.</strong></p></li>
+
+<li><p>동기</p>
+
+<ul>
+<li>서로 다른 여러 개의 조건 검사식이 있는데 조건에 따른 결과가 모두 같을 때가 간혹 있다.
+이럴 때는 논리연산자 AND와 OR을 사용해서 여러 조건 검사를 하나로 합쳐야한다.</li>
+<li>이유?
+
+<ul>
+<li>여러 검사를 OR연산자로 연결해서 실제로 하나의 검사 수행을 표현해서 무엇을 검사하는지 더 확실히 이해</li>
+<li>메서드 추출을 적용할 수 있는 기반이 마련된다</li>
+</ul></li>
+</ul></li>
+
+<li><p>방법</p>
+
+<ul>
+<li>모든 조건문에 부작용이 없는지 검사하자
+
+<ul>
+<li>하나라도 부작용이 있으면 이 리팩토링 기법을 실시할 수가 없다.</li>
+</ul></li>
+<li>여러 개의 조건문을 논리 연산자를 사용해 하나의 조건문으로 바꾸자</li>
+<li>컴파일과 테스트를 실시하자.</li>
+<li>합친 조건문에 메서드 추출을 고려하자.</li>
+</ul></li>
+
+<li><p>예제 (예제소스 ConsolidateConditional.class 참조)</p></li>
+
+<li><p>AND, OR, NOT 연산자를 사용하면 이렇게 여러 조건문을 하나의 조건식으로 연결할 수 있다.</p></li>
+
+<li><p>단, 이렇게 하면 조건식이 복잡해질 수 있으니 합친 조건식에 메서드 추출을 적용해서 간단히 만드는 게 좋다.</p></li>
+
+<li><p>조건식 안의 루틴이 단순히 조건을 검사해서 값을 반환할 땐 다음과 같이 삼항연산자를 사용해서 그 루틴을 한줄의 return문으로 만들자
+```
+if (onVacation() &amp;&amp; lengthOfService() &gt; 10) return 1;
+else return 0.5;</p></li>
+</ul>
+
+<p>앞의 코드에 삼항연산자를 사용하여 다음과 같이 곧장 return 문으로 반환하면 된다.</p>
+
+<p>return (onVacation() &amp;&amp; lengthOfService() &gt; 10) ? 1 : 0.5;</p>
+
+<pre><code>
+
+  - **3. 조건문의 공통 실행 코드 빼내기**
+
+  - **조건문의 모든 절에 같은 실행 코드가 있을 땐 같은 부분을 조건문 밖으로 뺴자.**
+  - 예제 소스 ConsolidateDuplicate.class 참조
+</code></pre>
+
+<pre><code>public static void main(String[] args) {
+    int total = 0;
+    int price = 0;
+
+    if(isSpecialDeal()){
+        total = price * 9;
+        send();
+    }else {
+        total = price * 9;
+        send();
+    }
+
+}
+
+public static boolean isSpecialDeal(){
+    return false;
+}
+
+public static int send(){
+    return 5;
+}
+</code></pre>
+
+<p>public static void main(String[] args) {</p>
+
+<pre><code>    int total = 0;
+    int price = 0;
+
+    if(isSpecialDeal()){
+        total = price * 9;
+    }else {
+        total = price * 9;
+    }
+    send();
+}
+public static boolean isSpecialDeal(){
+    return false;
+}
+
+public static int send(){
+    return 3;
+};
+</code></pre>
+
+<pre><code>
+  - 동기
+    - 조건문의 절마다 같은 실행 코드가 들어 있을 때 그부분을 조건문 밖으로 빼야한다. 
+    - 그래야 각 절이 공통적으로 실행할 기능과 서로 다르게 실행할 기능을 한눈에 알 수 있다.
+
+  - 방법
+    - 조건에 상관없이 공통적으로 실행되는 코드를 찾자.
+    - 공통 코드가 조건문의 앞 절에 있을 땐 조건문 앞으로 빼자.
+    - 공통 코드가 조건문의 끝 절에 있을 땐 조건문 뒤로 빼자.
+    - 공통 코드가 조건문의 중간 절에 있을 땐 앞뒤의 코드와 위치를 바꿔도 되는지 판단하자. 그래서 바꿔도 된다면 조건문의 앞이나
+      끝 절로 뺀 후 앞의 단계처럼 조건문 앞이나 뒤로 빼자
+    - 공통 코드 명령이 둘 이상일 땐 메서드로 만들자.
+
+
+  - 예외 처리에도 이 방식을 적용할 수 있다. 코드가 try 구간과 모든 catch 구간안의 예외 발생 명령 뒤에 공통적으로 들어 있으면,
+    그 코드를 final 구간으로 옮기면 된다.
+
+  - **### 3. 제어 플래그 제거**
+**- 논리 연산식의 제어 플래그 역할을 하는 변수가 있을 땐 그 변수를 break 문이나 return문으로 바꾸자**
+
+  - 방법
+    1. 논리문을 빠져나오게 하는 제어 플래그 값을 찾자.
+    2. 그 제어 플래그 값을 대입하는 코드를 break 문이나 continue문으로 바꾸자
+    3. 하나씩 바꿀 때마다 컴파일과 테스트를 실시하자.
+  - break문이나 continue문이 없는 언어에서의 방법
+    1. 로직을 메서드로 빼내자
+    2. 논리문을 빠져나오게 하는 제어플래그 값을 찾자
+    3. 빠져나오게 하는 값을 return문으로 바꾸자
+    4. 하나씩 바꿀 때마다 컴파일과 테스트를 실시하자
+
+  - 참조 RemoveControlFlag.class
+
+ ###  **4.여러겹의 조건문을 감시 절로 전환**
+    - 메서드에 조건문이 있어서 정상적인 실행 결로를 파악하기 힘들 땐 모든 특수한 경우에 **감시절**을 사용하자
+    - 감시절? : 조건문이 특이한 조건이라면 **그 조건을 검사해서 조건이 true일 경우 반환**하는 이런식의 검사를 감시절이라 한다. 
+
+  - 방법
+    1. 조건 절마다 감시 절을 찾자
+      - 그 감시 절은 값을 반환하거나 예외를 통지한다.
+    2. 각 조건 절을 감시 절로 바꿀 때마다 컴파일과 테스트를 실시하자
+      - 모든 감시 절의 결과가 같다면 중복 조건식 통합 기법을 실시하자
+
+
+  - **6. 조건문을 재정의로 전환**              
+    - **객체 타입에 따라 다른 기능을 실행하는 조건문이 있을땐
+      조건문의 각 절을 하위 클래스의 재정의 메서드 안으로 옮기고, 원본 메서드는 abstarct타입으로 수정하자.**
+  
+  - **방법**
+    1. 조건문이 메서드 코드의 일부라면 그 조건문을 따로 떼서 메서드 추출을 적용하자
+    2. 필요하다면 메서드 이동을 적용해서 조건문을 최상위 클래스로 옮기자.
+    3. 하위 클래스 중 하나를 택해서 그 안에 조건문 메서드를 재정의하는 메서드를 작성하자. 조건문의 해당 절에 있는 코드를 그 하위
+       클래스 메서드로 옮기고 적절히 수정하자.
+      - &gt; 이를 위해 상위클래스의 일부 private메서드를 protected로 수정해야 할 수도 있다.
+    4. 컴파일과 테스트를 실시하자.
+    5. 메서드로 복사해 넣은 조건문 안의 절은 삭제하자.
+    6. 컴파일과 테스트를 실시하자.
+    7. 조건문의 나머지 절의 코드도 마찬가지로 하위클래스 메서드 안으로 옮기자.
+    8. 상위클래스 메서드를 abstract타입으로 만들자
+
+  - **7. Null 검사를 널 객체에 위임** 
+    - null 값을 검사하는 코드가 계속 나올땐 null 값을 널 객체로 만들자
+    
+</code></pre>
+
+<p>if(customer == null) {
+        plan = BillingPlan.basic();
+    }else {
+        plan = customer.getPlan();
+    }
+```
+  - 방법
+    1. 원본 클래스 안에 널 객체 역할을 할 하위클래스를 작성하자. 원본 클래스와 널 클래스 안에 isNull 메서드를 작성하자.
+       원본 클래스의 isNull 메서드는 false를 반환해야 하고, 널 클래스의 isNull메서드는 true를 반환해야 한다.
+       -&gt; isNull메서드를 넣을 Nullable 인터페이스를 작성하면 좋을 때도 있다.
+       -&gt; 아니면 검사 인터페이스로 null 여부를 검사하는 방법도 있다
+    2. 컴파일하자.
+    3. 원본 객체에 요청하면 null을 반환할 수 있는 부분을 전부 찾자. 그래서 그 부분을 널 객체로 바꾸자.
+    4. 원본 타입의 변수를 null과 비교하는 코드를 전부 찾아서 isNull 호출로 바꾸자
+       -&gt; 원본 클래스와 클라이언트를 한 번에 하나씩 수정하고 그때마다 컴파일과 테스트를 실시하면 된다.
+       -&gt; null이 나오지 말아야 할 곳에 null을 검사하는 어선셜을 몇개 넣으면 좋다.
+    5.컴파일과 테스트를 실시하자
+    6. 클라이언트가 null이 아니면 한 메서드를 호출하고 null이면 다른 메서드를 호출하는 case문을 전부 찾자.
+    7.각 case문마다 널 클래스 안의 해당 메서드를 다른 기능의 메서드로 재정의하자.
+    8.재정의 메서드를 사용하는 부분에서 조건문을 삭제하고 컴파일과 테스트를 실시하자.</p>
+
+<ul>
+<li><strong>8. 어선셜 넣기</strong>
+
+<ul>
+<li>일부 코드가 프로그램의 어떤 상태를 전제할 땐 어선셜을 넣어서 그 전제를 확실하게 코드로 작성하자.</li>
+</ul></li>
+<li>방법
+
+<ol>
+<li>어떤 조건이 참으로 전제된다면 어선셜을 넣어 그 전제를 드러내자.
+-&gt; 어선셜 기능을 사용할 수 있는 Assert클래스를 작성하자.</li>
+</ol></li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/refactoring'>Refactoring</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/"
+                class="button big previous">데이타 체계화</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"
+                class="button big next">메서드 호출 단순화</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94\/';
+    var disqus_title = '조건문 간결화';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">메서드 호출 단순화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-19'>
+                                    June 19, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%A1%B0%EA%B1%B4%EB%AC%B8-%EA%B0%84%EA%B2%B0%ED%99%94/">조건문 간결화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-12'>
+                                    June 12, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%B2%B4%EA%B3%84%ED%99%94/">데이타 체계화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-06-05'>
+                                    June 5, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%9D%98-%EA%B8%B0%EB%8A%A5-%EC%9D%B4%EB%8F%99/">객체 간의 기능 이동</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-29'>
+                                    May 29, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%EC%A0%95%EB%A6%AC/">메서드 정리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-05-22'>
+                                    May 22, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">24</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

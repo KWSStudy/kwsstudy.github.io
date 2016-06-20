@@ -362,29 +362,5 @@ class RegularPrice extends Price {
 </description>
     </item>
     
-    <item>
-      <title>맛보기 예제</title>
-      <link>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/</link>
-      <pubDate>Sun, 08 May 2016 11:00:00 +0900</pubDate>
-      
-      <guid>http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/</guid>
-      <description>&lt;p&gt;메서드명 변경 Rename Method
-매개변수 추가 Add Parameter
-매개변수 제거 Remove Parameter
-상태 변경 메서드와 값 반환 메서드를 분리 Separate Query from Modifier
-메서드를 매개변수로 전환 Parameterize Method
-매개변수를 메서드로 전환 Replace Parameter with Explicit Methods
-객체를 통째로 전달 Preserve Whole Object
-매개변수 세트를 메서드로 전환 Replace Parameter with Method
-매개변수 세트를 객체로 전환 Introduce Parameter Object
-쓰기 메서드 제거 Remove Setting Method
-메서드 은폐 Hide Method
-생성자를 팩토리 메서드로 전환 Replace Constructor with Factory Method
-하향 타입 변환을 캡슐화 Encapsulate Downcast
-에러 부호를 예외 통지로 교체 Replace Error Code with Exception
-예외 처리를 테스트로 교체 Replace Exception with Test&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>
