@@ -1,0 +1,901 @@
+
+
+
+    
+
+
+
+
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            <title>GridFS - Korea Web Service Study Group</title>
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            
+                <meta name="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+            
+        
+
+        
+        <meta property="og:title" content="GridFS" />
+<meta property="og:description" content="KWS(Korea Web Service) Study Group 사이트 입니다." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://kwsstudy.github.io/tags/gridfs/" />
+
+
+<meta property="og:updated_time" content="2016-12-11T12:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="GridFS">
+<meta itemprop="description" content="KWS(Korea Web Service) Study Group 사이트 입니다.">
+
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/GridFS/"><p>GridFS</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/"><p>배포와 관리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"><p>샤딩</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/"><p>복제(replication)</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"><p>인덱싱과 쿼리 최적화</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+            
+        
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h2>
+        
+        
+            <p>MongoDB - GridFS</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-11'>
+            December 11, 2016</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>목표 GridFS의 개념익히기 java-mongodb 드라이버를 이용한 간단한 몽고디비 연동 및 GridFS 샘플 책에 나온 GridFS 어플리케이션에서 이미지, 섬네일, 비디오등 이진파일을 저장하기위해 파일 시스템에 의지. 파일 시스템은 액세스를 빠르게 해주지만, 수 만건 이상의 파일 관리시에 데이터 구조에 혼란을 초래함. 파일의 메타 데이터는 데이터 베이스에 저장할 경우 실제 파일과 메타데이터간의 정확한 백업이 복잡해짐. 파일 구조와 백업을 간단히 하기위해 파일을 데이터 베이스 자체에 저장하는 것이 합리적일 경우 사용. 파일 하나당 하나의 도큐먼트를 사용하는 것은 소량(1MB이하)의 이진객체에 적합.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/GridFS/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h2>
+        
+        
+            <p>MongoDB - 배포와 관리</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-11'>
+            December 11, 2016</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>목표 배포 고려사항 및 하드웨어 필요사항 관리, 백업, 보안 방법 성능 문제 해결 방법 배포 환경 아키텍처 몽고디비는 가상 주소공간으로 매핑하기 때문에 충분한 메모리를 확보할 수 있는 64비트 운영 체제를 사용하자. 리틀 엔디언 서버에서 실행해야한다. CPU 몽고디비는 cpu연산이 많은 어플리케이션이 아니다. 램 작업 데이터의 크기가 램 용량을 넘어서게 되면 성능 저하가 심각해 진다. 자주 사용하는 인덱스와 작업 데이터를 램이 수용할 수 있도록 충분한 램을 확보하자. 디스크 몽고디비에 쓰기를 할 때 서버가 매 60초마다 디스크에 동기화를 하기 때문에 디스크 속도가 느리면 성능이 저하될수 있다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h2>
+        
+        
+            <p>MongoDB - 샤딩</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-04'>
+            December 4, 2016</time>
+        <span class="author"></span>
+        
+            <p>6 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>9.1.1 샤딩이란 데이터의 크기가 커지고 애플리케이션에서 읽기와 쓰기 처리량이 늘어남에 따라 현재의 서버로는 충분치 않은 상황이 올 수도 있다.(램이나 CPU 코어가 충분치 않을 수도있다.) 대이터 크기가 늘어남에 따라 하나의 디스크나 RAID(<a href="https://ko.wikipedia.org/wiki/RAID">https://ko.wikipedia.org/wiki/RAID</a>) 어레이에 대량의 데이터를 저장하고 백업하는 것이 현실적으로 불가능해질 수도있다. 데이터 베이스를 위해 현재 가용한 서버나 가상 하드웨어를 계속해서 사용하려면 하나 이상의 서버에 데이터베이스를 분산해야하는데 이것이 샤딩을 통해 이루어진다. 상당수의 대규모 웹 애플리케이션은 여러개의 MySQL 데이터베이스에 걸쳐서 부하를 분산하는 _수동적인 샤딩_을 구현한다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h2>
+        
+        
+            <p>MongoDB - 복제(replication)</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-04'>
+            December 4, 2016</time>
+        <span class="author"></span>
+        
+            <p>10 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>복제(replication) 복제는 여러 서버 상에서 데이터의 동일한 복사본을 유지하는 방법 (모든 실제 서비스에서는 복제를 적용할 것을 권장) → 한 대 또는 그 이상의 서버에 이상이 발생하였을 때 애플리케이션의 정상 동작 및 데이터를 안전하게 보존할 수 있음 ※ MongoDB는 복제 셋(replica set)을 생성함으로써 복제를 설정할 수 있음 MongoDB in Action 책에는 마스터-슬레이브 복제(master-slave replication) 와 복제 셋(replica set) 두 가지 방식이 있다고 소개되고 있으나 마스터-슬레이브 복제는 3.2 버전부터 Deprecated 되었음 참조: <a href="https://docs.mongodb.com/manual/core/master-slave/">https://docs.mongodb.com/manual/core/master-slave/</a> 복제 셋(replica set)의 구성 1대의 프라이머리(primary) 서버 클라이언트의 요청을 처리 데이터에 대한 쓰기, 읽기 가능 복제 셋에서 쓰기 동작을 하는 유일한 멤버 여러 대의 세컨더리(secondary) 서버 프라이머리 데이터의 복제 데이터를 가짐 프라이머리의 oplog에서 하던 동작을 세컨더리의 데이터 셋에 비동기적으로 적용 프라이머리 서버에 장애가 발생시 세컨더리 서버는 자신들 중 새로운 프라이머리 서버를 선출할 수 있음 데이터의 읽기만 가능 ※ 복제 셋의 노드는 최대 12개까지 구성할 수 있다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+            <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h2>
+        
+        
+            <p>MongoDB - 인덱싱과 쿼리 최적화</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-11-27'>
+            November 27, 2016</time>
+        <span class="author"></span>
+        
+            <p>10 minute read</p>
+        
+        
+    </div>
+</header>
+
+    
+
+    <p>인덱싱과 쿼리 최적화 인덱싱의 이론적 고찰 개념실험 두꺼운 요리책이 있다. 이 책은 5000장으로 이루어져 있으며 요리법에는 특별한 순서가 없다. 3,475페이지에는 호주의 오리 찜 요리가 있으며, 2페이지에는 자카테칸 타코가 있다. 인덱스가 없이 요리책에서 로즈메리 감자 요리법을 찾을 수 있을까? 유일한 방법은 그 요리법이 나올 때까지 처음부터 훑어 나가는 것이다. 이에 대한 해결책이 인덱스를 생성하는 것이다.. 요리법을 찾기 위해서는 여러 가지 방법을 생각해 낼 수 있지만 가장 좋은 방법은 요리법의 이름으로 찾는 것이다.</p>
+
+    <footer>
+        <ul class="actions">
+            <li><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/" class="button big">Continue Reading</a></li>
+        </ul>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+
+        
+
+        
+<ul class="actions pagination">
+    
+        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+    
+
+    
+        <li><a href="/tags/gridfs/page/2/"
+                class="button big next">Next Page</a></li>
+    
+</ul>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/gridfs/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-11-27'>
+                                    November 27, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">32</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/mongodb/">MongoDB</a>
+                                <span style="float:right;">8</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                    <li><a href="http://kwsstudy.github.io/tags/gridfs/index.xml" type="application/rss+xml"
+                        target="_blank" title="RSS" class="fa fa-rss"></a></li>
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

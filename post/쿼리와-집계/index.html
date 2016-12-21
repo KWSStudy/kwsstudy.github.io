@@ -1,0 +1,1023 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>쿼리와 집계</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="MongoDB - 쿼리와 집계">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="쿼리와 집계"/>
+<meta name="twitter:description" content="MongoDB - 쿼리와 집계"/>
+
+
+
+        <meta property="og:title" content="쿼리와 집계" />
+<meta property="og:description" content="MongoDB - 쿼리와 집계" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EC%BF%BC%EB%A6%AC%EC%99%80-%EC%A7%91%EA%B3%84/" />
+
+
+<meta property="og:updated_time" content="2016-11-20T12:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="쿼리와 집계">
+<meta itemprop="description" content="MongoDB - 쿼리와 집계">
+
+
+<meta itemprop="dateModified" content="2016-11-20T12:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="998">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,MongoDB,Refactoring,DesignPartterns,GridFS,MongoDB,Refactoring,객체 간의 기능 이동,나머지 패턴,데이타 체계화,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,메서드 정리,메서드 호출 단순화,몽고 디비,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,조건문 간결화,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/GridFS/"><p>GridFS</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/"><p>배포와 관리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"><p>샤딩</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/"><p>복제(replication)</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"><p>인덱싱과 쿼리 최적화</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&text=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EC%BF%BC%EB%A6%AC%EC%99%80-%EC%A7%91%EA%B3%84/">쿼리와 집계</a></h1>
+            
+        
+        
+            <p>MongoDB - 쿼리와 집계</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-11-20'>
+            November 20, 2016</time>
+        <span class="author"></span>
+        
+            <p>5 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&text=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f&title=%ec%bf%bc%eb%a6%ac%ec%99%80%20%ec%a7%91%ea%b3%84" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EC%25BF%25BC%25EB%25A6%25AC%25EC%2599%2580-%25EC%25A7%2591%25EA%25B3%2584%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h3 id="목표:2f2307b1bbb44d3e18efdfe8af35ab77">목표</h3>
+
+<ul>
+<li>Mongodb 질의 연산자를 자세히 다뤄보자.</li>
+<li>맵-리듀스 함수를 중심으로 데이터에 대해 집계를 실행하는 방법을 살펴 보자.</li>
+</ul>
+
+<h3 id="상품-카테고리-리뷰-쿼리:2f2307b1bbb44d3e18efdfe8af35ab77">상품, 카테고리, 리뷰 쿼리</h3>
+
+<ul>
+<li>상품 페이지를 가져오는 쿼리 예</li>
+</ul>
+
+<pre><code class="language-javascript">//1. slug가 whell-barrow-9092인 상품을 찾는다.
+db.products.findOne({'slug':'whell-barrow-9092'}) 
+
+//2. 해당 상품의 카테고리 정보를 가져온다.
+db.categories.findOne({'_id':product['main_cat_id']}) 
+
+//3. 상품 리뷰를 불러온다.
+db.reviews.find({'product_id':product['_id']}) 
+</code></pre>
+
+<ul>
+<li><p>findOne()과 find()의 차이점</p>
+
+<ul>
+<li>findOne()은 도큐먼트를 리턴한다.하나의 도큐먼트를 얻고자 할 때 사용한다.</li>
+<li>find()는 커서객체를 리턴한다. 여러개의 도큐먼트를 리턴 할 때 사용한다.</li>
+<li>findOne()은 db.collection.find().limit(1)과 동일하다</li>
+</ul></li>
+
+<li><p>페이지를 나누기위해 Mongodb는 skip()과 limit() 옵션을 제공한다.</p></li>
+</ul>
+
+<pre><code class="language-javascript">//1. 0~12번째 상품 리뷰를 불러온다.
+db.reviews.find({'product_id':product['_id']}).skip(0).limit(12)
+</code></pre>
+
+<ul>
+<li>정렬은 sort() 함수를 사용한다.</li>
+<li>1은 오름차순 -1은 내림차순 정렬.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. 0~12번째 상품 리뷰를 추천수가 많은 순서로 불러온다.
+db.reviews.find({'product_id':product['_id']}).sort({helpful_votes:-1}).skip(0).limit(12)
+</code></pre>
+
+<ul>
+<li>특정 키정보가 없는 도큐먼트만 가져오고 싶을때는 null(책은 nil이라고 되어있는데 지금 버전에서는 null인듯)을 사용한다.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. parent_id정보가 없는 카테고리 가져오기
+db.category.find({'parent_id':null})
+</code></pre>
+
+<h3 id="유저와-오더:2f2307b1bbb44d3e18efdfe8af35ab77">유저와 오더</h3>
+
+<ul>
+<li>findOne()을 사용하면 도큐먼트를 결과값으로 받고, 결과가 없으면 아무것도 리턴하지 않는다.</li>
+<li>필요하지 않은 필드까지 가져옴으로써 성능에 문제가 생길수 있다.</li>
+<li>도큐먼트에서 가져올 필드를 제한하는 방법으로, 두번째 파라미터로 필요한 필드는 값을1 필요없는 필드는 값을0으로 지정해준다.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. _id정보만 가져오기
+db.category.findOne({slug:'gardening-tools'},{_id:1})
+//{ &quot;_id&quot; : ObjectId(&quot;6a5b1476238d3b4dd5000048&quot;) }
+
+//2. _id정보만 제외하고 가져오기
+db.category.findOne({slug:'gardening-tools'},{_id:0})
+/*
+{
+	&quot;slug&quot; : &quot;gardening-tools&quot;,
+	&quot;ancestors&quot; : [
+		{
+			&quot;name&quot; : &quot;Home&quot;,
+			&quot;_id&quot; : ObjectId(&quot;8b87fb1476238d3b4dd50003&quot;),
+			&quot;slug&quot; : &quot;home&quot;
+		},
+		{
+			&quot;name&quot; : &quot;Outdoors&quot;,
+			&quot;_id&quot; : ObjectId(&quot;9a9fb1476238d3b4dd500001&quot;),
+			&quot;slug&quot; : &quot;outdoors&quot;
+		}
+	],
+	&quot;parent_id&quot; : ObjectId(&quot;9a9fb1476238d3b4dd500001&quot;),
+	&quot;name&quot; : &quot;Gardening Tools&quot;,
+	&quot;description&quot; : &quot;Gardening gadgets galore!&quot;
+}
+*/
+</code></pre>
+
+<ul>
+<li>RDBMS의 like와 같은 쿼리는 정규식을 이용한다</li>
+</ul>
+
+<pre><code class="language-javascript">//1. 이름이 ba로 시작하는 사용자 찾기
+db.users.find({last_name:/^ba/})
+</code></pre>
+
+<h3 id="mongodb-질의어:2f2307b1bbb44d3e18efdfe8af35ab77">MongoDB 질의어</h3>
+
+<ul>
+<li>RDBMS의 AND 절과 같은 질의는 find({name:&lsquo;park&rsquo;, age:33})</li>
+<li>RDBMS의 &lt;, &lt;=, &gt;, &gt;= 는 각 $gt, $gte, $lt, $lte이다</li>
+<li>$in은 검색 키워드와 일치하는 값이 하나라도 있을경우 해당 도큐먼트를 리턴한다.</li>
+<li>$nin은 검색 키워드와 일치하지 않은 도큐먼트를 리턴해준다.</li>
+<li>$all은 검색키워드가 모두 일치하는 도큐먼트를 리턴해준다.</li>
+<li>$in, $all은 인덱스를 사용하지만, $nin은 인덱스를 사용하지 않는다.</li>
+<li>$ne 단일,배열 값에 상관없이 지정한 값이 아닌 도큐먼트를 찾아준다.</li>
+<li>$ne는 인덱스를 사용하지 않는다.</li>
+<li>$not은 정규 표현식 쿼리로부터 얻은 결과의 여집합을 리턴한다.</li>
+<li>$not을 사용 할 때는 연산자나 정규표현식에 부정형이 존재하지 않을때 사용한다.</li>
+<li>$or는 2개의 서로다른 키에대한 논리합을 표현한다.</li>
+<li>결과값이 가능한 같은 키에대한것이라면 $in을 이용하자.</li>
+<li>Mongodb는 고정된 스키마가 없기때문에 특정키를 가지고 있는지 확인해야 할 경우 $exists를 이용한다.</li>
+</ul>
+
+<h3 id="서브도큐먼트-매칭:2f2307b1bbb44d3e18efdfe8af35ab77">서브도큐먼트 매칭</h3>
+
+<ul>
+<li>아래와 같이 도큐먼트 안에 도큐먼트가 포함된 경우 서브도큐먼트에 접근하기 위해 닷(.)을 이용한다.</li>
+</ul>
+
+<pre><code class="language-javascript">// address는 서브 도큐먼트로 zipcode에 접근할 때는 address.zipcode 처럼 접근한다. 
+{
+_id : ObjectId(&quot;5c32cji23cij3c&quot;),
+name : &quot;niee&quot;,
+  address : {
+    zipcode : &quot;12345&quot;,
+    home : &quot;Inchone&quot;
+  }
+}
+</code></pre>
+
+<h3 id="배열:2f2307b1bbb44d3e18efdfe8af35ab77">배열</h3>
+
+<ul>
+<li>배열로 이루어진 키에도 인덱스를 이용할 수 있다.</li>
+<li>닷 표기법을 이용하여 특정 원소에 접근 가능하다. ex)arrayKey.0// 0번째 원소</li>
+<li>같은 키를 갖는 오브젝트 배열에서 key.0.name을 사용하면 첫번째 오브젝트의 name에 접근하고 key.name을 사용하면 모든 오브젝트 배열에 접근하여 name을 가져온다.</li>
+</ul>
+
+<h3 id="자바스크립트:2f2307b1bbb44d3e18efdfe8af35ab77">자바스크립트</h3>
+
+<ul>
+<li>쿼리 툴로도 표현할 수 없다면, 자바스크립트를 작성하여 사용할 수 있다.</li>
+<li>자바스크립트는 $where연산자와 함께 함수를 작성하는데 함수내부의 this는 현재 도큐먼트를 가리킨다.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. helpful_votes &gt; 3 도큐먼트 찾기
+db.reviews.find({$where : &quot;function(){return this.helpful_votes &gt; 3;}&quot;})
+
+//2. 더 간단하게 아래처럼 가능
+db.reviews.find({$where : &quot;this.helpful_votes &gt; 3&quot;})
+</code></pre>
+
+<ul>
+<li>자바스크립트를 이용할 경우 인덱스를 사용하지 못해 발생하는 성능 저하 문제와 함께, SQLInjection에 취약해진다.</li>
+</ul>
+
+<h3 id="정규-표현식-그밖의-쿼리-연산자-프로젝션-정렬은-책을-찹조-121-124:2f2307b1bbb44d3e18efdfe8af35ab77">정규 표현식, 그밖의 쿼리 연산자, 프로젝션, 정렬은 책을 찹조 121~124</h3>
+
+<h3 id="스킵과-리미트:2f2307b1bbb44d3e18efdfe8af35ab77">스킵과 리미트</h3>
+
+<ul>
+<li>skip을 사용시 지정한 값만큼 도큐먼트를 스캔해야 하기 때문에 큰 값이 넘어가면 쿼리가 비효율 적일 수 있다.</li>
+<li>좀더 나은 쿼리를 위해 skip은 생략하고, 다음 결과 값이 시작되는 범위 조건을 추가 하는 것이다.</li>
+</ul>
+
+<h3 id="group:2f2307b1bbb44d3e18efdfe8af35ab77">group</h3>
+
+<ul>
+<li>대부분의 RDBMS는 합계, 평균, 편차와같은 내장 집계함수를 많이 제공하지만, Mongodb에는 구현될 때까지 group,map-reduce를 사용해야한다.</li>
+<li>group()은 최소한 3개의 파라미터를 받는다.</li>
+<li>첫번째 파라미터 key는 데이터를 어떻게 그룹으로 묶을것인지를 지정한다.</li>
+<li>두번째 파라미터는 리듀스(reduce funciton) 함수로, 결과 값에 대해 그룹으로 묶는 자바스크립트 함수다.</li>
+<li>세번짜 파라미터는 각 키의 값에 대해 처음 반복할 때 리듀스 함수에게 제공하는 초기 도큐먼트다.</li>
+<li>group은 20,000개 까지 허용되는듯?(group이 20,000개 넘어가니 group() can&rsquo;t handle more than 20000 unique keys 에러 발생)</li>
+<li>group은 많은 경우 맵-리듀스보다 빠르기 때문에 좋은 선택일 수 있다.</li>
+<li>key : 그룹으로 나누는 기준이 되는 키를 표현한 도큐먼트. 복합키도 가능.</li>
+<li>keyf : 그룹을 위한 키를 계산을 통해 만들어야 하는경우 필요한 자바스크립트 함수. key를 지정하지 않으면 반드시 필요.</li>
+<li>initial : 집계 결과의 초기값으로 사용되는 도큐먼트.(필수)</li>
+<li>reduce : 집계 기능을 수행하는 함수.현재 도큐먼트와, 집계결과를 저장하는 도큐먼트 2개의 파라미터를 받는다.리턴할 필요가 없다.(필수)</li>
+<li>cond : 집계를 수행하기 위한 도큐먼트를 필터링 하는 쿼리 셀렉터.</li>
+<li>finalize : 결과값을 리턴하기전 각 도큐먼트에 적용되는 함수.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. 사용자별 리뷰 수와 리뷰 평점
+db.reviews.group({
+  key : {user_id : true},
+  initial : {reviews : 0, votes : 0.0},
+  reduce : function(doc, aggregator){
+    aggregator.reviews +=1;
+    aggregator.votes += doc.votes;
+  },
+  finalize : function(doc){
+    doc.average_votes = doc.votes / doc.reviews;
+  }
+})
+</code></pre>
+
+<h3 id="맵-리듀스-map-reduce:2f2307b1bbb44d3e18efdfe8af35ab77">맵-리듀스(map-reduce)</h3>
+
+<ul>
+<li>맵-리듀스는 group의 좀더 유연한 버전으로 생각할 수 있다.</li>
+<li>그룹 키에 대한 세밀한 제어를 할수 있다.</li>
+<li>새 컬렉션에 결과를 저장하는 것 같은 다양한 출력 옵션을 가질 수 있다.</li>
+<li>맵-리듀스는 샤드 구성에서 대량의 데이터를 반복 처리하기 위해 필요한 분산된 어그리 게이터를 지원한다.</li>
+<li>map : 각 도큐먼트에 적용하는 자바스크립트 함수. 집계에 사용 할 키와 값을 선택하기 위해 emit()을 의무적으로 호출 해야함.</li>
+<li>reduce : 키와 값의 리스트를 받는 자바스크립트 함수. 반드시 받은 값과 같은 구조의 값을 리턴 해야함.</li>
+<li>query : 매핑될 컬렉션을 필터하는 퀄리 셀렉터, group의 cond와 같은 기능.</li>
+<li>sort : 쿼리에 적용할 정렬 조건. limit옵션과 사용할때 유용</li>
+<li>limit : 쿼리와 정렬에 적용되어 결과 값의 개수를 제한하는 정수.</li>
+<li>out : 결과가 어떻게 리턴되는지를 결정.(자세한 설명은 134p참조)</li>
+<li>finalize : 리듀스가 완료된 후 각 결과 도큐먼트에 적용될 자바스크립트 함수.</li>
+<li>scope : map, reduce, finalize 함수에 의해 액세스 되는 전역 변서의 값을 지정하는 도큐먼트.</li>
+<li>verbose : true일 경우 맵-리듀스 실행 시간에 대한 통계 데이터를 리턴.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. 2010년 이후 월 판매액을 구하여 total컬렉션에 저장하기
+map = function(){
+  var shipping_month = this.purchase_date.getMonth() + '-' + this.purchase_date.getFullYear();
+  var tmpItems = 0;
+  this.line_items.forEach(function(item){
+    tmpItems += item.quantity;
+  });
+  
+  emit(shipping_month, {order_total : this.sub_total, items_total : tmpItems });
+}
+
+reduce = function(key, values){
+  var tmpTotal = 0;
+  var tmpItems = 0;
+
+  tmpTotal += doc.order_total;
+  tmpItems += doc.items_total;
+  
+  return({total : tmpTotal, items : tmpItems});
+}
+
+filter = {purchase_date : {$gte : new Date(2010, 0, 1)}}
+
+db.orders.mapReduce(map, reduce, {query : filter, out : 'totals'});
+</code></pre>
+
+<h3 id="distinct:2f2307b1bbb44d3e18efdfe8af35ab77">distinct</h3>
+
+<ul>
+<li>특정 키에대한 고유 값을 얻기 위한 가장 간단한 툴.</li>
+<li>단일 키와 배열 값을 갖는 키에 모두 적용된다.</li>
+<li>전체 컬렉션에 수행되지만, 두번째 파라메터로 쿼리 셀렉터를 이용하여 제한가능.</li>
+</ul>
+
+<pre><code class="language-javascript">//1. product 컬렉션의 tags 키의 값만 얻기
+db.products.distinct(&quot;tags&quot;)
+
+//2. product 컬렉션의 name이 car인 tags 키의 값만 얻기
+db.products.distinct(&quot;tags&quot;,{name:'car'})
+</code></pre>
+
+<h4 id="group과-distinct는-16mb가-넘는-결과-값은-리턴하지-못한다-이럴경우-맵-리듀스를-이용하여-컬렉션에-저장한다:2f2307b1bbb44d3e18efdfe8af35ab77">group과 distinct는 16MB가 넘는 결과 값은 리턴하지 못한다. 이럴경우 맵-리듀스를 이용하여 컬렉션에 저장한다.</h4>
+
+<h4 id="group과-맵-리듀스의-한계는-속도다-자바스크립트-인터프리터-때문에-대량의-데이터에-대해-속도가-보장되지-못한다:2f2307b1bbb44d3e18efdfe8af35ab77">group과 맵-리듀스의 한계는 속도다. 자바스크립트 인터프리터 때문에 대량의 데이터에 대해 속도가 보장되지 못한다.</h4>
+
+<hr />
+
+<p><a href="http://cinema4dr12.tistory.com/entry/Aggregation-MapReduce">맵-리듀스 설명 잘된 곳</a></p>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EB%8F%84%ED%81%90%EB%A8%BC%ED%8A%B8-%EC%A7%80%ED%96%A5-%EB%8D%B0%EC%9D%B4%ED%84%B0/"
+                class="button big previous">도큐먼트 지향 데이터</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8,-%EC%9B%90%EC%9E%90%EC%A0%81-%EC%97%B0%EC%82%B0,-%EC%82%AD%EC%A0%9C/"
+                class="button big next">업데이트, 원자적 연산, 삭제</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EC%BF%BC%EB%A6%AC%EC%99%80-%EC%A7%91%EA%B3%84\/';
+    var disqus_title = '쿼리와 집계';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EC%BF%BC%EB%A6%AC%EC%99%80-%EC%A7%91%EA%B3%84\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-11-27'>
+                                    November 27, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">32</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/mongodb/">MongoDB</a>
+                                <span style="float:right;">8</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

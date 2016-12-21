@@ -34,7 +34,7 @@
 <meta property="og:url" content="http://kwsstudy.github.io/tags/ec96b4eb8c91ed84b0-ed8ca8ed84b4eab3bc-ed8dbcec82aceb939c-ed8ca8ed84b4/" />
 
 
-
+<meta property="og:updated_time" content="2016-02-28T12:00:00&#43;09:00"/>
 
 
 
@@ -171,11 +171,23 @@
 
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/"><p>맛보기 예제</p></a>
+                        <a href="http://kwsstudy.github.io/post/GridFS/"><p>GridFS</p></a>
                     </li>
                 
                     <li>
-                        <a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/"><p>나머지 패턴</p></a>
+                        <a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/"><p>배포와 관리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"><p>샤딩</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/"><p>복제(replication)</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"><p>인덱싱과 쿼리 최적화</p></a>
                     </li>
                 
             </ul>
@@ -197,8 +209,10 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/"></a></h2>
+            <h2><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/">데코레이터 패턴</a></h2>
         
+        
+            <p>DesignPartterns - 데코레이터 패턴</p>
         
     </div>
     <div class="meta">
@@ -207,11 +221,11 @@
         
 
         <time class="published"
-            datetime='0001-01-01'>
-            January 1, 0001</time>
+            datetime='2016-02-28'>
+            February 28, 2016</time>
         <span class="author"></span>
         
-            <p>2 minute read</p>
+            <p>1 minute read</p>
         
         
     </div>
@@ -219,16 +233,40 @@
 
     
 
-    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-08T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;리팩토링 개론&quot;] title = &quot;리팩토링 개론&quot; description = &quot;Refactoring - 리팩토링 개론&quot; +++ 팩토링은 무엇인가 (명사) 겉으로 드러나는 기능은 그대로 둔 채, 알아보기 쉽고 수정하기 간편하게 소프트웨어 내부를 수정하는 방법 (동사) 리팩토링 기법을 연달아 적용해서 겉으로 드러나는 기능은 그대로 둔 채 소프트웨어 구조를 변경한다. 강조할 내용 리팩토링의 목적은 소프트웨어를 더 이해하기 쉽고 수정하기 쉽게 만드는 것이다. 리팩토링은 겉으로 드러나는 소프트웨어 기능에 영향을 주지 않는다.</p>
+    <p>decorationPatterns OCP(Open-Closed Principle(원칙)) 디자인 원칙 클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다. 무조건 OCP를 적용하는 것은 시간 낭비가 될 수도 있고, 괜히 쓸 데 없는 일을 하는 것일 수도 있습니다. 결과적으로 불필요하게 복잡하고 이해하기 힘든 코드만 만들게 되는 부작용이 있을 수도 있으니 주의해야합니다. Decorator Pattern의 정의 데코레이터 패턴에서는 객체에 추가적인 요건을 동적으로 첨가한다. (즉 자신이 장식하고 있는 객체에게 어떤 행동을 위임하는 것 외에 원하는 추가적인 작업을 수행할 수 있습니다.) 데코레이터는 서브클래스를 만드는 것을 통해서 기능을 유연하게 확장할 수 있는 방법을 제공한다.</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B0%9C%EB%A1%A0/" class="button big">Continue Reading</a></li>
+            <li><a href="http://kwsstudy.github.io/post/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
 
     
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
     
 </ul>
 
@@ -240,51 +278,10 @@
     <header>
     <div class="title">
         
-            <h2><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/"></a></h2>
+            <h2><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/">옵저버 패턴</a></h2>
         
         
-    </div>
-    <div class="meta">
-        
-            
-        
-
-        <time class="published"
-            datetime='0001-01-01'>
-            January 1, 0001</time>
-        <span class="author"></span>
-        
-            <p>8 minute read</p>
-        
-        
-    </div>
-</header>
-
-    
-
-    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-08T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;맛보기 예제&quot;] title = &quot;맛보기 예제&quot; description = &quot;Refactoring - 맛보기 예제&quot; +++ 원래의 프로그램 맛보기 예제는 단순히 비디오 대여점에서 고객의 대여료 내역을 계산하고 출력하는 간단한 프로그램이다. 이 프로그램은 고객이 대여한 비디오와 대여기간을 표시한 후, 비디오 종류와 대여 기간을 토대로 대여료를 계산한다. 비디오 종류에는 일반물, 아동물, 최신물 세종류다. 대여료 계산과 더불어 내역을 바탕으로 적립 포인트도 계산되는데, 이 포인트는 비디오가 최신물인지 아닌지에 따라 달라진다.</p>
-
-    <footer>
-        <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EB%A7%9B%EB%B3%B4%EA%B8%B0-%EC%98%88%EC%A0%9C/" class="button big">Continue Reading</a></li>
-        </ul>
-        <ul class="stats">
-    
-
-    
-    
-</ul>
-
-    </footer>
-</article>
-
-        
-            <article class="post">
-    <header>
-    <div class="title">
-        
-            <h2><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/"></a></h2>
-        
+            <p>DesignPartterns - 옵저버 패턴</p>
         
     </div>
     <div class="meta">
@@ -293,8 +290,8 @@
         
 
         <time class="published"
-            datetime='0001-01-01'>
-            January 1, 0001</time>
+            datetime='2016-02-28'>
+            February 28, 2016</time>
         <span class="author"></span>
         
             <p>5 minute read</p>
@@ -305,16 +302,40 @@
 
     
 
-    <p>+++ categories = [&quot;KWSStudy&quot;,&quot;Refactoring&quot;] date = &quot;2016-05-14T11:00:00+09:00&quot; tags = [&quot;Refactoring&quot;,&quot;코드의 구린내&quot;] title = &quot;코드의 구린내&quot; description = &quot;Refactoring - 코드의 구린내&quot; +++ 03. 코드의 구린내 구린게 있으면 그 부분을 바로 잡으세요. 리팩토링을 어떨 때 시작하고 어떨 때 그만둬야 할지 판단하는 일은 리팩토링 기법을 적용하는 방법만큼 중요하다. 1. 중복코드 구린내의 제왕 중복코드. 똑같은 코드 구조가 두 군데 이상 있을 때는 그 부분을 하나로 통일하면 프로그램이 개선 한 클래스의 두 메서드 안에 같은 코드가 들어있는경우 -&gt; 메서드 추출 기법을 적용해서 겹치는 코드를 빼내어 별도의 메서드로 만들고 그 메서 드를 두 곳에서 호출 수퍼클래스의 두 하위 클래스에 같은 코드가 들어 있는 경우 -&gt; 메서드 추출 기법을 적용해서 중복을 없앤 후 메서드 상향 기법을 적용하면 된다.</p>
+    <p>옵저버 패턴의 정의 옵저버 패턴(Observer Pattern)에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다(one-to-many)의존성을 정의 한다 신문 구독 메커니즘에서 출판사를 주제(subject), 구독자를 옵저버(observer)라고 생각하시면 이해하기 쉽다. 옵저버 패턴을 적용하여 어플리케이션을 만들어 보겠다. 우리가 만들 애플리케이션은 위치 어플리케이션이다. Position 객체를 받아서 x좌표 y좌표를 받아서 디스플레이 장비에서 갱신해 가면서 보여주는 어플리케이션이다. Position 인터페이스 public classPosition { public float getPositionX() { return 0.0f; } public float getPositionY() { return 0.0f; } /* * 포지션 값이 변경될 때마다 알려주기 위한 메서드 */ public void positionChanged(){ float positionX = getPositionX(); float positionY = getPositionY(); } } 지금 알고 있는 것들 x좌표 y좌표를 알아낼 수 있는 메서드가 있다.</p>
 
     <footer>
         <ul class="actions">
-            <li><a href="http://kwsstudy.github.io/post/%EC%BD%94%EB%93%9C%EC%9D%98-%EA%B5%AC%EB%A6%B0%EB%82%B4/" class="button big">Continue Reading</a></li>
+            <li><a href="http://kwsstudy.github.io/post/%EC%98%B5%EC%A0%80%EB%B2%84-%ED%8C%A8%ED%84%B4/" class="button big">Continue Reading</a></li>
         </ul>
         <ul class="stats">
     
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
 
     
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/designpartterns'>DesignPartterns</a></li>
     
 </ul>
 
@@ -331,8 +352,7 @@
     
 
     
-        <li><a href="/tags/ec96b4eb8c91ed84b0-ed8ca8ed84b4eab3bc-ed8dbcec82aceb939c-ed8ca8ed84b4/page/8/"
-                class="button big next">Next Page</a></li>
+        <li><a href="#" class="disabled button big next">Next Page</a></li>
     
 </ul>
 
@@ -436,13 +456,13 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C-%EB%8B%A8%EC%88%9C%ED%99%94/">맛보기 예제</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-05-08'>
-                                    May 8, 2016</time>
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -450,13 +470,55 @@
                     <li>
                         <article>
                             <header>
-                                <h3><a href="http://kwsstudy.github.io/post/%EB%82%98%EB%A8%B8%EC%A7%80-%ED%8C%A8%ED%84%B4/">나머지 패턴</a></h3>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h3>
                                 
                                     
                                 
                                 <time class="published" datetime=
-                                    '2016-04-03'>
-                                    April 3, 2016</time>
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-11-27'>
+                                    November 27, 2016</time>
                             </header>
                         </article>
                     </li>
@@ -495,7 +557,7 @@
                         <article>
                             <header>
                                 <a href="/categories/kwsstudy/">KWSStudy</a>
-                                <span style="float:right;">15</span>
+                                <span style="float:right;">32</span>
                             </header>
                         </article>
                     </li>
@@ -513,7 +575,16 @@
                         <article>
                             <header>
                                 <a href="/categories/refactoring/">Refactoring</a>
-                                <span style="float:right;">1</span>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/mongodb/">MongoDB</a>
+                                <span style="float:right;">8</span>
                             </header>
                         </article>
                     </li>

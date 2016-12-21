@@ -1,0 +1,1046 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>배포와 관리</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="MongoDB - 배포와 관리">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="배포와 관리"/>
+<meta name="twitter:description" content="MongoDB - 배포와 관리"/>
+
+
+
+        <meta property="og:title" content="배포와 관리" />
+<meta property="og:description" content="MongoDB - 배포와 관리" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/" />
+
+
+<meta property="og:updated_time" content="2016-12-11T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="배포와 관리">
+<meta itemprop="description" content="MongoDB - 배포와 관리">
+
+
+<meta itemprop="dateModified" content="2016-12-11T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="523">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,MongoDB,Refactoring,DesignPartterns,GridFS,MongoDB,Refactoring,객체 간의 기능 이동,나머지 패턴,데이타 체계화,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,메서드 정리,메서드 호출 단순화,몽고 디비,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,조건문 간결화,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/GridFS/"><p>GridFS</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/"><p>배포와 관리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"><p>샤딩</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/"><p>복제(replication)</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"><p>인덱싱과 쿼리 최적화</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&text=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h1>
+            
+        
+        
+            <p>MongoDB - 배포와 관리</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-11'>
+            December 11, 2016</time>
+        <span class="author"></span>
+        
+            <p>3 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&text=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f&title=%eb%b0%b0%ed%8f%ac%ec%99%80%20%ea%b4%80%eb%a6%ac" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B0%25B0%25ED%258F%25AC%25EC%2599%2580-%25EA%25B4%2580%25EB%25A6%25AC%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h3 id="목표:894bb1f58eae2986a0c76f97e80f5f02">목표</h3>
+
+<ul>
+<li><p>배포 고려사항 및 하드웨어 필요사항</p></li>
+
+<li><p>관리, 백업, 보안 방법</p></li>
+
+<li><p>성능 문제 해결 방법</p></li>
+</ul>
+
+<h3 id="배포-환경:894bb1f58eae2986a0c76f97e80f5f02">배포 환경</h3>
+
+<ul>
+<li><p>아키텍처</p>
+
+<ul>
+<li><p>몽고디비는 가상 주소공간으로 매핑하기 때문에 충분한 메모리를 확보할 수 있는 64비트 운영 체제를 사용하자.</p></li>
+
+<li><p><a href="https://ko.m.wikipedia.org/wiki/엔디언">리틀 엔디언</a> 서버에서 실행해야한다.</p></li>
+</ul></li>
+
+<li><p>CPU</p>
+
+<ul>
+<li>몽고디비는 cpu연산이 많은 어플리케이션이 아니다.</li>
+</ul></li>
+
+<li><p>램</p>
+
+<ul>
+<li><p>작업 데이터의 크기가 램 용량을 넘어서게 되면 성능 저하가 심각해 진다.</p></li>
+
+<li><p>자주 사용하는 인덱스와 작업 데이터를 램이 수용할 수 있도록 충분한 램을 확보하자.</p></li>
+</ul></li>
+
+<li><p>디스크</p>
+
+<ul>
+<li><p>몽고디비에 쓰기를 할 때 서버가 매 60초마다 디스크에 동기화를 하기 때문에 디스크 속도가 느리면 성능이 저하될수 있다.</p></li>
+
+<li><p>읽기 쓰기를 수행할때 물리적인 메모리가 다찰 때까지 새로운 가상메모리 페이지를 램으로 읽어들인다. 디스크가 빠르면 이작업이 빨라진다.</p></li>
+</ul></li>
+
+<li><p>파일 시스템</p>
+
+<ul>
+<li>ext4, xfs 파일 시스템은 몽고디비에서 빈번하게 일어나는 선할당의 속도가 빨라진다.</li>
+</ul></li>
+
+<li><p>파일 디스크립터</p>
+
+<ul>
+<li>실제 서비스에서 모자라게 되는 일이 없도록 제한값을 높게잡고 시작한다.</li>
+</ul></li>
+
+<li><p>클럭</p>
+
+<ul>
+<li><p>복제는 시스템 클럭 차이에 민감하다.</p></li>
+
+<li><p>복제셋의 노드를 호스팅하는 서버의 클럭이 서로 달라지게 되면 복제가 올바르게 작동하지 못할 수도 있다.</p></li>
+
+<li><p>각 서버에서 <a href="https://ko.m.wikipedia.org/wiki/네트워크_타임_프로토콜">NTP</a>를 사용해서 클럭을 동기화 할 필요가 있다.</p></li>
+</ul></li>
+
+<li><p>클라우드</p>
+
+<ul>
+<li><p>클라우드를 이용하게 되면 메모리 제한에서 자유로울수 없다.</p></li>
+
+<li><p>클라우드는 블랙박스 이기 때문에, 서비스 문제를 분석하고 해결할 수 있는 방법이 업다.</p></li>
+
+<li><p>클라우드의 디스크는 높은 수준의 처리율을 제공하지 않는다.</p></li>
+</ul></li>
+</ul>
+
+<h3 id="서버-설정:894bb1f58eae2986a0c76f97e80f5f02">서버 설정</h3>
+
+<ul>
+<li><p>구성 선택</p>
+
+<ul>
+<li>최소한의 권장 배포 구성은 세 멤버로 이루어진 복제셋이다.</li>
+</ul></li>
+
+<li><p>저널링</p>
+
+<ul>
+<li><p>2.0부터 디폴트로 사용된다.</p></li>
+
+<li><p>모든 쓰기를 핵심 데이터 파일에 쓰기 전에 저널에 먼저 쓴다.</p></li>
+
+<li><p>예상치 않게 셧다운 되었을 때 신속하고 정확하게 온라인 상태로 되돌아오게 해준다.</p></li>
+
+<li><p>저널링을 사용하면 쓰기 성능 옵션이 저하된다.</p></li>
+
+<li><p>100미리초의 동기화 시간이 있기 때문에 100미리초 만큼의 연산이 소실될수 있다.</p></li>
+</ul></li>
+</ul>
+
+<h3 id="데이터-import-export:894bb1f58eae2986a0c76f97e80f5f02">데이터 import, export</h3>
+
+<ul>
+<li><p>Mongoimport</p>
+
+<ul>
+<li>JSON, CSV, TSV 파일을 들여오기 할 수 있다.</li>
+</ul></li>
+
+<li><p>Mongoexport</p>
+
+<ul>
+<li>컬렉션의 모든 데이터를 JSON, CSV파일로 내보낼수 있다.</li>
+</ul></li>
+</ul>
+
+<h3 id="보안:894bb1f58eae2986a0c76f97e80f5f02">보안</h3>
+
+<ul>
+<li><p>안전한 환경</p>
+
+<ul>
+<li><p>모든 데이터베이스 클라이언트는 모든 복제셋 노드에 연결할 수 있어야 한다.</p></li>
+
+<li><p>샤드 클러스터는 부분적으로 복제셋으로 이루어져 있다.</p></li>
+</ul></li>
+
+<li><p>인증 API</p>
+
+<ul>
+<li>인증 시작을 위해서는 admin 데이터 베이스에 사용자를 추가해야한다.</li>
+</ul></li>
+
+<li><p>복제셋 인증</p>
+
+<ul>
+<li><p>패스워드 역할을 하는 최소한 6개의 문자로 이루어진 base64파일을 생성해야한다.</p></li>
+
+<li><p>keyFile 옵션을 사용해 패스워드 파일의 위치를 지정한상태로 복제셋 멤버를 실행</p></li>
+</ul></li>
+
+<li><p>샤딩 인증</p>
+
+<ul>
+<li>복제셋과 동일</li>
+</ul></li>
+</ul>
+
+<h3 id="모니터링과-진단:894bb1f58eae2986a0c76f97e80f5f02">모니터링과 진단</h3>
+
+<ul>
+<li><p>로깅</p>
+
+<ul>
+<li><p>logpath, -v 옵션을 이용해 로그를 저장한다.</p></li>
+
+<li><p>logappend 옵션을 사용하면, 로그를 새로쓰지 않고 추가한다.</p></li>
+
+<li><p>logrotate 명령을 실행하면 로그 파일을 주기적으로 순환한다.</p></li>
+</ul></li>
+</ul>
+
+<h3 id="모니터링-도구:894bb1f58eae2986a0c76f97e80f5f02">모니터링 도구</h3>
+
+<ul>
+<li><p>serverStatus</p>
+
+<ul>
+<li><p>서버의 상태를 알려준다.</p></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/method/db.serverStatus/#db.serverStatus">메뉴얼 참조</a></p></li>
+</ul></li>
+
+<li><p>top</p>
+
+<ul>
+<li><p>연산이 평균적으로 얼마나 오래 실행되고 있는지를 알려준다.</p></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/command/top/#dbcmd.top">메뉴얼 참조</a></p></li>
+</ul></li>
+
+<li><p>db.currentOp()</p>
+
+<ul>
+<li><p>몽고디비가 현재 무엇을 수행하고 있는지 알려준다.</p></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/method/db.currentOp/#db.currentOp">메뉴얼 참조</a></p></li>
+</ul></li>
+
+<li><p>MONGOSTAT</p>
+
+<ul>
+<li><p>다른 명령어는 순간의 내용이지만 MONGOSTAT은 실시간 액티비티를 제공한다.</p></li>
+
+<li><p><a href="https://docs.mongodb.com/manual/reference/program/mongostat/">메뉴얼 참조</a></p></li>
+</ul></li>
+
+<li><p>웹콘솔</p>
+
+<ul>
+<li><p>시각화된 인터페이스를 제공</p></li>
+
+<li><p>&ndash;rest 옵션 + 몽고디비를 실행중인 포트 + 1000하면 사용가능</p></li>
+</ul></li>
+</ul>
+
+<h3 id="모니터링-외부-어플리케이션:894bb1f58eae2986a0c76f97e80f5f02">모니터링 외부 어플리케이션</h3>
+
+<ul>
+<li><a href="https://www.nagios.org">나기오스</a>, <a href="http://munin-monitoring.org">뮤닌</a>등이 있다.</li>
+</ul>
+
+<h3 id="진단도구:894bb1f58eae2986a0c76f97e80f5f02">진단도구</h3>
+
+<ul>
+<li><p>mongosniff</p>
+
+<ul>
+<li>클라이언트로부터 전송되는 패킷을 검사하고 알기쉽게 추출.</li>
+</ul></li>
+
+<li><p>bsondump</p>
+
+<ul>
+<li>BSON 원파일을 검사할수 있다.</li>
+</ul></li>
+</ul>
+
+<h3 id="유지보수:894bb1f58eae2986a0c76f97e80f5f02">유지보수</h3>
+
+<ul>
+<li><p>백업과 복구</p>
+
+<ul>
+<li>mongodump, mongorestore를 이용하거나, 데이터파일을 카피.</li>
+</ul></li>
+
+<li><p>압축과 수리</p>
+
+<ul>
+<li><p>mongod &ndash;repair를 사용하여 서버의 모든 데이터베이스를 수리할수 있다.</p></li>
+
+<li><p>데이터베이스 단위의 수리는 db.repairDatabase()를 사용한다.</p></li>
+</ul></li>
+
+<li><p>업그레이드</p>
+
+<ul>
+<li>가능한 최신 안정버전을 업그레이드 하여 사용하도록 하자.</li>
+</ul></li>
+</ul>
+
+<h3 id="성능문제-해결:894bb1f58eae2986a0c76f97e80f5f02">성능문제 해결</h3>
+
+<ul>
+<li><p>인덱스와 쿼리 효율성</p>
+
+<ul>
+<li><p>성능문제 발생시 가장먼저 확인해야 하는것이 인덱스.</p></li>
+
+<li><p>중복된 인덱스로 인해 디스크 공간과 램이 더많이 필요해 지면, 쓰기연산에 더 많은 작업이 필요해진다.</p></li>
+</ul></li>
+
+<li><p>램추가</p>
+
+<ul>
+<li><p>인덱스조정이 항상 해결책은 아니다. 데이터가 메모리용량보다 많으면 디스크 액세스가 자주 발생해 속도가 저하될수 있다.</p></li>
+
+<li><p>dataSize와 storageSize의 크기 차이를 잘 확인해야함.</p></li>
+
+<li><p>storageSize 가 너무 크면 디스크 파편화로 성능이 저하될수 있다. 이 파편화로 실제 필요한것 이상의 램을 사용할수 있다.</p></li>
+</ul></li>
+
+<li><p>디스크 성능 향상</p>
+
+<ul>
+<li>RAID를 구성하거나 SSD를 구입하자.</li>
+</ul></li>
+
+<li><p>수평적 확장</p>
+
+<ul>
+<li>전체 작업 데이터를 어느 한서버의 물리적인 램이 수용할수 없을때, 어느 한서버에 쓰기부하가 너무 클때 샤드클러스터를 구축하자.</li>
+</ul></li>
+
+<li><p>전문가의 도움</p>
+
+<ul>
+<li>그래도 안되면 전문가를 부르자</li>
+</ul></li>
+</ul>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"
+                class="button big previous">샤딩</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/GridFS/"
+                class="button big next">GridFS</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC\/';
+    var disqus_title = '배포와 관리';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-11-27'>
+                                    November 27, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">32</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/mongodb/">MongoDB</a>
+                                <span style="float:right;">8</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

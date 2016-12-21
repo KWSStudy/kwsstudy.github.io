@@ -1,0 +1,1339 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>복제(replication)</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.15" />
+        
+
+
+        
+        
+            <meta name="description" content="MongoDB - 복제(replication)">
+        
+
+        
+
+  <meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:title" content="복제(replication)"/>
+<meta name="twitter:description" content="MongoDB - 복제(replication)"/>
+
+
+
+        <meta property="og:title" content="복제(replication)" />
+<meta property="og:description" content="MongoDB - 복제(replication)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/" />
+
+
+<meta property="og:updated_time" content="2016-12-04T11:00:00&#43;09:00"/>
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="복제(replication)">
+<meta itemprop="description" content="MongoDB - 복제(replication)">
+
+
+<meta itemprop="dateModified" content="2016-12-04T11:00:00&#43;09:00" />
+<meta itemprop="wordCount" content="2000">
+
+
+
+<meta itemprop="keywords" content="DesignPartterns,KWSStudy,MongoDB,Refactoring,DesignPartterns,GridFS,MongoDB,Refactoring,객체 간의 기능 이동,나머지 패턴,데이타 체계화,데코레이터 패턴,리팩토링 개론,리팩토링 기법 카탈로그,맛보기 예제,메서드 정리,메서드 호출 단순화,몽고 디비,스테이트 패턴,스트래티지 패턴,싱글턴 패턴,어댑터 패턴과 퍼사드 패턴,옵저버 패턴,이터레이터와 컴포지트 패턴,조건문 간결화,커맨드 패턴,컴파운드 패턴,컴파운드 패턴-MVC,코드의 구린내,테스트작성,템플릿 메소드 패턴,팩토리 패턴,프록시 패턴," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="/css/main.min.css" />
+                
+            
+        
+
+        
+        
+        
+            
+        
+    </head>
+    <body>
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h2><a href="/">KWS Study</i></a></h2>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/post/">
+                        
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories/">
+                        Categories
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:http://kwsstudy.github.io/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/post/">
+                            <h3>
+                                
+                                    <i class="fa fa-newspaper-o">&nbsp;</i>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories/">
+                            <h3>
+                                
+                                Categories
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/GridFS/"><p>GridFS</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/"><p>배포와 관리</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"><p>샤딩</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/"><p>복제(replication)</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"><p>인덱싱과 쿼리 최적화</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&text=%eb%b3%b5%ec%a0%9c%28replication%29&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h1><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h1>
+            
+        
+        
+            <p>MongoDB - 복제(replication)</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-12-04'>
+            December 4, 2016</time>
+        <span class="author"></span>
+        
+            <p>10 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&text=%eb%b3%b5%ec%a0%9c%28replication%29&via=" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f&title=%eb%b3%b5%ec%a0%9c%28replication%29" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=http%3a%2f%2fkwsstudy.github.io%2fpost%2f%25EB%25B3%25B5%25EC%25A0%259C%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+
+    <div id="content">
+        
+
+<h1 id="복제-replication:177f2075b6e19d6ba296a382cdb81d27">복제(replication)</h1>
+
+<p>복제는 여러 서버 상에서 데이터의 동일한 복사본을 유지하는 방법 <em>(모든 실제 서비스에서는 복제를 적용할 것을 권장)</em><br />
+→ 한 대 또는 그 이상의 서버에 이상이 발생하였을 때 애플리케이션의 정상 동작 및 데이터를 안전하게 보존할 수 있음<br />
+※ MongoDB는 <strong>복제 셋(replica set)</strong>을 생성함으로써 복제를 설정할 수 있음</p>
+
+<blockquote>
+<p>MongoDB in Action 책에는 마스터-슬레이브 복제(master-slave replication) 와 복제 셋(replica set) 두 가지 방식이
+있다고 소개되고 있으나 마스터-슬레이브 복제는 3.2 버전부터 Deprecated 되었음<br />
+참조: <a href="https://docs.mongodb.com/manual/core/master-slave/">https://docs.mongodb.com/manual/core/master-slave/</a></p>
+</blockquote>
+
+<h2 id="복제-셋-replica-set-의-구성:177f2075b6e19d6ba296a382cdb81d27">복제 셋(replica set)의 구성</h2>
+
+<ul>
+<li><strong>1대의 프라이머리(primary) 서버</strong>
+
+<ul>
+<li>클라이언트의 요청을 처리</li>
+<li>데이터에 대한 <strong>쓰기</strong>, 읽기 가능</li>
+<li>복제 셋에서 쓰기 동작을 하는 유일한 멤버</li>
+</ul></li>
+<li><strong>여러 대의 세컨더리(secondary) 서버</strong>
+
+<ul>
+<li>프라이머리 데이터의 복제 데이터를 가짐</li>
+<li>프라이머리의 oplog에서 하던 동작을 세컨더리의 데이터 셋에 <strong>비동기적</strong>으로 적용</li>
+<li>프라이머리 서버에 장애가 발생시 세컨더리 서버는 자신들 중 새로운 프라이머리 서버를 선출할 수 있음</li>
+<li>데이터의 읽기만 가능</li>
+</ul></li>
+</ul>
+
+<p>※ 복제 셋의 노드는 최대 <strong>12</strong>개까지 구성할 수 있다.</p>
+
+<h2 id="복제의-작동-방식:177f2075b6e19d6ba296a382cdb81d27">복제의 작동 방식</h2>
+
+<h3 id="오피로그-oplog:177f2075b6e19d6ba296a382cdb81d27">오피로그(oplog)</h3>
+
+<p>데이터 복제를 가능하게 함</p>
+
+<ul>
+<li>캡드(capped) 컬렉션으로 모든 복제 노드에서 local 이라는 데이터베이스 내에 존재</li>
+<li>데이터에 대한 모든 수정사항을 기록
+
+<ol>
+<li>클라이언트가 프라이머리 노드에 대해 쓰기를 할 때마다 세컨더리에서 재생하기 위한 충분한 정보가
+프라이머리 노드의 오피로그에 자동으로 추가됨</li>
+<li>쓰기가 세컨더리 노드에 복제되고 나면 쓰기 정보가 세컨더리 노드의 오피로그에도 기록됨</li>
+</ol></li>
+<li>오피로그 항목은 BSON 타임스탬프로 인식되고, 모든 세컨더리는 타임스탬프를 이용해서 적용할 최신 항목을 추적</li>
+
+<li><p>local 데이터베이스의 <code>oplog.rs</code>라는 컬렉션에 오피로그가 저장됨</p>
+
+<ul>
+<li>※ local 데이터베이스에 저장된 기타 컬렉션</li>
+<li><code>replset.minvalid</code> - 복제 셋 멤버의 초기 동기화를 위한 정보</li>
+<li><code>system.replset</code> - 복제 셋 설정 도큐먼트를 저장</li>
+<li><code>me</code>, <code>slaves</code> - 쓰기 concern을 구현하는데 사용</li>
+<li><code>system.indexes</code> - 인덱스 규격에 대한 정보를 가지고 있는 표준 컬렉션<br /></li>
+</ul></li>
+
+<li><p>세컨더리가 복제 데이터를 유지하는 프로세스</p>
+
+<ol>
+<li>프라이머리 노드에 쓰기 기록</li>
+<li>프라이머리 노드의 오피로그에 추가</li>
+<li>세컨더리 노드가 자신의 오피로그에 프라이머리 노드의 오피로그를 복제<br /></li>
+</ol></li>
+
+<li><p>세컨더리에서의 상세 프로세스</p>
+
+<ol>
+<li>세컨더리 노드가 업데이트 준비가 됨<br /></li>
+<li>자신의 오프로그에서 가장 최근 항목의 타임스탬프를 검사<br /></li>
+<li>프라이머리 노드의 오피로그에서 최근 항목의 타임스탬프 이후의 모든 오피로그 항목을 질의<br /></li>
+<li>질의된 오피로그 항목을 자신의 오프로그에 추가<br /></li>
+<li>추가된 오프로그의 항목을 자신의 데이터에 적용<br /></li>
+</ol></li>
+
+<li><p>세컨더리는 롱 폴링(long polling) 방식을 사용하여 프라이머리의 변경 데이터를 즉각적으로 적용하게 됨</p></li>
+</ul>
+
+<h3 id="복제-중지:177f2075b6e19d6ba296a382cdb81d27">복제 중지</h3>
+
+<p>세컨더리가 프라이머리 노드의 오피로그에서 동기화할 시점을 발견하지 못하면 복제는 완전히 중지</p>
+
+<p>※ 발생하는 예외 메시지</p>
+
+<pre><code>repl: replication data to stable, halting
+Fri Jan 28 14:19:27 [replsecondary] caught SyncException
+</code></pre>
+
+<ul>
+<li>오피로그는 캡드 컬렉션이므로 컬렉션 항목이 시간이 지나면 삭제될 수 있음</li>
+<li>세컨더리 노드가 어떠한 사정으로 프라이머리 노드의 오피로그로 부터 동기화 지점을 찾지 못하면<br />
+→ 세컨더리가 프라이머리의 완벽한 복제본임을 확신할 수 없으므로 복제를 중지할 수 밖에 없음</li>
+<li>유일한 해결책: 프라이머리의 데이터를 처음부터 다시 동기화하는 것</li>
+<li>예방할 수 있는 방법
+
+<ul>
+<li>세컨더리 노드에서 업데이트가 지체되는 상황을 모니터링</li>
+<li>쓰기 연산의 규모에 상응하는 충분한 크기의 오피로그를 가지고 있어야 함</li>
+</ul></li>
+</ul>
+
+<h3 id="오피로그-크기-산정:177f2075b6e19d6ba296a382cdb81d27">오피로그 크기 산정</h3>
+
+<blockquote>
+<p>MongoDB in Action 에서는 오피로그의 크기를 조정할 수 없다고 되어 있으나, v3.0 이후로는 오피로그의 사이즈 조절이 가능함<br />
+※ 참조: <a href="https://docs.mongodb.com/manual/tutorial/change-oplog-size/">MongoDB Docs - Change the Size of the Oplog</a></p>
+</blockquote>
+
+<ul>
+<li><p>오피로그의 디폴트 크기 <em>(※ 일반적인 경우에는 디폴트 크기로 충분함)</em></p>
+
+<ul>
+<li><em>3.0 이전</em></li>
+<li>32bit 시스템: 50MB</li>
+<li>64bit 시스템: 1GB 또는 사용되지 않는 디스크 공간의 5%</li>
+<li>OS X: 192MB (개발을 위한 시스템으로 고려)</li>
+<li><strong>3.0 이후</strong></li>
+<li>Unix and Windows system
+
+<ul>
+<li>In-Memory Storage Engine: 물리 메모리의 5%</li>
+<li>WiredTiger Storage Engine(v3.0 이후로 사용, v3.2 부터는 기본 엔진): 사용되지 않은 디스크 공간의 5%</li>
+<li>MMAPv1 Storage Engine(v3.2 이전의 원래 스토리지 엔진): 사용되지 않은 디스크 공간의 5%</li>
+</ul></li>
+<li>OS X(64bit)
+
+<ul>
+<li>In-Memory Storage Engine: 물리 메모리 192MB</li>
+<li>WiredTiger Storage Engine: 디스크 공간 192MB</li>
+<li>MMAPv1 Storage Engine: 디스크 공간 192MB</li>
+</ul></li>
+</ul></li>
+
+<li><p>쓰기가 많이 발생하는 애플리케이션에 대한 오피로그의 결정을 위해서는 경험적 테스트가 필요함</p>
+
+<ul>
+<li>복제를 구성하고 프라이머리에서 실제 시스템에서 발생하는 비율로 한 시간 이상 프라이머리에 쓰기를 수행해보고
+복제셋에 생성된 현새 상태를 얻어 최소한 8시간은 견딜 수 있는 크기를 추론하여 설정하는 것이 좋음</li>
+</ul></li>
+</ul>
+
+<h3 id="하트비트-heartbeat-와-장애복구:177f2075b6e19d6ba296a382cdb81d27">하트비트(heartbeat)와 장애복구</h3>
+
+<p>하트비트(heartbeat)의 역할은 시스템의 건강상태를 모니터링를 통해 장애 복구를 가능하게 하는 것</p>
+
+<p><strong>MongoDB가 건강상태를 확인하는 방법</strong><br />
+- 복제 셋의 각 멤버는 디폴트로 다른 멤버들을 매 2초마다 한 번씩 핑(ping)을 해봄 → 시스템의 건강 상태를 확인할 수 있음
+- 상태 명령을 수행했을 때 알 수 있는 정보
+  - 상태에 대한 정보(1: 건강, 0: 응답 없음)
+  - 각 노드의 마지막 하트비트의 타임스탬프
+- 모든 모드가 건강한 상태일 때 만 복제 셋이 정상 동작하는 것이며 한 노드라도 반응이 없으면 조치를 취해야 함</p>
+
+<p><strong>장애 발생시 처리 방식</strong><br />
+- 세컨더리 노드가 다운
+  - 세컨더리의 과반수가 살아있는 경우<br />
+    → 복제 셋은 상태를 변경하지 않고 다운된 세컨더리의 복구를 기다림
+  - 세컨더리의 과반수가 살아있지 않은 경우
+    - 프라이머리가 세컨더리로 강등
+    - WHY?<br />
+      네트워크 장애로 하트비트가 실패한 경우(여전히 온라인 상태) 중재자와 세컨더리가 여전히 살아서 통신 → 프라이머리 선출<br />
+      프라이머리가 2개인 상황이 발생 → 쓰기가 가능한 프라이머리가 2개인 상황이라 데이터의 일관성에 문제 발생
+- 프라이머리 노드가 다운
+  - 세컨더리의 과반수가 살아있는 경우
+    - 세컨더리가 프라이머리로 승격
+    - 하나 이상의 세컨더리가 있을 경우에는 가장 최근의 세컨더리가 프라이머리로 승격
+  - 세컨더리의 과반수가 살아있지 않은 경우 → <em>System Crush</em></p>
+
+<h3 id="커밋과-롤백:177f2075b6e19d6ba296a382cdb81d27">커밋과 롤백</h3>
+
+<blockquote>
+<p>복제 셋에서 프라이머리의 쓰기가 과반수의 노드에 복제되기 전까지는 커밋되지 않은 것으로 여김</p>
+</blockquote>
+
+<p><strong>롤백</strong>
+&gt; 과반수의 노드에 복제가 되기 전에 세컨더리가 프라이머리로 승격 → 새로운 프라이머리에 쓰기 작업을 수행<br />
+&gt; → 기존 프라이머리 복구 → 새로운 프라이머리로 부터 복제하는 경우
+&gt;<br />
+&gt; 예전 프라이머리에는 새로운 프라이머리 노드에는 존재하지 않는 오피로그가 존재할 수 있음 → 롤백 발생</p>
+
+<p>※ <strong>과반수의 노드에 복제된 적이 없는 쓰기는 모두 취소</strong></p>
+
+<p>롤백으로 인해 취소된 데이터는 데이터 경로의 <code>rollback</code> 이라는 서브디렉토리에 저장됨<br />
+롤백된 데이터를 복구할 필요가 있을 때는 <code>bsondump</code> 유틸리티로 BSON 파일 검사하고 <code>mongorestore</code>를 사용해서 복구할 수 있음</p>
+
+<p><strong>롤백 상황을 방지하는 방법</strong>: 쓰기 concern을 사용해서 데이터가 각 쓰기에 대해 과반수의 노드에 복제되는 것이 확실하게 할 수 있음</p>
+
+<h3 id="관리:177f2075b6e19d6ba296a382cdb81d27">관리</h3>
+
+<blockquote>
+<p><strong>로컬에서 복제 셋을 만들기 위한 준비</strong></p>
+</blockquote>
+
+<pre><code>&gt; $ mongod --replset [name] --dbpath /data/node1 --port 40000
+&gt; $ mongod --replset [name] --dbpath /data/node2 --port 40001
+&gt; $ mongod --replset [name] --dbpath /data/arbiter --port 40002
+</code></pre>
+
+<blockquote>
+<p><strong>복제 셋 생성</strong></p>
+</blockquote>
+
+<pre><code>&gt; rs.initiate()
+&gt; rs.add(&quot;localhost:40001&quot;)
+&gt; rs.add(&quot;localhost:40002&quot;, {arbiterOnly: true})
+&gt; db.isMaster()
+&gt; rs.status()
+</code></pre>
+
+<ul>
+<li><code>arbiterOnly</code>: 세컨더리가 짝수일 때 투표에서 중재자 역할을 수행하여 프라이머리 선출에 투표를 함</li>
+<li><code>db.isMaster()</code>: 현재 복제 셋의 상태에 대한 간략한 요약을 표시</li>
+<li><code>db.status()</code>: 복제 셋 시스템에 대한 자세한 상태 정보를 표시</li>
+</ul>
+
+<blockquote>
+<p><strong>오피로그에 대한 기본 정보 확인</strong></p>
+</blockquote>
+
+<pre><code>&gt;  &gt; db.getReplicationInfo()
+</code></pre>
+
+<blockquote>
+<p><strong>오피로그의 크기를 설정</strong> (크기는 MB 단위)</p>
+</blockquote>
+
+<pre><code>&gt;  $ mongod --replSet myapp --oplogSize 1024
+</code></pre>
+
+<p><strong>복제 셋의 생성을 설정 도큐먼트를 이용해서 수행</strong></p>
+
+<pre><code>&gt; config = {_id: &quot;myapp&quot;, members:[]}
+&gt; config.members.push({_id: 1, host: &quot;localhost:40001&quot;})
+&gt; config.members.push({_id: 0, host: &quot;localhost:40000&quot;})
+&gt; config.members.push({_id: 2, host: &quot;localhost:40002&quot;, arbiterOnly: true})
+&gt; config
+{
+  &quot;_id&quot;: &quot;myapp&quot;,
+  &quot;members&quot;: [
+    {
+      &quot;_id&quot;: 0,
+      &quot;host&quot;: &quot;localhost:40000&quot;
+    },
+    {
+      &quot;_id&quot;: 1,
+      &quot;host&quot;: &quot;localhost:40001&quot;
+    },
+    {
+      &quot;_id&quot;: 2,
+      &quot;host&quot;: &quot;localhost:40002&quot;,
+      &quot;arbiterOnly&quot;: true
+    }
+  ]
+}
+&gt; rs.initiate(config)
+</code></pre>
+
+<h4 id="설정-도큐먼트-옵션:177f2075b6e19d6ba296a382cdb81d27">설정 도큐먼트 옵션</h4>
+
+<ul>
+<li>복제 셋 개별 멤버에 대한 설정 옵션
+
+<ul>
+<li><code>_id</code>(필수): 멤버의 아읻를 나타내는 고유한 정수 값 (0부터 시작해서 1씩 증가)</li>
+<li><code>host</code>(필수): 호스트 이름과 포트</li>
+<li><code>arbiterOnly</code>:  중재자인지 여부를 설정<br />
+<strong>Arbitor</strong>: 프라이머리 선정에만 참여하고 복제하지 않는 경량 멤버</li>
+<li><code>priority</code>: 장애 발생시 프라이머리로 선출될 가능성(0~1000), 0으로 설정할 경우 프라이머리로 선정되지 않음</li>
+<li><code>votes</code>: 프라이머리 선출시의 표 수를 지정(모든 복제 멤버들은 디폴드로 한 표를 받음)</li>
+<li><code>hidden</code>: <code>isMaster()</code>에 의해 생성되는 응답에서 숨김 → 애플리케이션(드라이버)에서 접속하는 것을 막을 수 있음</li>
+<li><code>buildIndexes</code>: 인덱스를 구축할 지 여부를 설정(기본 값: <code>true</code>)<br />
+프라이머리가 되지 않을 멤버에 대해서만 설정해야 함(<code>priority: 0</code>)</li>
+<li><code>slaveDelay</code>: 세컨더리가 프라이머리 변경을 적용하는데 걸리는 지연 시간을 초 단위로 설정<br />
+프라이머리가 되지 않을 멤버에 대해서만 설정해야 함(<code>priority: 0</code>)<br />
+데이터베이스의 의도되지 않은 문제 발생(예: 실수에 의한 프라이머리 삭제)에 대응(복구)하기 위해 활용할 수 있음</li>
+<li><code>tags</code>: 임의의 키-값 쌍인 도큐먼트, 데이터센터나 랙에서의 위치등을 설명하기 위해 사용할 수 있음<br />
+쓰기 concern과 읽기 세팅을 지정하는데 사용될 수 있음</li>
+</ul></li>
+<li><code>settings</code>(글로벌 복제 셋 설정)의 옵션
+
+<ul>
+<li><code>getLastErrorDefaults</code>: 클라이언트가 파라미터 없이 <code>getLastError</code>를 호출할 때 사용되는 기본 매개변수 설정</li>
+<li><code>getLastErrorModes</code>: <code>getLastError</code> 명령에 대한 추가적인 모드를 정의</li>
+</ul></li>
+</ul>
+
+<h3 id="복제-셋-상태:177f2075b6e19d6ba296a382cdb81d27">복제 셋 상태</h3>
+
+<pre><code>&gt; rs.status()
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="center">상태</th>
+<th align="center">상태 문자열</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">STARTUP</td>
+<td align="left">복제 셋이 모든 복제 셋 멤버를 핑하고 설정 데이터를 공유함으로써 다른 노드와 교섭 중</td>
+</tr>
+
+<tr>
+<td align="center">1</td>
+<td align="center">PRIMARY</td>
+<td align="left">프라이머리 노드</td>
+</tr>
+
+<tr>
+<td align="center">2</td>
+<td align="center">SECONDARY</td>
+<td align="left">세컨더리 읽기 전용 노드</td>
+</tr>
+
+<tr>
+<td align="center">3</td>
+<td align="center">RECOVERING</td>
+<td align="left">읽기/쓰기를 진해할 수 없음, 장애 복구 후 또는 노드 추가 시 볼수 있음</td>
+</tr>
+
+<tr>
+<td align="center">4</td>
+<td align="center">FATAL</td>
+<td align="left">네트워크가 연결되었으나 노드가 반응하지 않음, 해당 노드의 호스트 서버에 오류가 있을 경우</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="center">STARTUP2</td>
+<td align="left">초기 데이터 파일 동기화가 진행 중</td>
+</tr>
+
+<tr>
+<td align="center">6</td>
+<td align="center">UNKNOWN</td>
+<td align="left">네트워크 연결이 이루어져야 함</td>
+</tr>
+
+<tr>
+<td align="center">7</td>
+<td align="center">ARBITER</td>
+<td align="left">노드가 중재자 임</td>
+</tr>
+
+<tr>
+<td align="center">8</td>
+<td align="center">DOWN</td>
+<td align="left">이 노드가 액세스 가능하고 어느 시점에서는 안정적이지만 현재 하트비트 핑에 응답하지 않음</td>
+</tr>
+
+<tr>
+<td align="center">9</td>
+<td align="center">ROLLBACK</td>
+<td align="left">롤백이 수행되고 있음</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="장애조치와-복구:177f2075b6e19d6ba296a382cdb81d27">장애조치와 복구</h3>
+
+<blockquote>
+<p>장애 발생 시 새로운 프라이머리를 선출하기 위해서는 과반수 이상이 필요하고,<br />
+프라이머리는 자신이 과반수 이상에 머물러 있는 한 프라이머리로서의 역할을 유지할 수 있음<br />
+과반수 이상이 복제되면 쓰기가 안전해짐</p>
+
+<p><strong>과반수</strong>: 복제 셋의 모든 멤버의 절반보다 많은 것</p>
+</blockquote>
+
+<p><strong>복제 셋의 멤버 수에 따른 과반수의 예</strong></p>
+
+<table>
+<thead>
+<tr>
+<th align="center">복제 셋의 멤버 수</th>
+<th align="center">복제 셋의 과반수</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+
+<tr>
+<td align="center">2</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">3</td>
+<td align="center">2</td>
+</tr>
+
+<tr>
+<td align="center">4</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+</tr>
+
+<tr>
+<td align="center">6</td>
+<td align="center">4</td>
+</tr>
+
+<tr>
+<td align="center">7</td>
+<td align="center">4</td>
+</tr>
+</tbody>
+</table>
+
+<p>※ <strong>중재자(arbitor)의 역할</strong><br />
+  프라이머리 1대와 세컨더리 1대로 이뤄진 복제 셋의 과반수는 2인데 프라이머리의 장애시 투표를 행사할 수 있는
+  서버는 1대 뿐이므로 프라이머리를 선출할 수 없다.<br />
+  그러므로, 데이터의 복제에는 참여하지 않지만 프라이머리 선출에만 참여하는 중재자가 필요하다.</p>
+
+<h4 id="장애-모드:177f2075b6e19d6ba296a382cdb81d27">장애 모드</h4>
+
+<ul>
+<li><strong>깨끗한 장애(clean failure)</strong>: 주어진 노드의 데이터 파일이 아직 손상되지 않은 상태
+
+<ul>
+<li>발생 케이스: 네트워크 장애, mongodb 프로세스의 종료</li>
+<li>복구 방식: 네트위크 복귀, 프로세스의 재시작</li>
+</ul></li>
+<li><strong>확실한 장애(categorical failure)</strong>: 주어진 노드의 데이터 파일이 더 이상 존재하지 않거나 데이터 파일이 깨진 상태<br />
+
+<ul>
+<li>발생 케이스: mongod 프로세스가 저널링이 사용되지 않은 상태에서 불시에 셧다운된 경우, 하드 디스크가 깨진 경우</li>
+<li>복구 방식: 재동기화를 통한 데이터 파일을 완전 대치, 최근 백업에서 복구</li>
+</ul></li>
+</ul>
+
+<h4 id="rs-reconfigure-를-이용한-복제-셋-재설정:177f2075b6e19d6ba296a382cdb81d27"><code>rs.reconfigure()</code>를 이용한 복제 셋 재설정</h4>
+
+<p>복구가 불가능한 노드(<code>localhost:30001</code>)를 새로운 노드(<code>localhost:40001</code>)를 만들어서 대체하는 경우</p>
+
+<pre><code>&gt; use local
+&gt; config = db.system.replset.findOne()
+{
+  &quot;_id&quot;: &quot;myapp&quot;,
+  &quot;version&quot;: 1,
+  &quot;members&quot;: [
+    {
+      &quot;_id&quot;: 0,
+      &quot;host&quot;: &quot;localhost:30000&quot;
+    },
+    {
+      &quot;_id&quot;: 1,
+      &quot;host&quot;: &quot;localhost:30001&quot;
+    },
+    {
+      &quot;_id&quot;: 2,
+      &quot;host&quot;: &quot;localhost:30002&quot;,
+      &quot;arbiterOnly&quot;: true
+    }
+  ]
+}
+&gt; config.members[1].host = &quot;localhost:40001&quot;
+&gt; config.reconfigure(config)
+</code></pre>
+
+<p>→ 복제 셋은 새 노드를 인식하고 새 노드는 기존 멤버로 부터 동기화를 시작함</p>
+
+<h4 id="백업으로-부터-복구:177f2075b6e19d6ba296a382cdb81d27">백업으로 부터 복구</h4>
+
+<ul>
+<li>백업에 의한 복구는 백업 내의 오피로그가 현재 복제셋의 오피로그와 비교해서 같은 경우에만 사용할 수 있음<br />
+
+<ul>
+<li>백업 오피로그의 최근 연산이 현재 복제 셋의 오피로그에 여전히 존재해야 함 → <code>db.getReplicationInfo()</code>가 제공하는 정보로 확인할 수 있음<br /></li>
+<li>백업의 오피로그 항목이 백업이 복구되는 시점에서 오래 되었다면 재동기를 수행하는 것이 효율적일 수 있음</li>
+</ul></li>
+<li>백업 데이터 파일을 mongod 데이터 경로로 복사 → 동기화는 자동 시작 → <code>rs.status()</code>로 확인 가능
+
+<ul>
+<li>인덱스를 재구축할 필요가 없으므로 대부분의 경우 빠르게 복구가 가능하다</li>
+</ul></li>
+</ul>
+
+<h3 id="배포-전략:177f2075b6e19d6ba296a382cdb81d27">배포 전략</h3>
+
+<blockquote>
+<p>복제 셋의 최대 갯수: 12</p>
+</blockquote>
+
+<h4 id="자동-장애-조치를-제공할-수-있는-최소-구성:177f2075b6e19d6ba296a382cdb81d27">자동 장애 조치를 제공할 수 있는 최소 구성</h4>
+
+<ul>
+<li>2개의 복제 노드 + 1개의 중재자</li>
+<li>중재자(arbiter)는 애플리케이션 서버에 존재 + 복제 노드는 개별 서버를 구성</li>
+</ul>
+
+<h4 id="업타임이-중요한-서비스의-구성:177f2075b6e19d6ba296a382cdb81d27">업타임이 중요한 서비스의 구성</h4>
+
+<p>3개의 완전한 복제 노드로 구성<br />
+→ 한 노드가 완전히 기능 정지힌 경우에도 2개의 노드는 정상 동작하며 복구 중에도 자동 장애조치를 처리할 수 있음</p>
+
+<h4 id="2개의-데이터-센터로-구성:177f2075b6e19d6ba296a382cdb81d27">2개의 데이터 센터로 구성</h4>
+
+<p>두 데이터 센터 중 하나는 재해 복구 목적(세컨더리 데이터 센터)으로만 사용하는 경우
+※ 복제 셋의 프라이머리는 항상 프라이머리 데이터 센터에 존재하도록 설정
+* <strong>프라이머리 데이터 센터</strong>: 프라이머리(1) + 세컨더리(1)
+* <strong>세컨더리 데이터 센터</strong>: 세컨더리(1: priority=0)
+* 프라이머리 데이터 센터 내의 노드들 모두를 사용할 수 없을 경우
+  * 세컨더리 데이터 센터의 세컨더리 노드를 임시로 사용: mongodb 서버의 셧다운 → <code>--replSet</code> 옵션 없이 재시작
+  * 세컨더리 데이터 센터에 노드 2개를 생성 → 복제 셋의 재설정을 강제적으로 수행 (<code>force</code>옵션 사용)</p>
+
+<pre><code>&gt; rs.reconfigure(config, {force: true})
+</code></pre>
+
+<h2 id="드라이버와-복제:177f2075b6e19d6ba296a382cdb81d27">드라이버와 복제</h2>
+
+<p>복제 셋을 사용하는 어플리케이션 개발시 고려 주제
+* 연결과 장애조치
+* 쓰기 concern
+* 읽기 확장</p>
+
+<h3 id="연결과-장애-조치:177f2075b6e19d6ba296a382cdb81d27">연결과 장애 조치</h3>
+
+<blockquote>
+<p>드라이버는 MongoDB에 접속하면 <code>isMaster</code> 명령을 수행</p>
+</blockquote>
+
+<h4 id="단일-노드-연결:177f2075b6e19d6ba296a382cdb81d27">단일 노드 연결</h4>
+
+<p>복제 셋의 마스터로 지정된 노드에 연결하는 것 (독립 MongoDB 노드로 접속하는 것과 동일)
+※ 만일 세컨더리 노드에 접속하려면 세컨더리 노드에 접속하고 있음을 명기해야만 한다.</p>
+
+<h4 id="복제-셋-연결:177f2075b6e19d6ba296a382cdb81d27">복제 셋 연결</h4>
+
+<p>복제 셋을 하나의 전체로 보고 연결<br />
+→ 드라이버는 어떤 노드가 프라이머리인지 파악하고 장애조치의 경우에 새로운 프라이머리가 된 노드에 재연결</p>
+
+<h3 id="쓰기-concern:177f2075b6e19d6ba296a382cdb81d27">쓰기 concern</h3>
+
+<blockquote>
+<p>개발자로 하여금 애플리케이션이 진행되기 전에 쓰기가 어느정도로 복재되어야 하는지를 지정하는 것</p>
+</blockquote>
+
+<p><code>getlasterror</code> 명령에 대해 <code>w</code>와 <code>wtimeout</code> 필드를 통해 조정됨
+- <code>w</code>: 쓰기 연산을 복제할 서버의 수<br />
+  - 쓰기가 최소한 하나의 서버에 복제되어야 한다면 <code>w</code>를 <code>2</code>로 설정<br />
+  - <code>w</code> 값이 1보다 큰 쓰기 concern을 사용할 경우 추가적인 지연이 발생한다는 점을 명심해야 함<br />
+  - 저널링을 사용하는 경우 <code>w</code>를 <code>1</code>로 정하는 것이 대부분의 애플리케이션에서 효율적임
+- <code>wtimeout</code>: 쓰기가 지정된 시간 내에 복제되지 못할 경우 에러를 리턴하도록 하는 타임아웃 시간 (단위: 밀리초)
+  ※ <code>wtimeout</code>을 설정하지 않은 상태에서 복제가 발생하지 않으면 해당 연산은 무한 블록됨</p>
+
+<h3 id="읽기-스케일링:177f2075b6e19d6ba296a382cdb81d27">읽기 스케일링</h3>
+
+<blockquote>
+<p>복제 셋은 쓰기는 프라이머리에만 가능하지만 읽기는 세컨더리에도 가능하므로 읽기 부하를 분산을 시킬 수 있다.
+각 드라이버들은 쿼리를 하나 이상의 세컨더리 노드로 보내는 옵션을 제공하고 있다.</p>
+</blockquote>
+
+<p>※ 자바에서 <code>slaveOk</code> 옵션을 <code>true</code>로 지정하면 스레드당 로드 밸런싱을 사용</p>
+
+<ul>
+<li>읽기 스케일링을 자제 해야할 경우
+
+<ul>
+<li>애플리케이션의 쓰기 부하가 많을 경우<br />
+쓰기 연산을 빈번하게 수행하는 세컨더리에 읽기 요청을 보내는 것은 원활한 복제를 가로막을 수 있음</li>
+<li>일관성이 요구되는 읽기를 해야할 경우<br />
+복제는 비동기적이므로 최근에 프라이머리에 수행된 쓰기가 반영하지 않았을 수도 있음</li>
+</ul></li>
+</ul>
+
+<h3 id="태깅:177f2075b6e19d6ba296a382cdb81d27">태깅</h3>
+
+<p>쓰기 concern 이나 읽기 확장을 사용하고 있을 경우 사용할 세컨더리 노드를 세밀하게 제어하기 위해 사용할 수 있다.</p>
+
+    </div>
+
+    <footer>
+        <ul class="stats">
+    
+        
+
+        
+        
+            <li>
+                
+                
+                    
+
+                    
+
+                    
+
+                    
+                        Categories
+                    
+                
+            </li>
+        
+    
+
+    
+    
+        <li><a href='/categories/kwsstudy'>KWSStudy</a></li>
+    
+        <li><a href='/categories/mongodb'>MongoDB</a></li>
+    
+</ul>
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/"
+                class="button big previous">인덱싱과 쿼리 최적화</a></li>
+    
+
+    
+        <li><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/"
+                class="button big next">샤딩</a></li>
+    
+</ul>
+
+
+
+    
+        <article class="post">
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'kwsstudy';
+    var disqus_identifier = 'http:\/\/kwsstudy.github.io\/post\/%EB%B3%B5%EC%A0%9C\/';
+    var disqus_title = '복제(replication)';
+    var disqus_url = 'http:\/\/kwsstudy.github.io\/post\/%EB%B3%B5%EC%A0%9C\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </article>
+    
+
+
+    </div>
+    
+<section id="sidebar">
+
+    
+        <section id="intro">
+            
+            
+                
+                    <a href="/" class="logo"><img src="/img/main/logo.png" alt="logo" /></a>
+                
+            
+            
+                <header>
+                    <h2>KWS Study Group</h2>
+                    <p>KWS Study 종료 후 자료를 통합 시키는 블로그 입니다.</p>
+                </header>
+            
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+        </section>
+
+    
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/GridFS/">GridFS</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B0%B0%ED%8F%AC%EC%99%80-%EA%B4%80%EB%A6%AC/">배포와 관리</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-11'>
+                                    December 11, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%83%A4%EB%94%A9/">샤딩</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EB%B3%B5%EC%A0%9C/">복제(replication)</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-12-04'>
+                                    December 4, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="http://kwsstudy.github.io/post/%EC%9D%B8%EB%8D%B1%EC%8B%B1%EA%B3%BC-%EC%BF%BC%EB%A6%AC-%EC%B5%9C%EC%A0%81%ED%99%94/">인덱싱과 쿼리 최적화</a></h3>
+                                
+                                    
+                                
+                                <time class="published" datetime=
+                                    '2016-11-27'>
+                                    November 27, 2016</time>
+                            </header>
+                        </article>
+                    </li>
+                
+
+                
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            
+                                /post/
+                            
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+    
+    
+    
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                
+                    
+                
+
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/kwsstudy/">KWSStudy</a>
+                                <span style="float:right;">32</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/designpartterns/">DesignPartterns</a>
+                                <span style="float:right;">14</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/refactoring/">Refactoring</a>
+                                <span style="float:right;">10</span>
+                            </header>
+                        </article>
+                    </li>
+                
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/mongodb/">MongoDB</a>
+                                <span style="float:right;">8</span>
+                            </header>
+                        </article>
+                    </li>
+                
+            </ul>
+        </section>
+    
+
+    
+        
+
+    
+        <section id="footer">
+            <ul class="icons">
+                
+                
+                    
+<li><a href="//github.com/KWSStudy" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </ul>
+
+            <p class="copyright">&copy; Korea Web Service Study Group. Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Ported by <a href="//github.com/jpescador" target="_blank">Julio Pescador</a>. Powered by <a href="//gohugo.io" target="_blank">Hugo</a></p>
+        </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+
+        
+            
+                
+                    <script src="/js/main.min.js"></script>
+                
+            
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+
